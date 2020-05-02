@@ -21,17 +21,8 @@ private int id;
     //un produit posséde une catégorie
     private String image;
     private Categorie categorie;
-   // private Entrepot entrepot;
+    private Entrepot entrepot;
     private int quantite;
-
-    
-    
-
-    
-  
-
-
-    
     
 
     public int getQuantite() {
@@ -70,14 +61,14 @@ private int id;
         return categorie;
     }
 
-    /*public Entrepot getEntrepot() {
+    public Entrepot getEntrepot() {
         return entrepot;
-    }*/
+    }
 
     @Override
     public String toString() {
         return "Produit{" + "id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", reference=" + reference + ", marque=" + marque + ", image=" + image + ", categorie=" + categorie +
-                //", entrepot=" + entrepot +
+                ", entrepot=" + entrepot +
                 ", quantite=" + quantite + '}';
     }
 
@@ -109,9 +100,9 @@ private int id;
         this.categorie = categorie;
     }
 
-    /*public void setEntrepot(Entrepot entrepot) {
+    public void setEntrepot(Entrepot entrepot) {
         this.entrepot = entrepot;
-    }*/
+    }
 
 
     
