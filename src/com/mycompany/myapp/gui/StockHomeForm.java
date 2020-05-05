@@ -22,11 +22,11 @@ public class StockHomeForm extends Form{
         setLayout(BoxLayout.y());
         
         add(new Label("Choisissez une option"));
-        Button btnAddTask = new Button("Ajouter une categorie");
-        Button btnListTasks = new Button("Afficher toutes les categories");
+        Button btnAddTask = new Button("Ajouter un produit");
+        Button btnListTasks = new Button("Ajouter une catégorie");
         
-        btnAddTask.addActionListener(e-> new AddCategorieForm(current).show());
-        btnListTasks.addActionListener(e-> new ListCategorieForm(current).show());
+        btnAddTask.addActionListener(e-> new CatégorieHomeForm(current).show());
+        btnListTasks.addActionListener(e-> new ProduitHomeForm(current).show());
         addAll(btnAddTask,btnListTasks);
         
     }

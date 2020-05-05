@@ -24,7 +24,7 @@ import java.util.Map;
  * @author Zeineb_yahiaoui
  */
 public class CategoriesService {
-      public ArrayList<Categorie> tasks;
+      public ArrayList<Categorie> categories;
     
     public static CategoriesService instance=null;
     public boolean resultOK;
@@ -40,7 +40,7 @@ public class CategoriesService {
         }
         return instance;
     }
-    public boolean addTask(Categorie c) {
+    public boolean addCategorie(Categorie c) {
         String url = Statics.BASE_URL + "/new?nom=" + c.getNom(); //+ c.getEntrepot();
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -55,7 +55,7 @@ public class CategoriesService {
     }
      public ArrayList<Categorie> parseCategorie(String jsonText){
         try {
-            tasks=new ArrayList<>();
+            categories=new ArrayList<>();
             JSONParser j = new JSONParser();
             Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
             
@@ -67,13 +67,13 @@ public class CategoriesService {
                 c.setId((int)id);
                 c.setNom(obj.get("nom").toString());
                 //c.setEntrepot((Entrepot)obj.get("fkEntrepot"));
-                tasks.add(c);
+                categories.add(c);
             }
             
         } catch (IOException ex) {
             
         }
-        return tasks;
+        return categories;
     }
        public ArrayList<Categorie> getAllCategorie(){
         String url = Statics.BASE_URL+"/allC";
@@ -82,11 +82,11 @@ public class CategoriesService {
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                tasks = parseCategorie(new String(req.getResponseData()));
+                categories = parseCategorie(new String(req.getResponseData()));
                 req.removeResponseListener(this);
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return tasks;
+        return categories;
     }
 }

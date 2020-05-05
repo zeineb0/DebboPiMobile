@@ -23,6 +23,12 @@ private int id;
     private Categorie categorie;
     private Entrepot entrepot;
     private int quantite;
+
+    public Produit(String libelle) {
+        this.libelle = libelle;
+    }
+    public Produit() {
+    }
     
 
     public int getQuantite() {

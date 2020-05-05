@@ -15,20 +15,22 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.entities.Categorie;
+import com.mycompany.myapp.entities.Produit;
 import com.mycompany.myapp.services.CategoriesService;
+import com.mycompany.myapp.services.ProduitService;
 
 /**
  *
  * @author Zeineb_yahiaoui
  */
-public class AddCategorieForm extends Form{
-     public AddCategorieForm(Form previous) {
-        setTitle("Ajouter une nouvelle catégorie");
+public class AddProduitForm extends Form{
+     public AddProduitForm(Form previous) {
+        setTitle("Ajouter une nouveau Produit");
         setLayout(BoxLayout.yCenter());
         
-        TextField tfName = new TextField("","Nom");
+        TextField tfName = new TextField("","Libelle");
        // TextField tfStatus= new TextField("", "Status: 0 - 1");
-        Button btnValider = new Button("Ajouter catégorie");
+        Button btnValider = new Button("Ajouter produit");
         
         btnValider.addActionListener(new ActionListener() {
             @Override
@@ -37,9 +39,9 @@ public class AddCategorieForm extends Form{
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 else
                 {
-                        Categorie c = new Categorie(tfName.getText());
+                        Produit p = new Produit(tfName.getText());
                         
-                        if( CategoriesService.getInstance().addCategorie(c))
+                        if( ProduitService.getInstance().addProduit(p))
                             Dialog.show("Success","Connection accepted",new Command("OK"));
                         else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
