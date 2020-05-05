@@ -37,15 +37,12 @@ public class AddCategorieForm extends Form{
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 else
                 {
-                    try {
                         Categorie c = new Categorie(tfName.getText());
+                        
                         if( CategoriesService.getInstance().addTask(c))
                             Dialog.show("Success","Connection accepted",new Command("OK"));
                         else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
-                    } catch (NumberFormatException e) {
-                        Dialog.show("ERROR", "Status must be a number", new Command("OK"));
-                    }
                     
                 }
                 

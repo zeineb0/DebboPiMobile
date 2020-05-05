@@ -14,11 +14,11 @@ import com.codename1.ui.layouts.BoxLayout;
  *
  * @author Zeineb_yahiaoui
  */
-public class HomeForm extends Form{
+public class StockHomeForm extends Form{
     Form current;
-    public HomeForm() {
+    public StockHomeForm() {
         current=this;
-        setTitle("Home");
+        setTitle("Gestion de stock");
         setLayout(BoxLayout.y());
         
         add(new Label("Choisissez une option"));
@@ -28,7 +28,6 @@ public class HomeForm extends Form{
         btnAddTask.addActionListener(e-> new AddCategorieForm(current).show());
         btnListTasks.addActionListener(e-> new ListCategorieForm(current).show());
         addAll(btnAddTask,btnListTasks);
-        
         
     }
     

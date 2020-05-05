@@ -12,6 +12,7 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.Categorie;
+import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class CategoriesService {
         return instance;
     }
     public boolean addTask(Categorie c) {
-        String url = Statics.BASE_URL + "/categories/" + c.getNom()+ "/"; //+ c.getEntrepot();
+        String url = Statics.BASE_URL + "/new?nom=" + c.getNom(); //+ c.getEntrepot();
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -60,14 +61,14 @@ public class CategoriesService {
             
             List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
             for(Map<String,Object> obj : list){
+                
                 Categorie c = new Categorie();
-                float id = Float.parseFloat(obj.get("id").toString());
+                float id = Float.parseFloat(obj.get("idCategorie").toString());
                 c.setId((int)id);
-                //c.setEntrepot(((int)Float.parseFloat(obj.get("").toString())));
                 c.setNom(obj.get("nom").toString());
+                //c.setEntrepot((Entrepot)obj.get("fkEntrepot"));
                 tasks.add(c);
             }
-            
             
         } catch (IOException ex) {
             
@@ -75,7 +76,7 @@ public class CategoriesService {
         return tasks;
     }
        public ArrayList<Categorie> getAllCategorie(){
-        String url = Statics.BASE_URL+"/all";
+        String url = Statics.BASE_URL+"/allC";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
