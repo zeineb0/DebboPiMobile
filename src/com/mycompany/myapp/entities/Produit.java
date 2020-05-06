@@ -23,6 +23,7 @@ private int id;
     private Categorie categorie;
     private Entrepot entrepot;
     private int quantite;
+    private User idUser;
 
     public Produit(String libelle) {
         this.libelle = libelle;
@@ -108,6 +109,14 @@ private int id;
 
     public void setEntrepot(Entrepot entrepot) {
         this.entrepot = entrepot;
+    }
+
+    public User getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(User idUser) {
+        this.idUser = idUser;
     }
 
 

@@ -37,9 +37,8 @@ public class User {
         
     }
 
-    public User(int cin, Date dn, int tel, String username, String nom, String prenom, String email, String role) {
+    public User(int cin, int tel, String username, String nom, String prenom, String email, String role) {
         this.cin = cin;
-        this.dn = dn;
         this.tel = tel;
         this.username = username;
         this.nom = nom;

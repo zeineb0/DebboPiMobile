@@ -41,7 +41,7 @@ public class CategoriesService {
         return instance;
     }
     public boolean addCategorie(Categorie c) {
-        String url = Statics.BASE_URL + "/new?nom=" + c.getNom(); //+ c.getEntrepot();
+        String url = Statics.BASE_URL + "/newC?nom=" + c.getNom(); //+ c.getEntrepot();
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override

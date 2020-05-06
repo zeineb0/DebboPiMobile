@@ -17,6 +17,7 @@ public class Categorie {
     private int id;
     private String nom;
     private Entrepot entrepot;
+    private User idUser;
     
     private List<Produit> listProduit =new ArrayList<>();
     
@@ -66,6 +67,14 @@ public class Categorie {
     @Override
     public String toString() {
         return  nom ;
+    }
+
+    public User getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(User idUser) {
+        this.idUser = idUser;
     }
     
     

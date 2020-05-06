@@ -11,7 +11,6 @@ import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
-import com.mycompany.myapp.entities.Categorie;
 import com.mycompany.myapp.entities.Produit;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
@@ -41,8 +40,7 @@ public class ProduitService {
         return instance;
     }
     public boolean addProduit(Produit p) {
-        String url = Statics.BASE_URL + "/new?nom=" + p.getLibelle(); //+ c.getEntrepot();
-        req.setUrl(url);
+        String url = Statics.BASE_URL + "/newP?libelle="+p.getLibelle()+"&reference="+p.getReference()+"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite();//+"&fkCategorie="+p.getCategorie().getId();;
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -53,7 +51,7 @@ public class ProduitService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
     }
-     public ArrayList<Produit> parseCategorie(String jsonText){
+     public ArrayList<Produit> parseProduit(String jsonText){
         try {
             produits=new ArrayList<>();
             JSONParser j = new JSONParser();
@@ -63,11 +61,17 @@ public class ProduitService {
             for(Map<String,Object> obj : list){
                 
                 Produit p = new Produit();
-                float id = Float.parseFloat(obj.get("idCategorie").toString());
+                float id = Float.parseFloat(obj.get("idProduit").toString());
+                Float prix = Float.parseFloat(obj.get("prix").toString());
                 p.setId((int)id);
+                Map<String, Object> Categorie = (Map<String, Object>) obj.get("nom");
+                
+                p.setPrix((prix));
                 p.setLibelle(obj.get("libelle").toString());
+                p.setMarque(obj.get("marque").toString());
                 //c.setEntrepot((Entrepot)obj.get("fkEntrepot"));
                produits.add(p);
+                //System.out.println("********");
             }
             
         } catch (IOException ex) {
@@ -82,7 +86,7 @@ public class ProduitService {
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                produits = parseCategorie(new String(req.getResponseData()));
+                produits = parseProduit(new String(req.getResponseData()));
                 req.removeResponseListener(this);
             }
         });
