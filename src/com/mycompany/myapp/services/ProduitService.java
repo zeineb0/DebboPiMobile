@@ -11,7 +11,9 @@ import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
+import com.mycompany.myapp.entities.Categorie;
 import com.mycompany.myapp.entities.Produit;
+import com.mycompany.myapp.entities.User;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,24 +58,28 @@ public class ProduitService {
             produits=new ArrayList<>();
             JSONParser j = new JSONParser();
             Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-            
+            User.setIdOfConnectedUser(0);
             List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
             for(Map<String,Object> obj : list){
                 
                 Produit p = new Produit();
                 float id = Float.parseFloat(obj.get("idProduit").toString());
-                Float prix = Float.parseFloat(obj.get("prix").toString());
+                float prix = Float.parseFloat(obj.get("prix").toString());
                 p.setId((int)id);
-                Map<String, Object> Categorie = (Map<String, Object>) obj.get("nom");
-                
+                Map<String, Object> CategorieJson = (Map<String, Object>) obj.get("fkCategorie");
+                Categorie c = new Categorie();
+                float idc = Float.parseFloat(CategorieJson.get("idCategorie").toString());
+                c.setId((int)idc);
+                c.setNom(CategorieJson.get("nom").toString());
                 p.setPrix((prix));
+                p.setCategorie(c);
                 p.setLibelle(obj.get("libelle").toString());
                 p.setMarque(obj.get("marque").toString());
                 //c.setEntrepot((Entrepot)obj.get("fkEntrepot"));
                produits.add(p);
                 //System.out.println("********");
             }
-            
+           
         } catch (IOException ex) {
             
         }

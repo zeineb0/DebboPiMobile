@@ -30,7 +30,7 @@ public class User {
     private String last_login;
     private String role;
     private String Emailofconnecteduser;
-    private static int IdOfConnectedUser =0;
+    private static int IdOfConnectedUser;
     private static User userConncter;
 
     public User() {
