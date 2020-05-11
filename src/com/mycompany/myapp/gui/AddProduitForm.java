@@ -16,9 +16,11 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.entities.Categorie;
+import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Produit;
 import com.mycompany.myapp.entities.User;
 import com.mycompany.myapp.services.CategoriesService;
+import com.mycompany.myapp.services.EntrepotService;
 import com.mycompany.myapp.services.ProduitService;
 import java.util.ArrayList;
 
@@ -29,6 +31,7 @@ import java.util.ArrayList;
 public class AddProduitForm extends Form{
     
                 private ComboBox cmb;
+                private ComboBox cmbE;
 
      public AddProduitForm(Form previous) {
         setTitle("Ajouter une nouveau Produit");
@@ -47,12 +50,25 @@ public class AddProduitForm extends Form{
         for (Categorie object : anim) {
             cmb.addItem(object);
         }
+          cmbE = new ComboBox<>();
+      ArrayList<Entrepot> ent = new ArrayList<>();
+        ent.addAll(EntrepotService.getInstance().getAllEntrepot());
+         System.out.println(EntrepotService.getInstance().getAllEntrepot());
+
+        for (Entrepot object : ent) {
+            cmbE.addItem(object.toString());
+        }
        // TextField tfStatus= new TextField("", "Status: 0 - 1");
         Button btnValider = new Button("Ajouter produit");
         cmb.addActionListener((evt) -> {
             Categorie a = anim.get(cmb.getSelectedIndex());
             System.out.println(a);
             System.out.println(cmb.getSelectedItem());
+        });
+        cmbE.addActionListener((evt) -> {
+            Entrepot e = ent.get(cmbE.getSelectedIndex());
+            System.out.println(e);
+            System.out.println(cmbE.getSelectedItem());
         });
         
         btnValider.addActionListener(new ActionListener() {
@@ -68,14 +84,14 @@ public class AddProduitForm extends Form{
                         p.setReference(Integer.valueOf(tfRef.getText()));
                         p.setQuantite(Integer.valueOf(tfQte.getText()));
                         p.setPrix(Double.valueOf(tfPrix.getText()));
-                        //Categorie c = anim.get(cmb.getSelectedIndex());
-                        //p.setCategorie(c);
-                        //User u = new User(123456,20345098,"zeieneb", "yhy,plkdh","kfjfhf", "zeineb@gmail.com", "client");
-                        //p.setIdUser(u);
-                       // p.setLibelle(tfName.getText());
-                        if( ProduitService.getInstance().addProduit(p))
-                            Dialog.show("Success","Connection accepted",new Command("OK"));
-                        else
+                        Categorie c = anim.get(cmb.getSelectedIndex());
+                        p.setCategorie(c);
+                        Entrepot e = ent.get(cmbE.getSelectedIndex());
+                        p.setEntrepot(e);
+                        //System.out.println(ProduitService.getInstance().addProduit(p));
+                         if( ProduitService.getInstance().addProduit(p))
+                            Dialog.show("Success","Produit ajouté",new Command("OK"));
+                       else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
                     
                 }
@@ -84,7 +100,7 @@ public class AddProduitForm extends Form{
             }
         });
         
-        addAll(tfName,tfMarque,tfPrix,tfQte,tfRef,cmb,btnValider);
+        addAll(tfName,tfMarque,tfPrix,tfQte,tfRef,cmb,cmbE,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
                 
     }

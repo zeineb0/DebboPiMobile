@@ -11,5 +11,6 @@ package com.mycompany.myapp.utils;
  */
 public class Statics {
     public static final String BASE_URL="http://localhost/DebboWeb/web/app_dev.php/Stock";
+    public static final String FArouk_URL="http://localhost/DebboWeb/web/app_dev.php/Trans";
     
 }

@@ -11,8 +11,9 @@ import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
-import com.mycompany.myapp.entities.Categorie;
 import com.mycompany.myapp.entities.Entrepot;
+import com.mycompany.myapp.entities.Produit;
+import com.mycompany.myapp.entities.User;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,70 +24,58 @@ import java.util.Map;
  *
  * @author Zeineb_yahiaoui
  */
-public class CategoriesService {
-      public ArrayList<Categorie> categories;
+public class EntrepotService {
+     public ArrayList<Entrepot> entrepots;
     
-    public static CategoriesService instance=null;
+    public static EntrepotService instance=null;
     public boolean resultOK;
     private ConnectionRequest req;
 
-    private CategoriesService() {
+    private EntrepotService() {
          req = new ConnectionRequest();
     }
 
-    public static CategoriesService getInstance() {
+    public static EntrepotService getInstance() {
         if (instance == null) {
-            instance = new CategoriesService();
+            instance = new EntrepotService();
         }
         return instance;
     }
-    public boolean addCategorie(Categorie c) {
-        String url = Statics.BASE_URL + "/newC?nom=" + c.getNom()+"&fkEntrepot="+ c.getEntrepot().getId_entrepot();
-        req.setUrl(url);
-        req.addResponseListener(new ActionListener<NetworkEvent>() {
-            @Override
-            public void actionPerformed(NetworkEvent evt) {
-                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
-                req.removeResponseListener(this);
-            }
-        });
-        NetworkManager.getInstance().addToQueueAndWait(req);
-        return resultOK;
-    }
-     public ArrayList<Categorie> parseCategorie(String jsonText){
-        try {
-            categories=new ArrayList<>();
-            JSONParser j = new JSONParser();
-            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-            
-            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
-            for(Map<String,Object> obj : list){
-                
-                Categorie c = new Categorie();
-                float id = Float.parseFloat(obj.get("idCategorie").toString());
-                c.setId((int)id);
-                c.setNom(obj.get("nom").toString());
-                //c.setEntrepot((Entrepot)obj.get("fkEntrepot"));
-                categories.add(c);
-            }
-            
-        } catch (IOException ex) {
-            
-        }
-        return categories;
-    }
-       public ArrayList<Categorie> getAllCategorie(){
-        String url = Statics.BASE_URL+"/allC";
+    public ArrayList<Entrepot> getAllEntrepot(){
+        String url = Statics.BASE_URL+"/allE";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                categories = parseCategorie(new String(req.getResponseData()));
+                entrepots = parseEntrepot(new String(req.getResponseData()));
                 req.removeResponseListener(this);
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return categories;
+        return entrepots;
+    }
+         public ArrayList<Entrepot> parseEntrepot(String jsonText){
+        try {
+            entrepots=new ArrayList<>();
+            JSONParser j = new JSONParser();
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            User.setIdOfConnectedUser(0);
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
+                
+                Entrepot e = new Entrepot();
+                float id = Float.parseFloat(obj.get("idEntrepot").toString());
+//                float prix = Float.parseFloat(obj.get("prix").toString());
+                e.setId_entrepot((int)id);
+                e.setAdresse_entrepot(obj.get("adresse").toString());
+               entrepots.add(e);
+                //System.out.println("********");
+            }
+           
+        } catch (IOException ex) {
+            
+        }
+        return entrepots;
     }
 }
