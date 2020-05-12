@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myapp.utils;
+package com.mycompany.myapp.gui.gererentrepot;
 
 /**
  *
- * @author bhk
+ * @author asus
  */
-public class Statics {
-    public static final String GestionEntrepot_URL="http://localhost/DebboPiWeb/web/app_dev.php/";
+public class AddEntrepot {
     
 }
