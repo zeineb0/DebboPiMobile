@@ -5,8 +5,10 @@
  */
 package com.mycompany.myapp.gui;
 
+import com.codename1.components.SpanLabel;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.mycompany.myapp.services.RhService;
 
 /**
  *
@@ -16,6 +18,8 @@ public class ListEmployeForm extends Form {
 
     public ListEmployeForm(Form previous) {
         setTitle("List Employees");
+        SpanLabel sp =new SpanLabel();
+        sp.setText(RhService.getInstance().getAllEmployes().toString());
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
         
         
