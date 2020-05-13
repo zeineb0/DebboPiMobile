@@ -77,6 +77,7 @@ public class ProduitService {
                 Produit p = new Produit();
                 float id = Float.parseFloat(obj.get("idProduit").toString());
                 float prix = Float.parseFloat(obj.get("prix").toString());
+                p.setImage(obj.get("imageName").toString());
                 p.setId((int)id);
                 
                 Map<String, Object> CategorieJson = (Map<String, Object>) obj.get("fkCategorie");
