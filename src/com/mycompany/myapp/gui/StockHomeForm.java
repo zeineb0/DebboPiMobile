@@ -24,10 +24,12 @@ public class StockHomeForm extends Form{
         add(new Label("Choisissez une option"));
         Button btnp = new Button("Ajouter un produit");
         Button btnc = new Button("Ajouter une catégorie");
+        Button btnm = new Button("Ajouter un mouvement");
         
         btnc.addActionListener(e-> new CatégorieHomeForm(current).show());
         btnp.addActionListener(e-> new ProduitHomeForm(current).show());
-        addAll(btnc,btnp);
+        btnm.addActionListener(e-> new MvtHomeForm(current).show());
+        addAll(btnc,btnp,btnm);
         
     }
     

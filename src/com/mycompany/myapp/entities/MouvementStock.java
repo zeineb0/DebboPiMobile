@@ -18,7 +18,7 @@ public class MouvementStock {
     private int quantite;
       private Produit p;
     private Categorie c;
-    //private Entrepot e;
+    private Entrepot e;
     
     
     public MouvementStock() {
@@ -72,19 +72,17 @@ public class MouvementStock {
         this.quantite = quantite;
     }
 
-    /*public Entrepot getE() {
+    public Entrepot getE() {
         return e;
     }
 
     public void setE(Entrepot e) {
         this.e = e;
-    }*/
+    }
 
     @Override
     public String toString() {
-        return "MouvementStock{" + "id=" + id + ", natureDuStock=" + natureDuStock + ", p=" + p + ", c=" + c +
-                //", e=" + e +
-                ", dateMouv=" + dateMouv + ", quantite=" + quantite + '}';
+        return "MouvementStock{" + "natureDuStock=" + natureDuStock + ", dateMouv=" + dateMouv + ", produit=" + p.toString() + ", entrepot=" + e.toString();
     }
 
     

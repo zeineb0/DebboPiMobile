@@ -5,16 +5,24 @@
  */
 package com.mycompany.myapp.services;
 
+import com.codename1.components.ImageViewer;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
+import com.codename1.ui.Image;
+import com.codename1.ui.Label;
+import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.entities.Categorie;
 import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Produit;
 import com.mycompany.myapp.entities.User;
+import com.mycompany.myapp.gui.ListProduitForm;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -79,7 +87,7 @@ public class ProduitService {
                 c.setNom(CategorieJson.get("nom").toString());
                 
                 Map<String, Object> EntJson = (Map<String, Object>) obj.get("fkEntrepot");
-                
+                // Label l = new Label(obj.get("libelle").toString());
                 Entrepot e = new Entrepot();
                 float ide = Float.parseFloat(EntJson.get("idEntrepot").toString());
                 e.setId_entrepot((int)ide);
@@ -100,8 +108,53 @@ public class ProduitService {
         } catch (IOException ex) {
             
         }
+        /* for (Produit p : produits){
+            addItem(p);}*/
         return produits;
+        
+             
     }
+     
+            
+     /* public void addItem (Produit p){
+            ImageViewer img = null;
+            Container C1 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+            try {
+                p.setImage("/a.png");
+                img = new ImageViewer(Image.createImage(p.getImage()));
+            }
+            catch (IOException e){
+            }
+            
+            Container C2 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+            
+            Label L = new Label (p.getLibelle());
+            Label M = new Label (p.getMarque());
+            Label R = new Label (String.valueOf(p.getReference()));
+            Label Q = new Label (String.valueOf(p.getQuantite()));
+            Label P = new Label (String.valueOf(p.getPrix()));
+            
+            
+            
+            
+            L.addPointerPressedListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent evt) {
+                    Dialog.show(p.getLibelle(), p.getMarque(),"ok",null);
+                }
+            });
+            C2.addAll(L,M,R,Q,P);
+            C1.add(img);
+            C1.add(C2);
+            C1.setLeadComponent(L);
+            
+            
+            
+         ListProduitForm.add(C1);
+         //  f.refreshTheme();
+          
+      }*/
+          
 
        public ArrayList<Produit> getAllProduit(){
         String url = Statics.BASE_URL+"/allP";
@@ -131,17 +184,17 @@ public class ProduitService {
             System.out.println("333333333" + Url);
         });
         NetworkManager.getInstance().addToQueueAndWait(con);
-    }
+    }*/
 
-    public void supprimerficheDeDressage(FicheDeSoin ta) {
+    public void supprimerProduit(Produit p) {
 
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl(ToolsUtilities.UrlAhmedMakni + "dellficheDesoin/" + ta.getId());
+        con.setUrl(Statics.BASE_URL + "/suppP?idProduit=" +p.getId());
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 try {
-                    message = new String(con.getResponseData(), "utf-8");
+                    String message = new String(con.getResponseData(), "utf-8");
                     System.out.println("message" + message);
                 } catch (UnsupportedEncodingException ex) {
                     System.out.println(ex.toString());
@@ -152,5 +205,5 @@ public class ProduitService {
 
         NetworkManager.getInstance().addToQueueAndWait(con);
 
-    }*/
+    }
 }
