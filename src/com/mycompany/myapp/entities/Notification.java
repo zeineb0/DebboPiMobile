@@ -20,12 +20,12 @@ public class Notification {
     private String route_parameters;
     private Date notification_date;
     private int seen;
-    private int idUser;
+   
 
     public Notification() {
     }
 
-    public Notification(int id, String title, String description, String icon, String route, String route_parameters, Date notification_date, int seen, int idUser) {
+    public Notification(int id, String title, String description, String icon, String route, String route_parameters, Date notification_date, int seen) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -34,7 +34,7 @@ public class Notification {
         this.route_parameters = route_parameters;
         this.notification_date = notification_date;
         this.seen = seen;
-        this.idUser = idUser;
+        
     }
     
 }
