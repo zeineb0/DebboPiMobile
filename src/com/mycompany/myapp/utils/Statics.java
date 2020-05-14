@@ -7,10 +7,9 @@ package com.mycompany.myapp.utils;
 
 /**
  *
- * @author bhk
+ * @author Zeineb_yahiaoui
  */
 public class Statics {
     public static final String BASE_URL="http://localhost/DebboWeb/web/app_dev.php/Stock";
-    public static final String FArouk_URL="http://localhost/DebboWeb/web/app_dev.php/Trans";
     
 }

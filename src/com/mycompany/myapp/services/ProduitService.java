@@ -109,54 +109,11 @@ public class ProduitService {
         } catch (IOException ex) {
             
         }
-        /* for (Produit p : produits){
-            addItem(p);}*/
         return produits;
         
              
     }
-     
-            
-     /* public void addItem (Produit p){
-            ImageViewer img = null;
-            Container C1 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-            try {
-                p.setImage("/a.png");
-                img = new ImageViewer(Image.createImage(p.getImage()));
-            }
-            catch (IOException e){
-            }
-            
-            Container C2 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-            
-            Label L = new Label (p.getLibelle());
-            Label M = new Label (p.getMarque());
-            Label R = new Label (String.valueOf(p.getReference()));
-            Label Q = new Label (String.valueOf(p.getQuantite()));
-            Label P = new Label (String.valueOf(p.getPrix()));
-            
-            
-            
-            
-            L.addPointerPressedListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent evt) {
-                    Dialog.show(p.getLibelle(), p.getMarque(),"ok",null);
-                }
-            });
-            C2.addAll(L,M,R,Q,P);
-            C1.add(img);
-            C1.add(C2);
-            C1.setLeadComponent(L);
-            
-            
-            
-         ListProduitForm.add(C1);
-         //  f.refreshTheme();
-          
-      }*/
-          
-
+    
        public ArrayList<Produit> getAllProduit(){
         String url = Statics.BASE_URL+"/allP";
         req.setUrl(url);
@@ -171,21 +128,21 @@ public class ProduitService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return produits;
     }
-       /*  public void modifierProduit(Produit p) {
+         public void modifierProduit(Produit p) {
 
-        ConnectionRequest con = new ConnectionRequest();
-
-        String Url = Statics.BASE_URL + "modifierfiche?" + "id=" + p.getId() + "&observation=" + p.getObservation() + "&medicament=" + ta.getMedicament() + "&prochainRDV=" + datdebu;
-        con.setUrl(Url);
-       http://localhost/DebboWeb/web/app_dev.php/Stock/modifP?idProduit=62&libelle=plateau&marque=oui&reference=12345&prix=40&quantite=40&fkCategorie=2&fkEntrepot=2
-        con.addResponseListener((e) -> {
-            String str = new String(con.getResponseData());
-            System.out.println(str);
-            System.out.println("222222222" + str);
-            System.out.println("333333333" + Url);
+        String Url = Statics.BASE_URL + "/modifP?idProduit=" + p.getId() + "&libelle="+p.getLibelle()+"&marque="+p.getMarque()+"&reference="+p.getReference()
+                +"&prix="+p.getPrix()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&fkEntrepot="+p.getEntrepot().getId_entrepot();
+        req.setUrl(Url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                 resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+            }
         });
-        NetworkManager.getInstance().addToQueueAndWait(con);
-    }*/
+ 
+        NetworkManager.getInstance().addToQueueAndWait(req);
+    }
 
     public void supprimerProduit(Produit p) {
 

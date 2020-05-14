@@ -102,7 +102,7 @@ public class Entrepot {
 
     @Override
     public String toString() {
-        return "Entrepot{" + "id_entrepot=" + id_entrepot + ", adresse_entrepot=" + adresse_entrepot + ", num_fiscale=" + num_fiscale + ", quantite_max=" + quantite_max + ", etat=" + etat + ", entreprise=" + entreprise + ", prix_location=" + prix_location + ", fk_id_fournisseur=" + fk_id_fournisseur + '}';
+        return  adresse_entrepot;
     }
 
     @Override
