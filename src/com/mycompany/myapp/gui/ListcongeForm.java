@@ -14,12 +14,12 @@ import com.mycompany.myapp.services.RhService;
  *
  * @author ASUS X550V
  */
-public class ListEmployeForm extends Form {
+public class ListcongeForm extends Form {
 
-    public ListEmployeForm(Form previous) {
-        setTitle("List Employees");
+    public ListcongeForm(Form previous) {
+        setTitle("List conges");
         SpanLabel sp =new SpanLabel();
-        sp.setText(RhService.getInstance().getAllEmployes().toString());
+        sp.setText(RhService.getInstance().getAllconges().toString());
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
         
         
