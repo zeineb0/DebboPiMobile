@@ -12,6 +12,8 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.entities.Blog;
 import com.mycompany.myapp.entities.Commande;
 import com.mycompany.myapp.service.commande.CommandeService;
+import com.mycompany.myapp.service.commande.NotificationService;
+import com.mycompany.myapp.utils.Notifications;
 import com.mycompany.myapp.utils.Statics;
 import java.util.ArrayList;
 
@@ -23,17 +25,17 @@ public class NotificationForm  extends Form{
     Form current;
     public NotificationForm() {
         current=this;
-        setTitle("commande");
+        setTitle("Notification");
         setLayout(BoxLayout.y());
-       ArrayList<Commande> commandes;
-        add(new Label("Votre Commandes"));
-        CommandeService cs= new CommandeService();
-        commandes=cs.getAllCommande();
-        for(int i=0;i<commandes.size();i++){
-             add(new Label(""+commandes.get(i).getId_commande()));
-        add(new Label(""+commandes.get(i).getTotal()));
-            String date = Statics.simpleDateFormat.format(commandes.get(i).getDate_commande());
-         add(new Label(date));
+       ArrayList<Notifications> notifs;
+        NotificationService cs= new NotificationService();
+        notifs=cs.getNotification();
+        for(int i=0;i<notifs.size();i++){
+        add(new Label(""+notifs.get(i).getBlog().getTitle()));
+        add(new Label(""+notifs.get(i).getBlog().getDescription()));
+        add(new Label(""+notifs.get(i).getBlog().getAuteur()));
+        String date = Statics.simpleDateFormat.format(notifs.get(i).getNotification().getNotification_date());
+        add(new Label(date));
         }   
     
     }

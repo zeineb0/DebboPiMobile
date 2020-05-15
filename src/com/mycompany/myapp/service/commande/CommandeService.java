@@ -53,7 +53,7 @@ public class CommandeService {
             List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
             for(Map<String,Object> obj : list){
                 
-                               int idC = Integer.parseInt(obj.get("idCommande").toString().substring(0,obj.get("idCommande").toString().indexOf('.') ));
+                int idC = Integer.parseInt(obj.get("idCommande").toString().substring(0,obj.get("idCommande").toString().indexOf('.') ));
                 double total= Double.parseDouble(obj.get("total").toString());
                 Map<String, Object> dateCommandeJson = (Map<String, Object>) obj.get("dateCommande");
                 float dateCommandeFloat = Float.parseFloat(dateCommandeJson.get("timestamp").toString());
