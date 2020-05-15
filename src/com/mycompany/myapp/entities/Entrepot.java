@@ -10,15 +10,18 @@ package com.mycompany.myapp.entities;
  * @author asus
  */
 public class Entrepot {
+
        int id_entrepot;
+
     String adresse_entrepot;
     int num_fiscale;
     int quantite_max;
     String etat;
     String entreprise;
-    float prix_location;
-    int fk_id_fournisseur;
 
+    int fk_id_fournisseur;
+    float prix_location;
+  
     public Entrepot() {
     }
 
@@ -99,7 +102,24 @@ public class Entrepot {
 
     @Override
     public String toString() {
-        return "Entrepot{" + "id_entrepot=" + id_entrepot + ", adresse_entrepot=" + adresse_entrepot + ", num_fiscale=" + num_fiscale + ", quantite_max=" + quantite_max + ", etat=" + etat + ", entreprise=" + entreprise + ", prix_location=" + prix_location + ", fk_id_fournisseur=" + fk_id_fournisseur + '}';
+        return  adresse_entrepot;
     }
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Entrepot other = (Entrepot) obj;
+        if (this.num_fiscale != other.num_fiscale) {
+            return false;
+        }
+        return true;
+    }
 }
