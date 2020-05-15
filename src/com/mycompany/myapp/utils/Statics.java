@@ -5,11 +5,16 @@
  */
 package com.mycompany.myapp.utils;
 
+import com.codename1.l10n.SimpleDateFormat;
+
 /**
  *
  * @author bhk
  */
 public class Statics {
     public static final String BASE_URL="http://41.226.11.252:11300";
-    
+    public static final String GHAZI_URL="http://localhost/DebboPiWeb/web/app_dev.php/Mobile";
+     
+    public static final String pattern = "MM-dd-yyyy";
+    public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 }
