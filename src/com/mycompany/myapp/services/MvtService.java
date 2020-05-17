@@ -126,9 +126,13 @@ public class MvtService {
     }
 
         public void modifierMvt(MouvementStock m) {
-
-        String Url = Statics.BASE_URL + "/modifM?idMouv=" + m.getId() + "&dateMouv="+m.getDateMouv()+"&natureMouvement="+m.getNatureDuStock()
-                +"&quantite="+m.getQuantite()+"&fkProduit="+m.getP().getId()+"&fkEntrepot="+m.getE().getId_entrepot();
+            SimpleDateFormat tempss = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(tempss);
+        String dateString = tempss.format(m.getDateMouv());
+        System.out.println(dateString);
+        String Url = Statics.BASE_URL + "/modifM?idMouv=" + m.getId() + "&dateMouv="+dateString+"&natureMouvement="+m.getNatureDuStock()
+                +"&qte="+m.getQuantite()+"&fkProduit="+m.getP().getId()+"&fkEntrepot="+m.getE().getId_entrepot();
+            System.out.println(Url);
         req.setUrl(Url);
              System.out.println(Url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

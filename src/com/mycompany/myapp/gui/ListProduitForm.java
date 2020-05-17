@@ -81,7 +81,8 @@ public class ListProduitForm extends Form{
 
             }
 
-            Image i = (URLImage.createToStorage(enc.scaledEncoded(400,400), p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" + p.getImage() +
+            Image i = (URLImage.createToStorage(enc.scaledEncoded(400,400), p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" 
+                    + p.getImage() +
                     "", URLImage.RESIZE_SCALE_TO_FILL));
 
              C2 = new Container(new TableLayout(1, 1));
@@ -152,14 +153,7 @@ public class ListProduitForm extends Form{
                           
                         }
                     });
-        ms.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent evt) {
-                            refreshTheme();
-                            showBack();
-                       
-                        }
-                    });
+        ms.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK,a->showBack());
                        ms.refreshTheme();
                     ms.showBack();
 
