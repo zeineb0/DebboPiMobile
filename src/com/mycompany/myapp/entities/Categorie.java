@@ -18,7 +18,7 @@ public class Categorie {
     private String nom;
     private Entrepot entrepot;
     private User idUser;
-    
+    private String image;
     private List<Produit> listProduit =new ArrayList<>();
     
     public Categorie(int id, String nom) {
@@ -75,6 +75,14 @@ public class Categorie {
 
     public void setIdUser(User idUser) {
         this.idUser = idUser;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
     

@@ -133,6 +133,7 @@ public class ProduitService {
         String Url = Statics.BASE_URL + "/modifP?idProduit=" + p.getId() + "&libelle="+p.getLibelle()+"&marque="+p.getMarque()+"&reference="+p.getReference()
                 +"&prix="+p.getPrix()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&fkEntrepot="+p.getEntrepot().getId_entrepot();
         req.setUrl(Url);
+             System.out.println(Url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -145,23 +146,19 @@ public class ProduitService {
     }
 
     public void supprimerProduit(Produit p) {
-
-        ConnectionRequest con = new ConnectionRequest();
-        con.setUrl(Statics.BASE_URL + "/suppP?idProduit=" +p.getId());
-        con.addResponseListener(new ActionListener<NetworkEvent>() {
+        String url = Statics.BASE_URL+"/suppP?idProduit="+p.getId();
+        req.setUrl(url);
+        System.out.println(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                try {
-                    String message = new String(con.getResponseData(), "utf-8");
-                    System.out.println("message" + message);
-                } catch (UnsupportedEncodingException ex) {
-                    System.out.println(ex.toString());
-                }
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
             }
 
         });
 
-        NetworkManager.getInstance().addToQueueAndWait(con);
+        NetworkManager.getInstance().addToQueueAndWait(req);
 
     }
 }

@@ -18,6 +18,7 @@ import com.mycompany.myapp.entities.Produit;
 import com.mycompany.myapp.entities.User;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,9 +46,14 @@ public class MvtService {
         return instance;
     }
     public boolean addMvt(MouvementStock m) {
-        String url = Statics.BASE_URL + "/newP?natureMouvement="+m.getNatureDuStock()+"&dateMouv="+m.getDateMouv()+
-        "&fkProduit="+m.getP().getId()+"&fkEntrepot="+m.getE().getId_entrepot();
         
+        SimpleDateFormat tempss = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(tempss);
+        String dateString = tempss.format(m.getDateMouv());
+        System.out.println(dateString);
+        String url = Statics.BASE_URL + "/newM?natureMouvement="+m.getNatureDuStock()+"&dateMouv="+dateString+"&qte="+m.getQuantite()
+        +"&fkProduit="+m.getP().getId()+"&fkEntrepot="+m.getE().getId_entrepot();
+        System.out.println(url);
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -118,40 +124,38 @@ public class MvtService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return mvts;
     }
-       /*  public void modifierProduit(Produit p) {
 
-        ConnectionRequest con = new ConnectionRequest();
+        public void modifierMvt(MouvementStock m) {
 
-        String Url = Statics.BASE_URL + "modifierfiche?" + "id=" + p.getId() + "&observation=" + p.getObservation() + "&medicament=" + ta.getMedicament() + "&prochainRDV=" + datdebu;
-        con.setUrl(Url);
-       http://localhost/DebboWeb/web/app_dev.php/Stock/modifP?idProduit=62&libelle=plateau&marque=oui&reference=12345&prix=40&quantite=40&fkCategorie=2&fkEntrepot=2
-        con.addResponseListener((e) -> {
-            String str = new String(con.getResponseData());
-            System.out.println(str);
-            System.out.println("222222222" + str);
-            System.out.println("333333333" + Url);
-        });
-        NetworkManager.getInstance().addToQueueAndWait(con);
-    }
-
-    public void supprimerficheDeDressage(FicheDeSoin ta) {
-
-        ConnectionRequest con = new ConnectionRequest();
-        con.setUrl(ToolsUtilities.UrlAhmedMakni + "dellficheDesoin/" + ta.getId());
-        con.addResponseListener(new ActionListener<NetworkEvent>() {
+        String Url = Statics.BASE_URL + "/modifM?idMouv=" + m.getId() + "&dateMouv="+m.getDateMouv()+"&natureMouvement="+m.getNatureDuStock()
+                +"&quantite="+m.getQuantite()+"&fkProduit="+m.getP().getId()+"&fkEntrepot="+m.getE().getId_entrepot();
+        req.setUrl(Url);
+             System.out.println(Url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                try {
-                    message = new String(con.getResponseData(), "utf-8");
-                    System.out.println("message" + message);
-                } catch (UnsupportedEncodingException ex) {
-                    System.out.println(ex.toString());
-                }
+                 resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+            }
+        });
+ 
+        NetworkManager.getInstance().addToQueueAndWait(req);
+    }
+
+    public void supprimerMvt(MouvementStock m) {
+        String url = Statics.BASE_URL+"/suppM?idMouv="+m.getId();
+        req.setUrl(url);
+        System.out.println(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
             }
 
         });
 
-        NetworkManager.getInstance().addToQueueAndWait(con);
+        NetworkManager.getInstance().addToQueueAndWait(req);
 
-    }*/   
+    }
 }

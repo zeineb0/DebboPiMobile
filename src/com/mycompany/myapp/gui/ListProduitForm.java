@@ -44,6 +44,7 @@ public class ListProduitForm extends Form{
           private ComboBox cmb;
                 private ComboBox cmbE;
                 Button btn,supp;
+                Container C2;
 
     public ListProduitForm() {
     }
@@ -80,10 +81,10 @@ public class ListProduitForm extends Form{
 
             }
 
-            Image i = (URLImage.createToStorage(enc, p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" + p.getImage() +
+            Image i = (URLImage.createToStorage(enc.scaledEncoded(400,400), p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" + p.getImage() +
                     "", URLImage.RESIZE_SCALE_TO_FILL));
 
-            Container C2 = new Container(new TableLayout(1, 1));
+             C2 = new Container(new TableLayout(1, 1));
             
             Label l = new Label (p.getMarque());
             Label tel = new Label (String.valueOf(p.getReference()));
@@ -92,30 +93,46 @@ public class ListProduitForm extends Form{
                 public void actionPerformed(ActionEvent evt) {
                     ms = new Form(BoxLayout.y());
                     ms.setTitle("Produit");
+                    Label l=new Label("Libelle");
                     TextField tfName = new TextField(p.getLibelle());
-        TextField tfMarque = new TextField(p.getMarque());
-        TextField tfRef = new TextField(String.valueOf(p.getQuantite()));
-        TextField tfPrix = new TextField(String.valueOf(p.getPrix()));
-        TextField tfQte = new TextField(String.valueOf(p.getReference()));
-       
+                    Label m=new Label("marque");
+                    TextField tfMarque = new TextField(p.getMarque());
+                    Label q=new Label("Quantité");
+                    TextField tfQte = new TextField(String.valueOf(p.getQuantite()));
+                    Label pr=new Label("prix");
+                    TextField tfPrix = new TextField(String.valueOf(p.getPrix()));
+                    Label r=new Label("reference");
+                    TextField tfRef = new TextField(String.valueOf(p.getReference()));
+                    Label ct=new Label("Catégorie");
                     System.out.println(p.getCategorie().toString());
+                    Label e=new Label("Entrepot");
                     System.out.println(p.getEntrepot().toString());
                     String c = p.getCategorie().toString();
-                            cmb.setSelectedItem(c);
+                    cmb.setSelectedItem(c);
 
-        cmbE.setSelectedItem(p.getEntrepot());
-        btn = new Button("modifier");
-        supp = new Button("suprrimer");
-        btn.addActionListener(new ActionListener() {
+                    cmbE.setSelectedItem(p.getEntrepot());
+                    btn = new Button("modifier");
+                    supp = new Button("suprrimer");
+                    ms.addAll(l,tfName,m,tfMarque,q,tfQte,pr,tfPrix,r,tfRef,ct,cmb,e,cmbE,btn,supp);
+
+                btn.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
                          Produit pmodifié = new Produit();
                          pmodifié.setId(p.getId());
-                         pmodifié.setLibelle(p.getLibelle());
-                         pmodifié.setMarque(p.getMarque());
-                         pmodifié.setReference(p.getReference());
-                         pmodifié.setPrix(p.getPrix());
-                         pmodifié.setQuantite(p.getQuantite());
+                         pmodifié.setLibelle(tfName.getText());
+                            System.out.println(tfName.getText());
+                         pmodifié.setMarque(tfMarque.getText());
+                          System.out.println(tfMarque.getText());
+                         pmodifié.setReference(Integer.valueOf(tfRef.getText()));
+                                                     System.out.println(tfRef.getText());
+
+                         pmodifié.setPrix(Float.valueOf(tfPrix.getText()));
+                                                     System.out.println(tfQte.getText());
+
+                         pmodifié.setQuantite(Integer.valueOf(tfQte.getText()));
+                                                     System.out.println(tfPrix.getText());
+
                          Categorie c = anim.get(cmb.getSelectedIndex());
                         pmodifié.setCategorie(c);
                         Entrepot e = ent.get(cmbE.getSelectedIndex());
@@ -124,26 +141,28 @@ public class ListProduitForm extends Form{
                          //pmodifié.setEntrepot(p.getEntrepot());
                          ProduitService.getInstance().modifierProduit(pmodifié);
                                      System.out.println("OOOOOK");
-
                         }
                     });
         supp.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
-                            
+                            ProduitService.getInstance().supprimerProduit(p);
+                            refreshTheme();
+                            showBack();
+                          
                         }
                     });
-        ms.addAll(tfName,tfMarque,tfPrix,tfQte,tfRef,cmb,cmbE,btn,supp);
         ms.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
-                            show();
+                            refreshTheme();
+                            showBack();
                        
                         }
                     });
-                       
-
+                       ms.refreshTheme();
                     ms.showBack();
+
 
                 }
             });
@@ -154,11 +173,13 @@ public class ListProduitForm extends Form{
             C2.add(tel);
             //C1.add(C2);
             C2.setLeadComponent(l);
-          this.add(C2);
+            
+   this.clearClientProperties();
+                  this.add(C2);
          // hii.add(C1);
           this.refreshTheme();  
         }
-        
+     
         
         /*SpanLabel sp = new SpanLabel();
         sp.setText(ProduitService.getInstance().getAllProduit().toString());
