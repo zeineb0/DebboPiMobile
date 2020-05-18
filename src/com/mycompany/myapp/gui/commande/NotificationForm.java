@@ -6,6 +6,7 @@
 package com.mycompany.myapp.gui.commande;
 
 import com.codename1.io.ConnectionRequest;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
@@ -23,10 +24,10 @@ import java.util.ArrayList;
  */
 public class NotificationForm  extends Form{
     Form current;
-    public NotificationForm() {
+    public NotificationForm(Form previous) {
         current=this;
         setTitle("Notification");
-        setLayout(BoxLayout.y());
+         setLayout(BoxLayout.y());
        ArrayList<Notifications> notifs;
         NotificationService cs= new NotificationService();
         notifs=cs.getNotification();
@@ -37,6 +38,6 @@ public class NotificationForm  extends Form{
         String date = Statics.simpleDateFormat.format(notifs.get(i).getNotification().getNotification_date());
         add(new Label(date));
         }   
-    
+       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
 }

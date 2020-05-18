@@ -30,6 +30,14 @@ private int id;
     }
     public Produit() {
     }
+
+    public Produit(int id, String libelle, double prix, String marque) {
+        this.id = id;
+        this.libelle = libelle;
+        this.prix = prix;
+        this.marque = marque;
+    }
+    
     
 
     public int getQuantite() {
