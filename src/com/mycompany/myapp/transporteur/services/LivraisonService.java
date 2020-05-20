@@ -132,6 +132,22 @@ public class LivraisonService {
         
     }
     
+    public boolean modifierLivraison(Livraison l) {
+            String url ="http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/modLiv?id_liv="+l.getId_livraison()+"&date="+l.getDate_livraison()+"&id_user"+1;
+            System.out.println(url);
+            req.setUrl(url);
+            req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+    }
+    
+    
     
     
     
