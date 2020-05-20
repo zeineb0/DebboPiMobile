@@ -79,6 +79,8 @@ public class LivraisonService {
                 float id_c= Float.parseFloat(obj.get("idCommande").toString());
                 l.setFK_id_commande((int)id_c);
                 l.setImg("/liv.jpg");
+                    
+                
               
                 livraisons.add(l);
                
@@ -109,6 +111,24 @@ public class LivraisonService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         
         return livraisons;
+        
+    }
+    
+    public boolean supprimerLivraison(String id_liv)
+    {
+        String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/suppLiv/"+id_liv;
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+               resultOK =req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
         
     }
     
