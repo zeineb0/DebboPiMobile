@@ -95,7 +95,7 @@ public class AddProduitForm extends Form{
                             Dialog.show("ERROR", "Server error", new Command("OK"));
                     
                 }
-                
+                new ListProduitForm(previous);
                 
             }
         });

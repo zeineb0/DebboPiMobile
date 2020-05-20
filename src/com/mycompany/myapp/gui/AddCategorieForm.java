@@ -55,12 +55,12 @@ public class AddCategorieForm extends Form{
                         Entrepot e = ent.get(cmbE.getSelectedIndex());
                         c.setEntrepot(e);
                         if( CategoriesService.getInstance().addCategorie(c))
-                            Dialog.show("Success","Connection accepted",new Command("OK"));
+                            Dialog.show("Success","Catégorie ajoutée",new Command("OK"));
                         else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
-                    
                 }
-                
+                                    new ListCategorieForm(previous);
+
                 
             }
         });

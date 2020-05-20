@@ -53,12 +53,12 @@ public class ListCategorieForm extends Form{
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
       for (Categorie c : CategoriesService.getInstance().getAllCategorie()){
         try {
-                enc = EncodedImage.create("/a.png");
+                enc = EncodedImage.create("/tv.png");
             } catch (IOException ex) {
 
             }
             
-         Image i = (URLImage.createToStorage(enc,c.getNom(), "http://localhost/DebboWeb/web/public/images/categories/" + c.getImage() +
+         Image i = (URLImage.createToStorage(enc.scaledEncoded(400,400),c.getNom(), "http://localhost/DebboWeb/web/public/images/categories/" + c.getImage() +
                     "", URLImage.RESIZE_SCALE_TO_FILL));
             Container C2 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
             

@@ -79,7 +79,7 @@ public class AddMvtForm extends Form{
                             Dialog.show("Success","MVT ajouté",new Command("OK"));
                        else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
-                    
+                         new ListMvtForm(previous);
                 }
                 
                 

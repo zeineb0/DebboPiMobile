@@ -76,12 +76,12 @@ public class ListProduitForm extends Form{
             
                //Container C1 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
             try {
-                enc = EncodedImage.create("/a.png");
+                enc = EncodedImage.create("/tv.png");
             } catch (IOException ex) {
 
             }
 
-            Image i = (URLImage.createToStorage(enc.scaledEncoded(400,400), p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" 
+            Image i = (URLImage.createToStorage(enc.scaledEncoded(300,300), p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" 
                     + p.getImage() +
                     "", URLImage.RESIZE_SCALE_TO_FILL));
 
@@ -142,14 +142,14 @@ public class ListProduitForm extends Form{
                          //pmodifié.setEntrepot(p.getEntrepot());
                          ProduitService.getInstance().modifierProduit(pmodifié);
                                      System.out.println("OOOOOK");
+                                     new ListProduitForm(previous);
                         }
                     });
         supp.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
                             ProduitService.getInstance().supprimerProduit(p);
-                            refreshTheme();
-                            showBack();
+                            new ListProduitForm(previous);
                           
                         }
                     });
@@ -173,12 +173,13 @@ public class ListProduitForm extends Form{
          // hii.add(C1);
           this.refreshTheme();  
         }
-     
+                this.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+
+        this.show();
         
         /*SpanLabel sp = new SpanLabel();
         sp.setText(ProduitService.getInstance().getAllProduit().toString());
         add(sp);*/
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
     //public static void add(Container c){};
 }

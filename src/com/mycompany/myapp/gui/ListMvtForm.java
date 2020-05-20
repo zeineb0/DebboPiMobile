@@ -79,7 +79,7 @@ public class ListMvtForm extends Form{
             
                //Container C1 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
             try {
-                enc = EncodedImage.create("/a.png");
+                enc = EncodedImage.create("/tv.png");
             } catch (IOException ex) {
 
             }
