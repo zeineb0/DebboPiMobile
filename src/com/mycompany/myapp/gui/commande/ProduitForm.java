@@ -100,7 +100,8 @@ public class ProduitForm  extends Form{
             btnUp.addActionListener( new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent evt) {
-                     qtt.setText((Integer.parseInt(qtt.getText())+1)+"");
+                      if((Integer.parseInt(qtt.getText())<p.getQuantite()))
+                      {qtt.setText((Integer.parseInt(qtt.getText())+1)+"");}
                         
                 }
             });
