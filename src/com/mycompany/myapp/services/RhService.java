@@ -10,12 +10,14 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.Employe;
 import com.mycompany.myapp.entities.conge;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -28,8 +30,9 @@ public class RhService {
     public static RhService instance;
     private ConnectionRequest req;
     public ArrayList<conge> congs;
+    public boolean resultOK;
 
-    private RhService() {
+    public RhService() {
         req=new ConnectionRequest();
     }
     public static RhService getInstance(){
@@ -46,8 +49,13 @@ public class RhService {
              for(Map<String,Object> obj : list)
              {
                  conge c =new conge();
-                 float id =Float.parseFloat(obj.get("id").toString());
+                 c.setId((int)Float.parseFloat(obj.get("id").toString()));
+                c.setDatearrive(obj.get("date").toString());
+                // c.setEtat(obj.get("etat").toString());
+                // c.setType(obj.get("type").toString());
                  
+   
+                congs.add(c);
              }
         } catch (IOException ex) {
 
@@ -57,7 +65,7 @@ public class RhService {
     }
     
     public ArrayList<conge> getAllconges(){
-        String url=Statics.RH_URL+"/conge/";
+        String url=Statics.RH_URL+"/all";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -71,7 +79,18 @@ public class RhService {
         return congs;
     }
     
-    
+    public boolean addconge(conge c){
+        String url=Statics.RH_URL+"/new?datearrive="+c.getDatearrive()+"&datesortie="+c.getDatesortie()+"&type="+c.getType()+"&raison="+c.getRaison()+"&FKIdEmp="+c.getFK_id_emp()+"&etat="+c.getEtat();
+        ConnectionRequest req=new ConnectionRequest(url);
+        req.addResponseListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                resultOK=req.getResponseCode()==200;
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+    }
     
     
 }

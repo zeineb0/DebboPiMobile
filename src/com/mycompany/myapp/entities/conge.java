@@ -13,13 +13,32 @@ import java.util.Date;
  */
 public class conge {
     int id;
-    Date datesortie;
-    Date datearrive;
+    String datesortie;
+    String datearrive;
     String type;
     String etat;
+    String raison;
     int FK_id_emp;
 
-    public conge(int id, Date datesortie, Date datearrive, String type, String etat, int FK_id_emp) {
+    public String getRaison() {
+        return raison;
+    }
+
+    public void setRaison(String raison) {
+        this.raison = raison;
+    }
+
+    public conge(int id, String datesortie, String datearrive, String type, String etat, String raison, int FK_id_emp) {
+        this.id = id;
+        this.datesortie = datesortie;
+        this.datearrive = datearrive;
+        this.type = type;
+        this.etat = etat;
+        this.raison = raison;
+        this.FK_id_emp = FK_id_emp;
+    }
+
+    public conge(int id, String datesortie, String datearrive, String type, String etat, int FK_id_emp) {
         this.id = id;
         this.datesortie = datesortie;
         this.datearrive = datearrive;
@@ -27,8 +46,14 @@ public class conge {
         this.etat = etat;
         this.FK_id_emp = FK_id_emp;
     }
+        public conge(String etat) {
+        this.etat = etat;
+    }
 
     public conge() {
+    }
+
+    public conge(String text, String text0, String text1, String text2, int parseInt) {
     }
 
     public int getId() {
@@ -39,19 +64,19 @@ public class conge {
         this.id = id;
     }
 
-    public Date getDatesortie() {
+    public String getDatesortie() {
         return datesortie;
     }
 
-    public void setDatesortie(Date datesortie) {
+    public void setDatesortie(String datesortie) {
         this.datesortie = datesortie;
     }
 
-    public Date getDatearrive() {
+    public String getDatearrive() {
         return datearrive;
     }
 
-    public void setDatearrive(Date datearrive) {
+    public void setDatearrive(String datearrive) {
         this.datearrive = datearrive;
     }
 

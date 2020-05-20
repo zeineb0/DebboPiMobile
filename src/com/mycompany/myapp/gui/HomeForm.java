@@ -19,9 +19,12 @@ public class HomeForm extends Form {
         current=this;
         setTitle("Home");
         setLayout(BoxLayout.y());
-        Button btnList = new Button("List Employées");
+        Button btnList = new Button("List Conges");
+        Button btnAjout = new Button("Ajouter un conge");
+        btnAjout.addActionListener( e -> new AddcongeForm(current).show());
         btnList.addActionListener( e -> new ListcongeForm(current).show());
         add(btnList);
+        add(btnAjout);
         
     }
      

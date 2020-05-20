@@ -20,9 +20,8 @@ public class ListcongeForm extends Form {
         setTitle("List conges");
         SpanLabel sp =new SpanLabel();
         sp.setText(RhService.getInstance().getAllconges().toString());
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
-        
-        
+        this.add(sp);
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());              
     }
     
     
