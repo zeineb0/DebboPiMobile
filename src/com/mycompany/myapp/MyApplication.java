@@ -14,6 +14,7 @@ import java.io.IOException;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
 import com.mycompany.myapp.gui.HomeForm;
+import com.mycompany.myapp.transporteur.gui.HomeContratFrom;
 import com.mycompany.myapp.transporteur.gui.HomeTransporteurForm;
 
 /**
@@ -50,7 +51,8 @@ public class MyApplication {
     
     public void start() {
         HomeTransporteurForm home = new HomeTransporteurForm();
-        home.show();
+        HomeContratFrom home2 = new HomeContratFrom();
+        home2.show();
     }
 
     public void stop() {

@@ -78,7 +78,18 @@ public class LivraisonService {
                 l.setTel(obj.get("tel").toString());
                 float id_c= Float.parseFloat(obj.get("idCommande").toString());
                 l.setFK_id_commande((int)id_c);
-                l.setImg("/liv.jpg");
+                
+                if(obj.get("etatLivraison").equals("livrée"))
+                {
+                     l.setImg("/liv0.png");
+                }
+                else
+                {
+                     l.setImg("/liv.jpg");
+                    
+                }
+                
+               
                     
                 
               
@@ -95,9 +106,31 @@ public class LivraisonService {
     
     
     
-    public ArrayList<Livraison> getLivraisons()
+    public ArrayList<Livraison> getLivraisonsLivre()
     {
         String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/affLivL/1";
+        req.setUrl(url);
+        req.setPost(false);
+        
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                livraisons = parseLivraison(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        
+        return livraisons;
+        
+    }
+    
+    
+    
+    
+     public ArrayList<Livraison> getLivraisonsNLivre()
+    {
+        String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/affLivNL/1";
         req.setUrl(url);
         req.setPost(false);
         

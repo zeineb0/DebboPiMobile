@@ -22,16 +22,18 @@ public class HomeTransporteurForm extends Form{
     public HomeTransporteurForm()
     {
         current=this;
-        setTitle("Home");
+        setTitle("Transporteur Accueil");
         setLayout(BoxLayout.y());
         
-        add(new Label("choose an option"));
-        Button btnAddTask = new Button("Add Task");
-        Button btnListLiv = new Button("List Livraison");
+        add(new Label(" Vous pouvez choisir consulter :"));
+        //Button btnAddTask = new Button("Add Task");
+        Button btnListLiv = new Button("La Liste des livraisons livrées");
+        Button btnListLivNL = new Button("La Liste des livraisons non livrées");
         
       //  btnAddTask.addActionListener(e->new AddTaskForm(current).show());
         btnListLiv.addActionListener(e->new ListeLivraisonForm(current).show());
-        addAll(btnAddTask,btnListLiv);
+        btnListLivNL.addActionListener(e-> new ListeLivraisonNLForm(current).show());
+        addAll(btnListLiv,btnListLivNL);
         
         
         
