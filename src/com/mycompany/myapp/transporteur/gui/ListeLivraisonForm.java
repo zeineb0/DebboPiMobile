@@ -22,11 +22,13 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Border;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.spinner.Picker;
 import com.mycompany.myapp.entities.Livraison;
 import com.mycompany.myapp.transporteur.services.LivraisonService;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -34,6 +36,7 @@ import java.util.ArrayList;
  */
 public class ListeLivraisonForm extends Form{
     Form current;
+    Label etat;
 
     
     public ListeLivraisonForm(Form previous)
@@ -58,8 +61,12 @@ public class ListeLivraisonForm extends Form{
         sp.setText(LivraisonService.getInstance().getLivraisons().toString());
         add(sp);*/
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+        
     
     }
+    
+    
+    
     
     
     
@@ -74,7 +81,7 @@ public class ListeLivraisonForm extends Form{
         }
         Container C2 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         Label adresse = new Label(liv.getAdresse_livraison());
-        Label etat = new Label(liv.getEtat_livraison());
+        etat = new Label(liv.getEtat_livraison());
         Label date = new Label(Statics.simpleDateFormat.format(liv.getDate_livraison()));
         Label tel = new Label(liv.getTel());
         String id_liv=String.valueOf(liv.getId_livraison());
@@ -82,8 +89,19 @@ public class ListeLivraisonForm extends Form{
        
         
         
+
+        C2.add(adresse);
+        C2.add(etat);
+        //C2.add(date);
+        C1.add(img);
+        C1.add(C2);
+        C1.setLeadComponent(etat);
+        this.add(C1);
+        this.refreshTheme();
         
-        etat.addPointerPressedListener((ActionListener) (ActionEvent evt) -> {
+      
+        
+         etat.addPointerPressedListener((ActionListener) (ActionEvent evt) -> {
             String dialog = "Adresse : " + adresse.getText() + " \n Etat : " + etat.getText()+ " \n Date : " +date.getText() +"\n Telephone du Client : "+tel.getText();
             
             
@@ -91,7 +109,63 @@ public class ListeLivraisonForm extends Form{
             cmds[0] = new Command("Modifier"){
                 @Override
                 public void actionPerformed(ActionEvent evt) {
-                    //do Option1
+                    
+                    Livraison livraison_temp=new Livraison();
+                    
+                    Container modifier = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+                     Picker nv_date = new Picker();
+                     modifier.add(nv_date);
+                     
+                     
+                     
+                     
+                    
+                    
+                     Command [] modCMDS=new Command[2];
+                     
+                     modCMDS[0]=new Command("Modifier")
+                     {
+                         @Override
+                         public void actionPerformed(ActionEvent evt)
+                         {
+                            livraison_temp.setId_livraison(liv.getId_livraison());
+                            livraison_temp.setDate_livraison((Date) nv_date.getValue());
+                             boolean test= LivraisonService.getInstance().modifierLivraison(livraison_temp);
+                        if(test)
+                        {
+                            
+                            System.out.println(" c bon mchet ");
+                       
+                        
+                        }
+                        else
+                        {
+                        System.out.println("probleme f seervice");
+                        }
+                         }
+                     };
+                     
+                    modCMDS[1] = new Command("Fermer"){
+                    @Override
+                    public void actionPerformed(ActionEvent evt) {
+                       
+                        }
+                    };
+                    
+                    
+                    Dialog.show("Modifier Livraison", modifier , modCMDS);
+                    ArrayList<Livraison> livraisons = new ArrayList<>();
+        
+                        livraisons =LivraisonService.getInstance().getLivraisons();
+                        current.removeAll();
+                        for(Livraison l : livraisons )
+                        {
+                            addItem(l);
+                        }
+                        current.showBack();
+                    
+                   // new ModifierLivraisonForm(liv.getId_livraison()).show();
+           
                 }
             };
             cmds[1] = new Command("Supprimer"){
@@ -124,15 +198,6 @@ public class ListeLivraisonForm extends Form{
             };
             Dialog.show("Livraison", dialog, cmds);
         });
-
-        C2.add(adresse);
-        C2.add(etat);
-        //C2.add(date);
-        C1.add(img);
-        C1.add(C2);
-        C1.setLeadComponent(etat);
-        this.add(C1);
-        this.refreshTheme();
 
     }
     
