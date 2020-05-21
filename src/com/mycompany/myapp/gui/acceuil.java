@@ -5,10 +5,17 @@
  */
 package com.mycompany.myapp.gui;
 
+import com.codename1.ui.Form;
+
 /**
  *
- * @author Zeineb_yahiaoui
+ * @author ASUS
  */
-public class HomeForm {
-    
+public class acceuil extends Form {
+
+    public acceuil(Form current) {
+        
+    }
+
+
 }
