@@ -53,7 +53,7 @@ public class LivraisonService {
     
     
     
-     public ArrayList<Livraison> parseLivraison(String jsonText) 
+    public ArrayList<Livraison> parseLivraison(String jsonText) 
     {
         try{
             livraisons = new ArrayList<>();
@@ -128,7 +128,7 @@ public class LivraisonService {
     
     
     
-     public ArrayList<Livraison> getLivraisonsNLivre()
+    public ArrayList<Livraison> getLivraisonsNLivre()
     {
         String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/affLivNL/1";
         req.setUrl(url);

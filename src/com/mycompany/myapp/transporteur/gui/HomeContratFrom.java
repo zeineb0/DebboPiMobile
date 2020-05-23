@@ -30,8 +30,8 @@ public class HomeContratFrom extends Form{
         Button btnListContratEXP = new Button("La Liste des Contrats bientôt expirer");
         
        // btnAddContrat.addActionListener(e);
-       // btnListContrat.addActionListener(e);
-       // btnListContratEXP.addActionListener(e);
+        btnListContrat.addActionListener(e->new ListeContrat(current).show());
+        btnListContratEXP.addActionListener(e-> new ListeContratEXP(current).show());
         addAll(btnAddContrat,btnListContrat,btnListContratEXP);
      }
     
