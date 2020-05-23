@@ -80,6 +80,9 @@ public class ContratService {
                 float id_entrepot = Float.parseFloat(obj.get("idEntrepot").toString());
                 c.setFK_id_entrepot((int)id_entrepot);
                 
+                float id_transporteur = Float.parseFloat(obj.get("id").toString());
+                c.setFK_id_transporteur((int)id_transporteur);
+                
                 c.setEntreprise(obj.get("entreprise").toString());
                 
                 c.setNom_transporteur(obj.get("nom").toString());
@@ -192,6 +195,26 @@ public class ContratService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         
         return Contrats;
+        
+    }
+    
+    
+    
+    public boolean supprimerContrat(String id_transpoteur,String id_entrepot)
+    {
+        String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/suppContrat?id_entrepot="+id_entrepot+"&id_transporteur="+id_transpoteur;
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+               resultOK =req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
         
     }
     

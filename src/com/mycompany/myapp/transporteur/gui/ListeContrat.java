@@ -78,6 +78,9 @@ public class ListeContrat extends Form{
      
         Label salaire= new Label(String.valueOf(contrat.getSalaire()));
         
+        String id_transporteur= String.valueOf(contrat.getFK_id_transporteur());
+        String id_entrepot= String.valueOf(contrat.getFK_id_entrepot());
+        
        
         
         
@@ -102,16 +105,16 @@ public class ListeContrat extends Form{
             cmds[0] = new Command("Supprimer"){
                 @Override
                 public void actionPerformed(ActionEvent evt) 
-                {  /*
-                   boolean test = LivraisonService.getInstance().supprimerLivraison(id_liv);
+                {  
+                   boolean test = ContratService.getInstance().supprimerContrat(id_transporteur, id_entrepot);
                     System.out.println(test);
                     if (test)
                     {
-                        ArrayList<Livraison> livraisons = new ArrayList<>();
+                        ArrayList<Contrat> contrats = new ArrayList<>();
         
-                        livraisons =LivraisonService.getInstance().getLivraisonsLivre();
+                        contrats =ContratService.getInstance().getContrat();
                         current.removeAll();
-                        for(Livraison l : livraisons )
+                        for(Contrat l : contrats )
                         {
                             addItem(l);
                         }
@@ -119,7 +122,7 @@ public class ListeContrat extends Form{
                       
                     }
                     else
-                        System.out.println("****");*/
+                        System.out.println("****");
                 }
             };
             cmds[1] = new Command("Fermer"){

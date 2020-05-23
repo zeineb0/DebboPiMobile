@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Contrat {
     
-    private int salaire,FK_id_entrepot;
+    private int salaire,FK_id_entrepot,FK_id_transporteur;
     private Date date_fin,date_deb;
     private String nom_transporteur,prenom_transporteur,entreprise;
     private String img;
@@ -30,6 +30,15 @@ public class Contrat {
         this.date_fin = date_fin;
         this.date_deb = date_deb;
     }
+
+    public int getFK_id_transporteur() {
+        return FK_id_transporteur;
+    }
+
+    public void setFK_id_transporteur(int FK_id_transporteur) {
+        this.FK_id_transporteur = FK_id_transporteur;
+    }
+
 
     public int getSalaire() {
         return salaire;
@@ -95,17 +104,13 @@ public class Contrat {
         this.img = img;
     }
 
-    
-    
-    
     @Override
     public String toString() {
-        return "Contrat{" + "salaire=" + salaire + ", FK_id_entrepot=" + FK_id_entrepot + ", date_fin=" + date_fin + ", date_deb=" + date_deb + ", nom_transporteur=" + nom_transporteur + ", prenom_transporteur=" + prenom_transporteur + ", entreprise=" + entreprise + '}';
+        return "Contrat{" + "salaire=" + salaire + ", FK_id_entrepot=" + FK_id_entrepot + ", FK_id_transporteur=" + FK_id_transporteur + ", date_fin=" + date_fin + ", date_deb=" + date_deb + ", nom_transporteur=" + nom_transporteur + ", prenom_transporteur=" + prenom_transporteur + ", entreprise=" + entreprise + ", img=" + img + '}';
     }
-    
+
     
 
-   
-    
+
     
 }

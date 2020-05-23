@@ -98,7 +98,7 @@ public class ListeContratEXP extends Form{
             
             
             Command [] cmds = new Command[2];
-            cmds[0] = new Command("Supprimer"){
+            cmds[0] = new Command("Modifier"){
                 @Override
                 public void actionPerformed(ActionEvent evt) 
                 {  /*
