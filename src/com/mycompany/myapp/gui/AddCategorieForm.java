@@ -47,7 +47,7 @@ public class AddCategorieForm extends Form{
         btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ((tfName.getText().length()==0))
+                if ((tfName.getText().length()==0)  )
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 else
                 {
@@ -57,7 +57,7 @@ public class AddCategorieForm extends Form{
                         if( CategoriesService.getInstance().addCategorie(c))
                             Dialog.show("Success","Catégorie ajoutée",new Command("OK"));
                         else
-                            Dialog.show("ERROR", "Server error", new Command("OK"));
+                            Dialog.show("Erreur", "Catégorie non ajoutée", new Command("Veuillez réessayer"));
                 }
                                     new ListCategorieForm(previous);
 

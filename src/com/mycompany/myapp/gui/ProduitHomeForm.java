@@ -25,7 +25,7 @@ public class ProduitHomeForm extends Form{
         
         add(new Label("Choisissez une option"));
         Button btnAddTask = new Button("Ajouter un nouveau produit");
-        Button btnListTasks = new Button("Afficher la liste des produit");
+        Button btnListTasks = new Button("Afficher la liste des produits");
         
         btnAddTask.addActionListener(e-> new AddProduitForm(current).show());
         btnListTasks.addActionListener(e-> new ListProduitForm(current).show());

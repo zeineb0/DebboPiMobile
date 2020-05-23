@@ -39,7 +39,7 @@ import java.util.ArrayList;
 public class ListProduitForm extends Form{
 
     private SpanLabel lb;
-    Form ms;
+    Form ms = new Form(BoxLayout.y());
     private EncodedImage enc;
           private ComboBox cmb;
                 private ComboBox cmbE;
@@ -81,18 +81,19 @@ public class ListProduitForm extends Form{
 
             }
 
-            Image i = (URLImage.createToStorage(enc.scaledEncoded(300,300), p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" 
+            Image i = (URLImage.createToStorage(enc, p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" 
                     + p.getImage() +
                     "", URLImage.RESIZE_SCALE_TO_FILL));
+                        ImageViewer img2 = new ImageViewer(i.fill(1600, 1600));
 
-             C2 = new Container(new TableLayout(1, 1));
+             C2 = new Container(new TableLayout(2, 1));
             
             Label l = new Label (p.getMarque());
             Label tel = new Label (String.valueOf(p.getReference()));
             l.addPointerPressedListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent evt) {
-                    ms = new Form(BoxLayout.y());
+                    
                     ms.setTitle("Produit");
                     Label l=new Label("Libelle");
                     TextField tfName = new TextField(p.getLibelle());
@@ -115,24 +116,24 @@ public class ListProduitForm extends Form{
                     btn = new Button("modifier");
                     supp = new Button("suprrimer");
                     ms.addAll(l,tfName,m,tfMarque,q,tfQte,pr,tfPrix,r,tfRef,ct,cmb,e,cmbE,btn,supp);
-
+                    //new ms();
                 btn.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
                          Produit pmodifié = new Produit();
                          pmodifié.setId(p.getId());
                          pmodifié.setLibelle(tfName.getText());
-                            System.out.println(tfName.getText());
+                          System.out.println(tfName.getText());
                          pmodifié.setMarque(tfMarque.getText());
                           System.out.println(tfMarque.getText());
                          pmodifié.setReference(Integer.valueOf(tfRef.getText()));
-                                                     System.out.println(tfRef.getText());
+                          System.out.println(tfRef.getText());
 
                          pmodifié.setPrix(Float.valueOf(tfPrix.getText()));
-                                                     System.out.println(tfQte.getText());
+                          System.out.println(tfQte.getText());
 
                          pmodifié.setQuantite(Integer.valueOf(tfQte.getText()));
-                                                     System.out.println(tfPrix.getText());
+                          System.out.println(tfPrix.getText());
 
                          Categorie c = anim.get(cmb.getSelectedIndex());
                         pmodifié.setCategorie(c);
@@ -160,7 +161,7 @@ public class ListProduitForm extends Form{
 
                 }
             });
-                       C2.add(i);
+                       C2.add(img2);
                      //this.add(i);
 
             C2.add(l);
