@@ -25,11 +25,11 @@ Form current;
         Button btnAddTask = new Button("Add Task");
         Button btnListTasks = new Button("List Tasks");
         
-       // btnAddTask.addActionListener(e-> new AddEntrepot(current).show());
+       btnAddTask.addActionListener(e-> new AddEntrepot(current).show());
         btnListTasks.addActionListener(e-> new ListEntrepot(current).show());
         addAll(btnAddTask,btnListTasks);
         
-        
+         
     }}
     
 

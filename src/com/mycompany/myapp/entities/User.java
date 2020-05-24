@@ -37,6 +37,26 @@ public class User {
     public User() {
         
     }
+     public User(int id) {
+        this.id = id;
+    }
+
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
     public User(int cin, int tel, String username, String nom, String prenom, String email, String role) {
         this.cin = cin;
@@ -192,6 +212,11 @@ public class User {
 
     public static void setUserConncter(User userConncter) {
         User.userConncter = userConncter;
+    }
+
+    @Override
+    public String toString() {
+        return " nom=" + nom + ", prenom=" + prenom ;
     }
     
     
