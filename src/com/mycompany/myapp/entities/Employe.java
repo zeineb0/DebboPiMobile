@@ -24,8 +24,23 @@ public class Employe {
     String image_name;
     Date updated_at;
     int signalemp;
+    int nbcong;
     String email;
     int FK_id_dep;
+
+    public int getNbcong() {
+        return nbcong;
+    }
+
+    public Employe(int id_emp) {
+        this.id_emp = id_emp;
+    }
+
+    
+    
+    public void setNbcong(int nbcong) {
+        this.nbcong = nbcong;
+    }
 
     public int getId_emp() {
         return id_emp;

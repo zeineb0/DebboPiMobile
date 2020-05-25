@@ -5,6 +5,7 @@
  */
 package com.mycompany.myapp.gui;
 
+import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
 import com.codename1.ui.Command;
@@ -19,6 +20,7 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
+import com.mycompany.myapp.entities.Employe;
 import com.mycompany.myapp.entities.conge;
 import com.mycompany.myapp.services.RhService;
 import java.io.IOException;
@@ -31,15 +33,18 @@ public class AddcongeForm extends Form{
     String ch="Conge";
     public AddcongeForm(Form previous){
         setTitle("Ajouter une conge");
-        setLayout(BoxLayout.y());
-        
-        TextField cid =new TextField("","Cid");
+        setLayout(BoxLayout.y());      
+
         Container c1=new Container(BoxLayout.x());
-        Picker datePicker = new Picker();
-        datePicker.setType(Display.PICKER_TYPE_DATE);
-        TextField cdatearr =new TextField("","DateArrive");
+//        Picker datePicker = new Picker();
+//        datePicker.setType(Display.PICKER_TYPE_DATE);                
+//        TextField cdatearr =new TextField("","DateArrive");
+//        Container c2=new Container(BoxLayout.x());
+//        TextField cdatesortie =new TextField("","DateSortie");
+//        Container c3=new Container(BoxLayout.x());
+        Picker cdatearr =new Picker();
         Container c2=new Container(BoxLayout.x());
-        TextField cdatesortie =new TextField("","DateSortie");
+        Picker cdatesortie =new Picker();
         Container c3=new Container(BoxLayout.x());
         TextField craison =new TextField("","craison");      
         Container c4=new Container(BoxLayout.x());
@@ -63,9 +68,14 @@ public class AddcongeForm extends Form{
                 } 
                 else {
                 try {
-                conge c = new conge(Integer.parseInt(cid.getText()),cdatearr.getText(),cdatesortie.getText(),ch,cetat.getText(),craison.getText(),Integer.parseInt(cemp.getText()));
-                if (new RhService().addconge(c)){
+                conge c = new conge(cdatearr.getDate(),cdatesortie.getDate(),ch,cetat.getText(),craison.getText(),new Employe(Integer.parseInt(cemp.getText())));
+                conge test=new RhService().addconge(c);
+                test.toString();
+                if (test.getFK_id_emp().getNbcong()<2){
                     Dialog.show("Succes","ConnectionSucc",new Command("ok"));
+                }
+                else if (test.getFK_id_emp().getNbcong()==2){
+                    Dialog.show("Refusé","nbr conge depasse nbr limit",new Command("ok"));
                 }
                 else{
                     Dialog.show("Error","Erreur ajout survenue",new Command("ok"));
@@ -88,7 +98,7 @@ public class AddcongeForm extends Form{
         c4.add(cetat);
         c5.add(new Label("identifiant employe:"));
         c5.add(cemp);
-        addAll(cid,datePicker,c1,c2,cb,c4,c5,c3,btnValider);
+        addAll(c1,c2,cb,c4,c5,c3,btnValider);
     }
     
     

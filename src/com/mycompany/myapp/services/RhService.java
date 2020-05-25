@@ -30,6 +30,7 @@ public class RhService {
     public static RhService instance;
     private ConnectionRequest req;
     public ArrayList<conge> congs;
+     public conge cong;
     public boolean resultOK;
 
     public RhService() {
@@ -50,11 +51,10 @@ public class RhService {
              {
                  conge c =new conge();
                  c.setId((int)Float.parseFloat(obj.get("id").toString()));
-                c.setDatearrive(obj.get("date").toString());
-                // c.setEtat(obj.get("etat").toString());
-                // c.setType(obj.get("type").toString());
+//                 c.setDatearrive(obj.get("date").toString());
+//                 c.setEtat(obj.get("etat").toString());
+//                 c.setType(obj.get("type").toString());
                  
-   
                 congs.add(c);
              }
         } catch (IOException ex) {
@@ -79,17 +79,48 @@ public class RhService {
         return congs;
     }
     
-    public boolean addconge(conge c){
-        String url=Statics.RH_URL+"/new?datearrive="+c.getDatearrive()+"&datesortie="+c.getDatesortie()+"&type="+c.getType()+"&raison="+c.getRaison()+"&FKIdEmp="+c.getFK_id_emp()+"&etat="+c.getEtat();
+    
+    
+    
+    public conge addconge(conge c){
+        String url=Statics.RH_URL+"/new?datearrive="+Statics.simpleDateFormat.format(c.getDatearrive())+"&datesortie="+Statics.simpleDateFormat.format(c.getDatesortie())+"&type="+c.getType()+"&etat="+c.getEtat()+"&raison="+c.getRaison()+"&FKIdEmp="+c.getFK_id_emp().getId_emp();
         ConnectionRequest req=new ConnectionRequest(url);
         req.addResponseListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                resultOK=req.getResponseCode()==200;
+                cong = parseconge(new String(req.getResponseData()));
+                req.removeResponseListener(this);
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return resultOK;
+        return cong;
+    }
+    
+    public conge parseconge(String jsonText){
+        try {
+            cong = new conge();
+            JSONParser j = new JSONParser();
+            Map<String,Object> congslistJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+       //      Map<String, Object> obj = (Map<String, Object>) congslistJson.get("id");
+         //        System.out.println(obj.toString());
+//                 cong.setId((int)Float.parseFloat(obj.toString()));
+                 
+                  Map<String, Object> emp = (Map<String, Object>) congslistJson.get("fKIdEmp");
+                   System.out.println(emp.get("idEmp").toString());
+                  Employe e= new Employe((int)Float.parseFloat(emp.get("idEmp").toString()));
+                  e.setNbcong((int)Float.parseFloat(emp.get("nbcong").toString()));
+                  cong.setFK_id_emp(e);
+//                 c.setDatearrive(obj.get("date").toString());
+//                 c.setEtat(obj.get("etat").toString());
+//                 c.setType(obj.get("type").toString());
+               
+             
+        } catch (IOException ex) {
+
+        }
+
+        return cong;
+
     }
     
     

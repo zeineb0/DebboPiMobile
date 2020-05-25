@@ -11,14 +11,25 @@ import java.util.Date;
  *
  * @author ASUS X550V
  */
+
 public class conge {
     int id;
-    String datesortie;
-    String datearrive;
+    Date datesortie;
+    Date datearrive;
     String type;
     String etat;
     String raison;
-    int FK_id_emp;
+    Employe FK_id_emp;
+
+    public conge(Date datesortie, Date datearrive, String type, String etat, String raison, Employe FK_id_emp) {
+        this.datesortie = datesortie;
+        this.datearrive = datearrive;
+        this.type = type;
+        this.etat = etat;
+        this.raison = raison;
+        this.FK_id_emp = FK_id_emp;
+    }
+    
 
     public String getRaison() {
         return raison;
@@ -28,7 +39,7 @@ public class conge {
         this.raison = raison;
     }
 
-    public conge(int id, String datesortie, String datearrive, String type, String etat, String raison, int FK_id_emp) {
+    public conge(int id, Date datesortie, Date datearrive, String type, String etat, String raison, Employe FK_id_emp) {
         this.id = id;
         this.datesortie = datesortie;
         this.datearrive = datearrive;
@@ -38,7 +49,7 @@ public class conge {
         this.FK_id_emp = FK_id_emp;
     }
 
-    public conge(int id, String datesortie, String datearrive, String type, String etat, int FK_id_emp) {
+    public conge(int id, Date datesortie, Date datearrive, String type, String etat, Employe FK_id_emp) {
         this.id = id;
         this.datesortie = datesortie;
         this.datearrive = datearrive;
@@ -64,19 +75,19 @@ public class conge {
         this.id = id;
     }
 
-    public String getDatesortie() {
+    public Date getDatesortie() {
         return datesortie;
     }
 
-    public void setDatesortie(String datesortie) {
+    public void setDatesortie(Date datesortie) {
         this.datesortie = datesortie;
     }
 
-    public String getDatearrive() {
+    public Date getDatearrive() {
         return datearrive;
     }
 
-    public void setDatearrive(String datearrive) {
+    public void setDatearrive(Date datearrive) {
         this.datearrive = datearrive;
     }
 
@@ -96,19 +107,20 @@ public class conge {
         this.etat = etat;
     }
 
-    public int getFK_id_emp() {
+    public Employe getFK_id_emp() {
         return FK_id_emp;
     }
 
-    public void setFK_id_emp(int FK_id_emp) {
+    public void setFK_id_emp(Employe FK_id_emp) {
         this.FK_id_emp = FK_id_emp;
     }
 
     @Override
     public String toString() {
-        return "conge{" + "id=" + id + ", datesortie=" + datesortie + ", datearrive=" + datearrive + ", type=" + type + ", etat=" + etat + ", FK_id_emp=" + FK_id_emp + '}';
+        return "conge{" + "id=" + id + ", datesortie=" + datesortie + ", datearrive=" + datearrive + ", type=" + type + ", etat=" + etat + ", raison=" + raison + ", FK_id_emp=" + FK_id_emp.toString() + '}';
     }
-    
+
+
     
     
 }
