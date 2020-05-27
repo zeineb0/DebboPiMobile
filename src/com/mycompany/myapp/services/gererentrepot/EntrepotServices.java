@@ -202,6 +202,56 @@ public class EntrepotServices {
             for(Map<String,Object> obj : list){
                 Entrepot e = new Entrepot();
                 e.setAdresse_entrepot((obj.get("adresse").toString()));
+//                float num=Float.parseFloat(obj.get("numFiscale").toString());
+//               e.setNum_fiscale((int)num);
+//               float quant=Float.parseFloat(obj.get("quantiteMax").toString());
+//               e.setQuantite_max((int)quant);
+//               e.setEtat((obj.get("etat").toString()));
+               float prix=Float.parseFloat(obj.get("prixLocation").toString());
+               e.setPrix_location((float)prix);
+               e.setEntreprise((obj.get("entreprise").toString()));
+
+               
+//                Map<String,Object> userlist = (Map<String,Object>)obj.get("id");
+//                User u = new User();
+//               u.setNom((userlist.get("nom")).toString());
+//               u.setPrenom((userlist.get("prenom")).toString());
+//                e.setFk_id_fournisseur(u); 
+                entrepots.add(e);
+            }
+            
+            
+        } catch (IOException ex) {
+            
+        }
+        return entrepots;
+    }
+    
+    public ArrayList<Entrepot> getALouerEntrepots(){
+        String url = Statics.GestionEntrepot_URL+"entrepotM/alouer?idUser="+4;
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                entrepots = parseALouerEntrepot(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return entrepots;
+    }
+     //affichage entrepot Loué
+       public ArrayList<Entrepot> parseLoueEntrepot(String jsonText){
+        try {
+            entrepots=new ArrayList<>();
+            JSONParser j = new JSONParser();
+            Map<String,Object> entrepotsListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            
+            List<Map<String,Object>> list = (List<Map<String,Object>>)entrepotsListJson.get("root");
+            for(Map<String,Object> obj : list){
+                Entrepot e = new Entrepot();
+                e.setAdresse_entrepot((obj.get("adresse").toString()));
                 float num=Float.parseFloat(obj.get("numFiscale").toString());
                e.setNum_fiscale((int)num);
                float quant=Float.parseFloat(obj.get("quantiteMax").toString());
@@ -227,14 +277,14 @@ public class EntrepotServices {
         return entrepots;
     }
     
-    public ArrayList<Entrepot> getALouerEntrepots(){
-        String url = Statics.GestionEntrepot_URL+"entrepotM/alouer";
+    public ArrayList<Entrepot> getLoueEntrepots(){
+        String url = Statics.GestionEntrepot_URL+"entrepotM/loue?idUser="+4;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                entrepots = parseALouerEntrepot(new String(req.getResponseData()));
+                entrepots = parseLoueEntrepot(new String(req.getResponseData()));
                 req.removeResponseListener(this);
             }
         });

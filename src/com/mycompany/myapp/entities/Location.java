@@ -16,13 +16,13 @@ public class Location {
     Date date_deb_location;
     Date date_fin_location;
     double prix_location;
-    int FK_id_entrepot;
-    int FK_id_user;
+   Entrepot FK_id_entrepot;
+    User FK_id_user;
 
     public Location() {
     }
 
-    public Location(int id_location, Date date_deb_location, Date date_fin_location, double prix_location, int FK_id_entrepot, int FK_id_user) {
+    public Location(int id_location, Date date_deb_location, Date date_fin_location, double prix_location, Entrepot FK_id_entrepot, User FK_id_user) {
         this.id_location = id_location;
         this.date_deb_location = date_deb_location;
         this.date_fin_location = date_fin_location;
@@ -30,7 +30,16 @@ public class Location {
         this.FK_id_entrepot = FK_id_entrepot;
         this.FK_id_user = FK_id_user;
     }
-    
+
+  
+ public Location( Date date_deb_location, Date date_fin_location, double prix_location, Entrepot FK_id_entrepot, User FK_id_user) {
+        this.date_deb_location = date_deb_location;
+        this.date_fin_location = date_fin_location;
+        this.prix_location = prix_location;
+        this.FK_id_entrepot = FK_id_entrepot;
+        this.FK_id_user = FK_id_user;
+    }
+  
 
     @Override
     public String toString() {
@@ -69,21 +78,23 @@ public class Location {
         this.prix_location = prix_location;
     }
 
-    public int getFK_id_entrepot() {
+    public Entrepot getFK_id_entrepot() {
         return FK_id_entrepot;
     }
 
-    public void setFK_id_entrepot(int FK_id_entrepot) {
+    public void setFK_id_entrepot(Entrepot FK_id_entrepot) {
         this.FK_id_entrepot = FK_id_entrepot;
     }
 
-    public int getFK_id_user() {
+    public User getFK_id_user() {
         return FK_id_user;
     }
 
-    public void setFK_id_user(int FK_id_user) {
+    public void setFK_id_user(User FK_id_user) {
         this.FK_id_user = FK_id_user;
     }
+
+ 
     
     
 }

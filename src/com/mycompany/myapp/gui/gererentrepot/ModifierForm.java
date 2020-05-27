@@ -29,15 +29,18 @@ setTitle("Modifier l'entrepot");
         setLayout(BoxLayout.y());
         
         TextField entrep= new TextField("", "Entreprise");
-        
+        entrep.setText(ent.getEntreprise());
         int id = ent.getId_entrepot();
             System.err.println(id);
         ComboBox<String> etat=new ComboBox<>();
         etat.addItem("Loué");
         etat.addItem("A Louer");
         etat.addItem("Libre");
+        etat.setSelectCommandText(ent.getEtat());
         TextField prix= new TextField("", "prix de location");
-
+        float pr=ent.getPrix_location();
+        
+prix.setText(String.valueOf(pr));
         Button btnValider = new Button("Add task");
         
         btnValider.addActionListener(new ActionListener() {

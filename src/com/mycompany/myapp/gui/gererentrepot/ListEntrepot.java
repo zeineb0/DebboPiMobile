@@ -15,6 +15,7 @@ import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -31,15 +32,15 @@ public class ListEntrepot extends Form{
     Form current;
     public ListEntrepot(Form previous) {
         current = this;
-        setTitle("List tasks");
-        this.setLayout( new TableLayout(CENTER,3));
+        setTitle("Liste des Entrepots");
+        this.setLayout( new TableLayout(CENTER,2));
        
         for(Entrepot e: EntrepotServices.getInstance().getAllEntrepots()){
        Container cx = new Container(new TableLayout(1,1));
        cx.setWidth(CENTER);
-            Label l1= new Label(""+e.getNum_fiscale());
-            Label l2= new Label(""+e.getAdresse_entrepot());
-            Label l3= new Label(""+e.getEntreprise());
+            Label l1= new Label("Num Fiscale: "+e.getNum_fiscale());
+            Label l2= new Label("Adresse: "+e.getAdresse_entrepot());
+            Label l3= new Label("Entreprise: "+e.getEntreprise());
             Button bt = new Button("Detail");
         cx.add(l1);
         cx.add(l2);
@@ -52,16 +53,21 @@ public class ListEntrepot extends Form{
             public void actionPerformed(ActionEvent evt) {
        int id = e.getId_entrepot();
        new DetailsForm(previous, id, e).show();
-     //  SpanLabel sp = new SpanLabel();
-       //sp.setText(EntrepotServices.getInstance().getDetailEntrepots(id).toString());
-       
-               
+        
                
             }
             }  );
 
 
-    }              
+    }  
+        getToolbar().addMaterialCommandToOverflowMenu("Ajouter Entrepot",FontImage.MATERIAL_ADD,e-> new AddEntrepot(current).show());
+        getToolbar().addMaterialCommandToOverflowMenu("Entrepot Loué",FontImage.MATERIAL_HIGHLIGHT,e-> new EntrepotLoueForm(previous).show());
+        getToolbar().addMaterialCommandToOverflowMenu("Entrepot A  Louer",FontImage.MATERIAL_SHOP ,e-> new EntrepotALouerForm().show());
+        
+           
+          
+                       
+
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
     }
