@@ -8,9 +8,13 @@ package com.mycompany.myapp.gui;
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
 import com.codename1.ui.Command;
+import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Label;
+import com.codename1.ui.TextArea;
 import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -27,7 +31,7 @@ import java.util.ArrayList;
  */
 public class AddCategorieForm extends Form{
                     private ComboBox cmbE;
-
+                    private Button b ;
      public AddCategorieForm(Form previous) {
         setTitle("Ajouter une nouvelle catégorie");
         setLayout(BoxLayout.yCenter());
@@ -44,14 +48,37 @@ public class AddCategorieForm extends Form{
        // TextField tfStatus= new TextField("", "Status: 0 - 1");
         Button btnValider = new Button("Ajouter catégorie");
         
+             //pour la photo
+        Label photoLabel = new Label("Photo");
+        Button selectPhoto = new Button("parcourir");
+        TextField photoField = new TextField("", "Importer une photo", 10, TextArea.ANY);
+        photoField.setEditable(false);
+        selectPhoto.addActionListener((evt) -> {
+            if (Dialog.show("Photo!", "une annonce avec des  photos est 10 fois plus visible", null, "Gallerie") == false) {
+                Display.getInstance().openGallery((e) -> {
+                    if (e != null && e.getSource() != null) {
+                        String file = (String) e.getSource();
+                        photoField.setText(file.substring(file.lastIndexOf('/') + 1));
+                    }
+                }, Display.GALLERY_IMAGE);
+            } else {
+                System.out.println("ici on va accerder à l'appareille photo");
+            }
+        });
+        Container photoContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
+        photoContainer.add(photoLabel);
+        photoContainer.add(photoField);
+        photoContainer.add(selectPhoto);
         btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 if ((tfName.getText().length()==0)  )
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
+                   // Dialog.show("Alert", "Please fill all the fields",  new Command(new ActionListener<>));
                 else
                 {
                         Categorie c = new Categorie(tfName.getText());
+                        c.setImage(photoField.getText());
                         Entrepot e = ent.get(cmbE.getSelectedIndex());
                         c.setEntrepot(e);
                         if( CategoriesService.getInstance().addCategorie(c))
@@ -65,7 +92,7 @@ public class AddCategorieForm extends Form{
             }
         });
         
-        addAll(tfName,cmbE,btnValider);
+        addAll(tfName,cmbE,photoContainer,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
                 
     }

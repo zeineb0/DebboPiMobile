@@ -41,8 +41,10 @@ public class CategoriesService {
         return instance;
     }
     public boolean addCategorie(Categorie c) {
-        String url = Statics.BASE_URL + "/newC?nom=" + c.getNom()+"&fkEntrepot="+ c.getEntrepot().getId_entrepot();
+        String url = Statics.BASE_URL + "/newC?nom=" + c.getNom()
+                +"&fkEntrepot="+ c.getEntrepot().getId_entrepot()+"&imageName="+c.getImage();
         req.setUrl(url);
+        System.out.println(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -130,5 +132,5 @@ public class CategoriesService {
         NetworkManager.getInstance().addToQueueAndWait(req);
 
     }
-       
+  
 }
