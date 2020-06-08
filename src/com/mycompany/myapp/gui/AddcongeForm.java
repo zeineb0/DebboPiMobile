@@ -63,7 +63,7 @@ public class AddcongeForm extends Form{
         btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ((cdatearr.getText().length()==0) || (cdatesortie.getText().length()==0) ){
+                if ( (cdatearr.getDate()).before(cdatesortie.getDate()) ){
                     Dialog.show("Alert","Please fill date fields",new Command("OK"));
                 } 
                 else {
@@ -75,7 +75,8 @@ public class AddcongeForm extends Form{
                     Dialog.show("Succes","ConnectionSucc",new Command("ok"));
                 }
                 else if (test.getFK_id_emp().getNbcong()==2){
-                    Dialog.show("Refusé","nbr conge depasse nbr limit",new Command("ok"));
+                    Dialog.show("Refusé","Désole Vous avez déja consommée votre congé annuel(14 jours)",new Command("ok"));
+                    System.out.println(test.getFK_id_emp().getNom());
                 }
                 else{
                     Dialog.show("Error","Erreur ajout survenue",new Command("ok"));

@@ -11,6 +11,7 @@ import com.codename1.l10n.SimpleDateFormat;
  */
 public class Statics {
     public static final String RH_URL="http://localhost/DebboPiWeb/web/app_dev.php/rh";
-     public static final String pattern = "dd-MM-yyyy HH:mm";
+    public static final String pattern = "dd-MM-yyyy HH:mm";
     public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
 }
