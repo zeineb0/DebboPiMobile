@@ -35,6 +35,7 @@ public class UserService {
     boolean resultEmail;
     boolean resultPW;
     boolean resultTel;
+    boolean resultMdpOub;
     
     private UserService() {
          req = new ConnectionRequest();
@@ -122,6 +123,24 @@ public class UserService {
          return x;
          
      }
+     
+          public int getIdByEmail(String email){
+         int Iddd = 0 ;
+         ArrayList<User> tester = getAllUsers();
+                  for (int k=0;k<tester.size();k++){
+         if (tester.get(k).getEmail().equals(email))
+         {
+             Iddd = tester.get(k).getId();
+           
+         }
+ 
+         }
+
+         return Iddd;
+         
+     }
+     
+     
      
      public User getLoggedInfos(String username){
          User u = new User();
@@ -271,6 +290,24 @@ public class UserService {
         NetworkManager.getInstance().addToQueueAndWait(req);
     return resultPW;
 }
+         
+                  public boolean recoverPassword(int id ,String password){
+                 
+                 
+        String url = "http://localhost/DebboPiWeb-master/web/app_dev.php/forum/chpassword?id="+id+"&password="+password;
+        req.setUrl(url);// Insertion de l'URL de notre demande de connexion
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultMdpOub = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this); //Supprimer cet actionListener
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+    return resultMdpOub;
+}
+         
          
         public boolean changeTel(int tel){
                  

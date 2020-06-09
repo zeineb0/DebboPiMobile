@@ -34,7 +34,7 @@ import com.mycompany.myapp.entities.User;
 import com.mycompany.myapp.services.UserService;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
-import org.mindrot.jbcrypt.BCrypt;
+
 
 /**
  *
@@ -245,6 +245,14 @@ ImageViewer  Logo = null ;
            new Register(current).show();
             
         });
+        
+      motOublier.addActionListener((evt) -> {
+         
+          new MdpOub().show();
+          
+          
+      });
+        
         
         
         
