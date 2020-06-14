@@ -35,12 +35,13 @@ public class AddCategorieForm extends Form{
      public AddCategorieForm(Form previous) {
         setTitle("Ajouter une nouvelle catégorie");
         setLayout(BoxLayout.yCenter());
+        Label nom = new Label("");
         cmbE = new ComboBox<>();
      cmbE = new ComboBox<>();
       ArrayList<Entrepot> ent = new ArrayList<>();
         ent.addAll(EntrepotService.getInstance().getAllEntrepot());
          System.out.println(EntrepotService.getInstance().getAllEntrepot());
-
+         cmbE.addItem("Choisir un entrepot");
         for (Entrepot object : ent) {
             cmbE.addItem(object.toString());
         }
@@ -72,9 +73,11 @@ public class AddCategorieForm extends Form{
         btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ((tfName.getText().length()==0)  )
-                    Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
-                   // Dialog.show("Alert", "Please fill all the fields",  new Command(new ActionListener<>));
+                if ((tfName.getText().length()==0)  || photoField.getText().length()==0)
+                    Dialog.show("Alerte", "Veuillez remplir tous les champs", new Command("OK"));
+                else if (cmbE.getSelectedItem().toString().equals("Choisir un entrepot"))
+                                        Dialog.show("Alerte", "Veuillez remplir tous les champs", new Command("OK"));
+                   
                 else
                 {
                         Categorie c = new Categorie(tfName.getText());
@@ -82,11 +85,14 @@ public class AddCategorieForm extends Form{
                         Entrepot e = ent.get(cmbE.getSelectedIndex());
                         c.setEntrepot(e);
                         if( CategoriesService.getInstance().addCategorie(c))
-                            Dialog.show("Success","Catégorie ajoutée",new Command("OK"));
+                        { Dialog.show("Success","Catégorie ajoutée",new Command("OK"));
+                                                            new ListCategorieForm(previous);
+
+                        }
                         else
                             Dialog.show("Erreur", "Catégorie non ajoutée", new Command("Veuillez réessayer"));
+                        
                 }
-                                    new ListCategorieForm(previous);
 
                 
             }

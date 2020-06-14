@@ -79,7 +79,8 @@ public class CategoriesService {
                 //c.setEntrepot((Entrepot)obj.get("fkEntrepot"));
                 categories.add(c);
             }
-            
+                            System.out.println(categories);
+
         } catch (IOException ex) {
             
         }

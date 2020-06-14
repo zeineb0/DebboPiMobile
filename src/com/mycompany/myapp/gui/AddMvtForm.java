@@ -67,25 +67,69 @@ public class AddMvtForm extends Form{
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 else
                 {
-                        MouvementStock m = new MouvementStock();
+                    if (cmbES.getSelectedItem().toString().equals("Entrée")){
+                                                System.out.println("entrée");
+                     MouvementStock m = new MouvementStock();
                         m.setDateMouv(d.getDate());
                         m.setNatureDuStock(String.valueOf(cmbES.getSelectedItem()));
                         Produit pr = p.get(cmbP.getSelectedIndex());
+                       System.out.println(pr.getQuantite());
                         m.setP(pr);
+                        m.setQuantite(Integer.valueOf(tfQte.getText()));
                         Entrepot e = ent.get(cmbE.getSelectedIndex());
                         m.setE(e);
+                        System.out.println(m);
                         //System.out.println(ProduitService.getInstance().addProduit(p));
                          if( MvtService.getInstance().addMvt(m))
                             Dialog.show("Success","MVT ajouté",new Command("OK"));
-                       else
+                     else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
-                         new ListMvtForm(previous);
+                                                              new ListMvtForm(previous);
+    
+                    }
+                    if (cmbES.getSelectedItem().toString().equals("Sortie")){
+                        System.out.println("sortie");
+
+                        Produit pr = p.get(cmbP.getSelectedIndex());
+                        int prQ= (pr.getQuantite());
+                        System.out.println(prQ);
+                        int prE= (Integer.valueOf(tfQte.getText()));
+                        System.out.println(prE);
+
+                        if (prQ >=prE ){
+                            MouvementStock m = new MouvementStock();
+                            m.setDateMouv(d.getDate());
+                            m.setNatureDuStock(String.valueOf(cmbES.getSelectedItem()));
+                            System.out.println(pr.getQuantite());
+                            m.setP(pr);
+                                                m.setQuantite(Integer.valueOf(tfQte.getText()));
+
+                        Entrepot e = ent.get(cmbE.getSelectedIndex());
+                        m.setE(e);
+                            System.out.println(m);
+                        //System.out.println(ProduitService.getInstance().addProduit(p));
+                         if( MvtService.getInstance().addMvt(m))
+                            Dialog.show("Success","MVT ajouté",new Command("OK"));                    
+                                                                                         new ListMvtForm(previous);
+
+                        }
+                     else
+                            Dialog.show("ERREUR", "Quantitée intexistante", new Command("Veuillez réessayer"));
+                                                                 new ListMvtForm(previous);
+
+                    }
+
+                                                                                       new ListMvtForm(previous);
+
                 }
-                
+                                                                 new ListMvtForm(previous);
+
                 
             }
+
         });
-        
+                                                                                     new ListMvtForm(previous);
+
         addAll(cmbES,d,tfQte,cmbP,cmbE,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
      

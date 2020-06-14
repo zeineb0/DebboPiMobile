@@ -10,7 +10,6 @@ import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
 import com.codename1.ui.Container;
-import com.codename1.ui.Dialog;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -23,10 +22,8 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.table.TableLayout;
 import com.mycompany.myapp.entities.Categorie;
-import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Produit;
 import com.mycompany.myapp.services.CategoriesService;
-import com.mycompany.myapp.services.EntrepotService;
 import com.mycompany.myapp.services.ProduitService;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -36,60 +33,52 @@ import java.util.ArrayList;
  *
  * @author Zeineb_yahiaoui
  */
-public class ListProduitForm extends Form{
+public class ListProduitForm extends Form {
 
     private SpanLabel lb;
     Form ms = new Form(BoxLayout.y());
     private EncodedImage enc;
-          private ComboBox cmb;
-                private ComboBox cmbE;
-                Button btn,supp;
-                Container C2;
-
-    public ListProduitForm() {
-    }
+    private ComboBox cmb;
+    Button btn,supp;
+    Container C2;
 
     public ListProduitForm(Form previous) {
+        
         setTitle("Liste des produits");
         this.setLayout(new TableLayout(2,CENTER));
-          cmb = new ComboBox<>();
+        
+        cmb = new ComboBox<>();
         ArrayList<Categorie> anim = new ArrayList<>();
         anim.addAll(CategoriesService.getInstance().getAllCategorie());
-
         for (Categorie object : anim) {
             cmb.addItem(object);
         }
-          cmbE = new ComboBox<>();
-      ArrayList<Entrepot> ent = new ArrayList<>();
-        ent.addAll(EntrepotService.getInstance().getAllEntrepot());
-         System.out.println(EntrepotService.getInstance().getAllEntrepot());
-
-        for (Entrepot object : ent) {
-            cmbE.addItem(object);
-        }
+        
+        
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
         
-                //Container hii = new Container(new TableLayout(, 2));
 
-        for (Produit p : ProduitService.getInstance().getAllProduit()){
+        for (Produit p : ProduitService.getInstance().getAllProduit())
+        {
+            C2 = new Container(new TableLayout(2, 1));
+
             
-            
-               //Container C1 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
             try {
                 enc = EncodedImage.create("/tv.png");
-            } catch (IOException ex) {
+                } catch (IOException ex) {
 
-            }
+                                           }
+            Label pro = new Label("PROMOTION");
+             
+           Image i = (URLImage.createToStorage(enc, p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" 
+                   + p.getImage() +
+                   "", URLImage.RESIZE_SCALE_TO_FILL));
+                   ImageViewer img2 = new ImageViewer(i.fill(600, 600));
 
-            Image i = (URLImage.createToStorage(enc, p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" 
-                    + p.getImage() +
-                    "", URLImage.RESIZE_SCALE_TO_FILL));
-                        ImageViewer img2 = new ImageViewer(i.fill(1600, 1600));
-
-             C2 = new Container(new TableLayout(2, 1));
             
             Label l = new Label (p.getMarque());
             Label tel = new Label (String.valueOf(p.getReference()));
+            
             l.addPointerPressedListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent evt) {
@@ -111,42 +100,42 @@ public class ListProduitForm extends Form{
                     System.out.println(p.getEntrepot().toString());
                     String c = p.getCategorie().toString();
                     cmb.setSelectedItem(c);
-
-                    cmbE.setSelectedItem(p.getEntrepot());
+                    
                     btn = new Button("modifier");
                     supp = new Button("suprrimer");
-                    ms.addAll(l,tfName,m,tfMarque,q,tfQte,pr,tfPrix,r,tfRef,ct,cmb,e,cmbE,btn,supp);
-                    //new ms();
-                btn.addActionListener(new ActionListener() {
+                    
+                    ms.removeAll();
+                    ms.addAll(l,tfName,m,tfMarque,q,tfQte,pr,tfPrix,r,cmb,tfRef,ct,e,btn,supp);
+
+                    btn.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
-                         Produit pmodifié = new Produit();
-                         pmodifié.setId(p.getId());
-                         pmodifié.setLibelle(tfName.getText());
-                          System.out.println(tfName.getText());
-                         pmodifié.setMarque(tfMarque.getText());
-                          System.out.println(tfMarque.getText());
-                         pmodifié.setReference(Integer.valueOf(tfRef.getText()));
-                          System.out.println(tfRef.getText());
+                        Produit pmodifié = new Produit();
+                        pmodifié.setId(p.getId());
+                        pmodifié.setLibelle(tfName.getText());
+                        System.out.println(tfName.getText());
+                        pmodifié.setMarque(tfMarque.getText());
+                        System.out.println(tfMarque.getText());
+                        pmodifié.setReference(Integer.valueOf(tfRef.getText()));
+                        System.out.println(tfRef.getText());
 
-                         pmodifié.setPrix(Float.valueOf(tfPrix.getText()));
-                          System.out.println(tfQte.getText());
+                        pmodifié.setPrix(Float.valueOf(tfPrix.getText()));
+                        System.out.println(tfQte.getText());
 
-                         pmodifié.setQuantite(Integer.valueOf(tfQte.getText()));
-                          System.out.println(tfPrix.getText());
+                        pmodifié.setQuantite(Integer.valueOf(tfQte.getText()));
+                        System.out.println(tfPrix.getText());
 
-                         Categorie c = anim.get(cmb.getSelectedIndex());
+                        Categorie c = anim.get(cmb.getSelectedIndex());
                         pmodifié.setCategorie(c);
-                        Entrepot e = ent.get(cmbE.getSelectedIndex());
-                        pmodifié.setEntrepot(e);
                          //pmodifié.setCategorie(p.getCategorie());
                          //pmodifié.setEntrepot(p.getEntrepot());
                          ProduitService.getInstance().modifierProduit(pmodifié);
-                                     System.out.println("OOOOOK");
-                                     new ListProduitForm(previous);
+                         System.out.println("OOOOOK");
+                         new ListProduitForm(previous);
                         }
-                    });
-        supp.addActionListener(new ActionListener() {
+                    });        
+
+                    supp.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
                             ProduitService.getInstance().supprimerProduit(p);
@@ -154,33 +143,26 @@ public class ListProduitForm extends Form{
                           
                         }
                     });
-        ms.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK,a->showBack());
-                       ms.refreshTheme();
-                    ms.showBack();
+                    
+                    ms.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK,a->showBack());
+                    ms.refreshTheme();
+                    ms.show(); 
 
 
                 }
             });
-                       C2.add(img2);
-                     //this.add(i);
-
+            
+            C2.add(img2);
             C2.add(l);
             C2.add(tel);
-            //C1.add(C2);
             C2.setLeadComponent(l);
             
-   this.clearClientProperties();
-                  this.add(C2);
-         // hii.add(C1);
-          this.refreshTheme();  
+            this.clearClientProperties();
+            this.add(C2);
+            this.refreshTheme();  
         }
-                this.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
-
+            
+        this.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
         this.show();
-        
-        /*SpanLabel sp = new SpanLabel();
-        sp.setText(ProduitService.getInstance().getAllProduit().toString());
-        add(sp);*/
     }
-    //public static void add(Container c){};
 }

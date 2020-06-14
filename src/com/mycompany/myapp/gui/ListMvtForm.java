@@ -122,8 +122,9 @@ public class ListMvtForm extends Form{
                    
                     btn = new Button("modifier");
                     supp = new Button("suprrimer");
-                    ms.showBack();
-                    ms.addAll(l,tfName,date,d,q,tfQte,p,cmb,e,cmbE,btn,supp);
+                    ms.removeAll();
+                                        ms.addAll(l,tfName,date,d,q,tfQte,p,cmb,e,cmbE,btn,supp);
+
 
                 btn.addActionListener(new ActionListener() {
                         @Override
@@ -179,7 +180,7 @@ public class ListMvtForm extends Form{
           this.refreshTheme();  
         }
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
-        
+        this.show();
         
         
         

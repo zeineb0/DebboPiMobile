@@ -36,41 +36,36 @@ import java.util.ArrayList;
  */
 public class ListCategorieForm extends Form{
     private EncodedImage enc;
-    Form ms;
+    Form ms = new Form(BoxLayout.y());
     Button btn,supp;
     ComboBox cmbE;
     public ListCategorieForm(Form previous) {
-        setTitle("Liste des categories");
+    setTitle("Liste des categories");
         
-               cmbE = new ComboBox<>();
-      ArrayList<Entrepot> ent = new ArrayList<>();
+        cmbE = new ComboBox<>();
+        ArrayList<Entrepot> ent = new ArrayList<>();
         ent.addAll(EntrepotService.getInstance().getAllEntrepot());
-         System.out.println(EntrepotService.getInstance().getAllEntrepot());
-
         for (Entrepot object : ent) {
             cmbE.addItem(object);
         }
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
-      for (Categorie c : CategoriesService.getInstance().getAllCategorie()){
-        try {
+        
+        for (Categorie c : CategoriesService.getInstance().getAllCategorie()){
+            try {
                 enc = EncodedImage.create("/tv.png");
-            } catch (IOException ex) {
+                } catch (IOException ex) {
 
-            }
+                                            }
             
-         Image i = (URLImage.createToStorage(enc.scaledEncoded(400,400),c.getNom(), "http://localhost/DebboWeb/web/public/images/categories/" + c.getImage() +
-                    "", URLImage.RESIZE_SCALE_TO_FILL));
+        Image i = (URLImage.createToStorage(enc.scaledEncoded(400,400),c.getNom(), "http://localhost/DebboWeb/web/public/images/categories/" + c.getImage() +
+                "", URLImage.RESIZE_SCALE_TO_FILL));
             Container C2 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
             
             Label l = new Label (c.getNom());
-           // Label tel = new Label (c.getNom());
+            Label tel = new Label (c.getNom());
+            
             l.addPointerPressedListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent evt) {
-                    
-                    
-                    
-                     ms = new Form(BoxLayout.y());
                     ms.setTitle("Catégorie");
                     Label l=new Label("nom");
                     TextField tfName = new TextField(c.getNom());
@@ -79,6 +74,9 @@ public class ListCategorieForm extends Form{
                     cmbE.setSelectedItem(c.getEntrepot());
                     btn = new Button("modifier");
                     supp = new Button("suprrimer");
+                    ms.removeAll();
+                    ms.addAll(l,tfName,e,cmbE,btn,supp);
+                    
                 btn.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
@@ -95,7 +93,8 @@ public class ListCategorieForm extends Form{
                                      System.out.println("OOOOOK");
                         }
                     });
-        supp.addActionListener(new ActionListener() {
+                             
+                supp.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
                             CategoriesService.getInstance().supprimerCategorie(c);
@@ -104,24 +103,23 @@ public class ListCategorieForm extends Form{
                           
                         }
                     });
-        ms.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent evt) {
-                            refreshTheme();
-                            showBack();
-                       
-                        }
-                    });
-                       ms.refreshTheme();
-                ms.addAll(l,tfName,e,cmbE,btn,supp);
+                
+                    ms.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK,a->showBack());
+                    ms.refreshTheme();
                     ms.showBack();
-   
                 }
             });
        
           C2.add(i);
           C2.add(l);
-          add(C2);
+             this.clearClientProperties();
+
+          this.add(C2);
+          this.refreshTheme();  
+
     }
+     this.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+this.show();
     
-}}
+}
+}
