@@ -34,8 +34,7 @@ public class AddCategorieForm extends Form{
                     private Button b ;
      public AddCategorieForm(Form previous) {
         setTitle("Ajouter une nouvelle catégorie");
-        setLayout(BoxLayout.yCenter());
-        Label nom = new Label("");
+        setLayout(BoxLayout.y());
         cmbE = new ComboBox<>();
      cmbE = new ComboBox<>();
       ArrayList<Entrepot> ent = new ArrayList<>();
@@ -45,6 +44,9 @@ public class AddCategorieForm extends Form{
         for (Entrepot object : ent) {
             cmbE.addItem(object.toString());
         }
+        Label nomm = new Label("Nom :");
+        Label entt = new Label("Veuillez choisir un entrepot :");
+        Label photo = new Label("Photo :");
         TextField tfName = new TextField("","Nom");
        // TextField tfStatus= new TextField("", "Status: 0 - 1");
         Button btnValider = new Button("Ajouter catégorie");
@@ -81,7 +83,7 @@ public class AddCategorieForm extends Form{
                 else
                 {
                         Categorie c = new Categorie(tfName.getText());
-                        c.setImage(photoField.getText());
+                        //c.setImage(photoField.getText());
                         Entrepot e = ent.get(cmbE.getSelectedIndex());
                         c.setEntrepot(e);
                         if( CategoriesService.getInstance().addCategorie(c))
@@ -98,7 +100,7 @@ public class AddCategorieForm extends Form{
             }
         });
         
-        addAll(tfName,cmbE,photoContainer,btnValider);
+        addAll(nomm,tfName,entt,cmbE,photo,photoContainer,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
                 
     }

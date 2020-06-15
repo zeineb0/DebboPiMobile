@@ -11,6 +11,7 @@ import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -35,17 +36,21 @@ public class AddMvtForm extends Form{
 
      public AddMvtForm(Form previous) {
       setTitle("Ajouter une nouveau mouvement");
-        setLayout(BoxLayout.yCenter());
+        setLayout(BoxLayout.y());
         
          Picker d = new Picker();
          
         TextField tfQte = new TextField("","Quantite");
-        
+                Label N = new Label("Nature du mouvement :");
+                Label nom1 = new Label("Date : ");
+                Label nom2 = new Label("Produit :");
+                Label nom3 = new Label("Quantité ajoutée/diminuée");
+                Label nom4 = new Label("Entrepot :");
+
         cmbES=new ComboBox("Entrée","Sortie");
           cmbP = new ComboBox<>();
         ArrayList<Produit> p = new ArrayList<>();
         p.addAll(ProduitService.getInstance().getAllProduit());
-
         for (Produit object : p) {
             cmbP.addItem(object.toString());
         }
@@ -63,7 +68,7 @@ public class AddMvtForm extends Form{
         btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ((tfQte.getText().length()==0))
+                if ((tfQte.getText().length()==0) )
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 else
                 {
@@ -109,7 +114,7 @@ public class AddMvtForm extends Form{
                             System.out.println(m);
                         //System.out.println(ProduitService.getInstance().addProduit(p));
                          if( MvtService.getInstance().addMvt(m))
-                            Dialog.show("Success","MVT ajouté",new Command("OK"));                    
+                            Dialog.show("Success","Mouvement ajouté",new Command("OK"));                    
                                                                                          new ListMvtForm(previous);
 
                         }
@@ -130,7 +135,7 @@ public class AddMvtForm extends Form{
         });
                                                                                      new ListMvtForm(previous);
 
-        addAll(cmbES,d,tfQte,cmbP,cmbE,btnValider);
+        addAll(N,cmbES,nom1,d,nom3,tfQte,nom2,cmbP,nom4,cmbE,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
      
      

@@ -5,6 +5,7 @@
  */
 package com.mycompany.myapp.gui;
 
+import com.codename1.components.ImageViewer;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
@@ -76,7 +77,8 @@ public class ListMvtForm extends Form{
 
         for (MouvementStock m : MvtService.getInstance().getAllMvt()){
             
-            
+                         C2 = new Container(new TableLayout(2, 1));
+
                //Container C1 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
             try {
                 enc = EncodedImage.create("/tv.png");
@@ -84,13 +86,16 @@ public class ListMvtForm extends Form{
 
             }
             Produit p = m.getP();
-            Image i = (URLImage.createToStorage(enc.scaledEncoded(400,400), p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" 
+            Image i = (URLImage.createToStorage(enc, p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" 
                     + p.getImage() +
                     "", URLImage.RESIZE_SCALE_TO_FILL));
 
-             C2 = new Container(new TableLayout(1, 1));
+                   ImageViewer img2 = new ImageViewer(i.fill(400, 400));
             
             Label l = new Label (m.getNatureDuStock());
+            String dateeeee = String.valueOf(m.getDateMouv());
+            Label l1 = new Label (dateeeee.substring(dateeeee.lastIndexOf(':')+1));
+            Label ll1 = new Label (String.valueOf(m.getP()).toString());
             Picker d = new Picker();
            // Label tel = new Label (Date.valueOf(m.getDateMouv()));
             l.addPointerPressedListener(new ActionListener() {
@@ -148,14 +153,15 @@ public class ListMvtForm extends Form{
                          //pmodifié.setEntrepot(p.getEntrepot());
                          MvtService.getInstance().modifierMvt(modif);
                                      System.out.println("OOOOOK");
+                        new ListMvtForm(previous);
                         }
                     });
         supp.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
                             MvtService.getInstance().supprimerMvt(m);
-                            refreshTheme();
-                            showBack();
+                                                    new ListMvtForm(previous);
+
                           
                         }
                     });
@@ -166,10 +172,11 @@ public class ListMvtForm extends Form{
 
                 }
             });
-                       C2.add(i);
+                       C2.add(img2);
                      //this.add(i);
 
             C2.add(l);
+            C2.addAll(l1,ll1);
             //C2.add(tel);
             //C1.add(C2);
             C2.setLeadComponent(l);

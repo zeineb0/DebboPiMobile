@@ -42,7 +42,7 @@ public class CategoriesService {
     }
     public boolean addCategorie(Categorie c) {
         String url = Statics.BASE_URL + "/newC?nom=" + c.getNom()
-                +"&fkEntrepot="+ c.getEntrepot().getId_entrepot()+"&imageName="+c.getImage();
+                +"&fkEntrepot="+ c.getEntrepot().getId_entrepot();
         req.setUrl(url);
         System.out.println(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

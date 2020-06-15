@@ -19,6 +19,7 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.table.TableLayout;
 import com.mycompany.myapp.entities.Categorie;
@@ -50,10 +51,12 @@ public class ListProduitForm extends Form {
         cmb = new ComboBox<>();
         ArrayList<Categorie> anim = new ArrayList<>();
         anim.addAll(CategoriesService.getInstance().getAllCategorie());
+     
+        cmb.setName("Veuillez");
         for (Categorie object : anim) {
             cmb.addItem(object);
         }
-        
+                
         
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
         
@@ -68,7 +71,7 @@ public class ListProduitForm extends Form {
                 } catch (IOException ex) {
 
                                            }
-            Label pro = new Label("PROMOTION");
+            Label pro = new Label("-10% off");
              
            Image i = (URLImage.createToStorage(enc, p.getLibelle(), "http://localhost/DebboWeb/web/public/images/produits/" 
                    + p.getImage() +
@@ -76,8 +79,9 @@ public class ListProduitForm extends Form {
                    ImageViewer img2 = new ImageViewer(i.fill(600, 600));
 
             
-            Label l = new Label (p.getMarque());
-            Label tel = new Label (String.valueOf(p.getReference()));
+            Label l = new Label (p.getLibelle());
+            Label tel = new Label (String.valueOf(p.getPrix()));
+            
             
             l.addPointerPressedListener(new ActionListener() {
                 @Override
@@ -105,7 +109,7 @@ public class ListProduitForm extends Form {
                     supp = new Button("suprrimer");
                     
                     ms.removeAll();
-                    ms.addAll(l,tfName,m,tfMarque,q,tfQte,pr,tfPrix,r,cmb,tfRef,ct,e,btn,supp);
+                    ms.addAll(l,tfName,m,tfMarque,q,tfQte,pr,tfPrix,r,tfRef,ct,cmb,btn,supp);
 
                     btn.addActionListener(new ActionListener() {
                         @Override
@@ -117,13 +121,17 @@ public class ListProduitForm extends Form {
                         pmodifié.setMarque(tfMarque.getText());
                         System.out.println(tfMarque.getText());
                         pmodifié.setReference(Integer.valueOf(tfRef.getText()));
-                        System.out.println(tfRef.getText());
+                        //System.out.println(tfRef.getText());
+                            if (Integer.valueOf(tfQte.getText())<=20){
+                                pmodifié.setPrix(Float.valueOf(tfPrix.getText())*0.9);
 
-                        pmodifié.setPrix(Float.valueOf(tfPrix.getText()));
-                        System.out.println(tfQte.getText());
+                            }
+                            else{
+                        pmodifié.setPrix(Float.valueOf(tfPrix.getText()));}
+                        //System.out.println(tfQte.getText());
 
                         pmodifié.setQuantite(Integer.valueOf(tfQte.getText()));
-                        System.out.println(tfPrix.getText());
+                       // System.out.println(tfPrix.getText());
 
                         Categorie c = anim.get(cmb.getSelectedIndex());
                         pmodifié.setCategorie(c);
@@ -155,6 +163,10 @@ public class ListProduitForm extends Form {
             C2.add(img2);
             C2.add(l);
             C2.add(tel);
+            if (p.getQuantite()<= 20){
+            C2.add(pro);
+                  
+            }
             C2.setLeadComponent(l);
             
             this.clearClientProperties();

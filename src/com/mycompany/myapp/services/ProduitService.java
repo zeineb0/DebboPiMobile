@@ -109,7 +109,6 @@ public class ProduitService {
                 p.setMarque(obj.get("marque").toString());
                 //c.setEntrepot((Entrepot)obj.get("fkEntrepot"));
                produits.add(p);
-                //System.out.println("********");
             }
         } catch (IOException ex) {
             
@@ -136,7 +135,7 @@ public class ProduitService {
          public void modifierProduit(Produit p) {
 
         String Url = Statics.BASE_URL + "/modifP?idProduit=" + p.getId() + "&libelle="+p.getLibelle()+"&marque="+p.getMarque()+"&reference="+p.getReference()
-                +"&prix="+p.getPrix()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&fkEntrepot="+p.getEntrepot().getId_entrepot();
+                +"&prix="+p.getPrix()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId();
         req.setUrl(Url);
              System.out.println(Url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

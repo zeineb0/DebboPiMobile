@@ -21,6 +21,7 @@ import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.table.TableLayout;
 import com.mycompany.myapp.entities.Categorie;
 import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Produit;
@@ -39,6 +40,7 @@ public class ListCategorieForm extends Form{
     Form ms = new Form(BoxLayout.y());
     Button btn,supp;
     ComboBox cmbE;
+    Container C2;
     public ListCategorieForm(Form previous) {
     setTitle("Liste des categories");
         
@@ -50,18 +52,20 @@ public class ListCategorieForm extends Form{
         }
         
         for (Categorie c : CategoriesService.getInstance().getAllCategorie()){
+                         C2 = new Container(new TableLayout(2, 1));
+
             try {
                 enc = EncodedImage.create("/tv.png");
                 } catch (IOException ex) {
 
                                             }
-            
-        Image i = (URLImage.createToStorage(enc.scaledEncoded(400,400),c.getNom(), "http://localhost/DebboWeb/web/public/images/categories/" + c.getImage() +
-                "", URLImage.RESIZE_SCALE_TO_FILL));
-            Container C2 = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+            Image i = (URLImage.createToStorage(enc, c.getNom(), "http://localhost/DebboWeb/web/public/images/categories/" 
+                   + c.getImage() +
+                   "", URLImage.RESIZE_SCALE_TO_FILL));
+                   ImageViewer img2 = new ImageViewer(i.fill(400, 400));
+       
             
             Label l = new Label (c.getNom());
-            Label tel = new Label (c.getNom());
             
             l.addPointerPressedListener(new ActionListener() {
                 @Override
@@ -91,6 +95,7 @@ public class ListCategorieForm extends Form{
                          //pmodifié.setEntrepot(p.getEntrepot());
                          CategoriesService.getInstance().modifierCategorie(cmodifié);
                                      System.out.println("OOOOOK");
+                        new ListCategorieForm(previous);
                         }
                     });
                              
@@ -98,8 +103,8 @@ public class ListCategorieForm extends Form{
                         @Override
                         public void actionPerformed(ActionEvent evt) {
                             CategoriesService.getInstance().supprimerCategorie(c);
-                            refreshTheme();
-                            showBack();
+                                                  new ListCategorieForm(previous);
+
                           
                         }
                     });
@@ -110,16 +115,16 @@ public class ListCategorieForm extends Form{
                 }
             });
        
-          C2.add(i);
+          C2.add(img2);
           C2.add(l);
-             this.clearClientProperties();
-
+          
+          this.clearClientProperties();
           this.add(C2);
           this.refreshTheme();  
 
     }
      this.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
-this.show();
+     this.show();
     
 }
 }

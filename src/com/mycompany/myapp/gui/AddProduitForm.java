@@ -65,14 +65,16 @@ public class AddProduitForm extends Form{
           cmb = new ComboBox<>();
         ArrayList<Categorie> anim = new ArrayList<>();
         anim.addAll(CategoriesService.getInstance().getAllCategorie());
-            cmb.addItem("Choisir une catégorie");
+
+                            cmb.setHint("Choisir une catégorie");
 
         for (Categorie object : anim) {
             
             cmb.addItem(object);
         }
-          
+
       
+
        // TextField tfStatus= new TextField("", "Status: 0 - 1");
         Button btnValider = new Button("Ajouter produit");
         cmb.addActionListener((evt) -> {
