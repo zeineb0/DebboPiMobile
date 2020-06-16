@@ -7,6 +7,7 @@ package com.mycompany.myapp.gui;
 
 import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
+import com.codename1.ui.ComboBox;
 import com.codename1.ui.Command;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
@@ -127,7 +128,11 @@ public class Register extends Form {
         password.setConstraint(TextField.PASSWORD);
         
         //*************************** Role
-                TextField role = new TextField("", "role");
+                ComboBox role = new ComboBox();
+                role.addItem("Fournisseur");
+                role.addItem("Client");
+                role.addItem("Transporteur");
+                
         Style roleStyle = role.getAllStyles();
         roleStyle.setBorder(RoundRectBorder.create().
                 strokeColor(0).
@@ -204,7 +209,7 @@ public class Register extends Form {
         cnt3.add(prenom);
         cnt4.add(email);
         cnt5.add(password);
-       // cnt6.add(role);
+        cnt6.add(role);
         cnt7.add(cin);
         cnt8.add(tel);
         cnt9.add(valider);
@@ -216,12 +221,12 @@ public class Register extends Form {
         add(cnt3);
         add(cnt4);
         add(cnt5);
-     //   add(cnt6);
         add(cnt7);
         add(cnt8);
+        add(cnt6);
         add(cnt9);
         add(cnt10);
-        
+
         //****************************** GO TO LOGIN
         
         deja.addActionListener((evt) -> {
@@ -255,7 +260,11 @@ public class Register extends Form {
                         u.setPrenom(prenom.getText());
                         u.setEmail(email.getText());
                         u.setPassword(password.getText());
-                        u.setRoles(role.getText());
+                        System.out.println(role.getSelectedItem().toString());
+                        if (role.getSelectedItem().toString()=="Transporteur")
+                        {u.setRole(role.getSelectedItem().toString()+"Libre");}
+                        else
+                            {u.setRole(role.getSelectedItem().toString());}
                         u.setCin(Integer.parseInt(cin.getText()));
                         u.setTel(Integer.parseInt(tel.getText()));
                         

@@ -211,7 +211,7 @@ ImageViewer  Logo = null ;
 "    \"password\": \""+b+"\"\n" +
 "}";
                              
-                             String url="http://localhost/DebboPiWeb-master/web/app_dev.php/forum/logg";
+                             String url="http://localhost/DebboWeb/web/app_dev.php/forum/logg";
          req.setUrl(url);
          req.setPost(true);
          req.setContentType("application/json");

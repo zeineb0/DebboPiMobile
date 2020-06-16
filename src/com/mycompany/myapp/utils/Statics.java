@@ -10,7 +10,7 @@ package com.mycompany.myapp.utils;
  * @author bhk
  */
 public class Statics {
-    public static final String BASE_URL="http://localhost/DebboPiWeb-master/web/app_dev.php";
+    public static final String BASE_URL="http://localhost/DebboWeb/web/app_dev.php";
     public static String rstLog ="";
     public static int idSession;
     public static String loggedPlainPW;

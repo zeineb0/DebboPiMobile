@@ -71,9 +71,8 @@ public class UserService {
                 u.setCin(cinn);
                 int tell = Integer.parseInt(obj.get("tel").toString());
                 u.setTel(tell);
-              //  u.setRole(obj.get("role").toString());
-              //  System.out.println("rororo : "+u.getRole());
-                
+                u.setRole(obj.get("role").toString());
+               
                 //Ajouter la tâche extraite de la réponse Json à la liste
                 users.add(u);
             }
@@ -169,7 +168,7 @@ public class UserService {
 "}";       
 
                          try {
-         String url="http://localhost/DebboPiWeb-master/web/app_dev.php/forum/logg";
+         String url="http://localhost/DebboWeb/web/app_dev.php/forum/logg";
          req.setUrl(url);
          req.setPost(true);
          req.setContentType("application/json");
@@ -198,7 +197,7 @@ public class UserService {
      }
      
          public boolean addUser(User u) {
-        String url = "http://localhost/DebboPiWeb-master/web/app_dev.php/forum/new?username="+u.getUsername()+"&nom="+u.getNom()+"&prenom="+u.getPrenom()+"&email="+u.getEmail()+"&password="+u.getPassword()+"&cin="+u.getCin()+"&tel="+u.getTel();
+        String url = "http://localhost/DebboWeb/web/app_dev.php/forum/new?username="+u.getUsername()+"&nom="+u.getNom()+"&prenom="+u.getPrenom()+"&email="+u.getEmail()+"&password="+u.getPassword()+"&cin="+u.getCin()+"&tel="+u.getTel()+"&role="+u.getRole();
                 
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -244,7 +243,7 @@ public class UserService {
              public boolean changeUsername(String username){
                  
                  
-        String url = "http://localhost/DebboPiWeb-master/web/app_dev.php/forum/chusername?id="+Statics.getIdSession()+"&username="+username;
+        String url = "http://localhost/DebboWeb/web/app_dev.php/forum/chusername?id="+Statics.getIdSession()+"&username="+username;
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -260,7 +259,7 @@ public class UserService {
              
               public boolean changeEmail(String email){
 
-                          String url = "http://localhost/DebboPiWeb-master/web/app_dev.php/forum/chemail?id="+Statics.getIdSession()+"&email="+email;
+                          String url = "http://localhost/DebboWeb/web/app_dev.php/forum/chemail?id="+Statics.getIdSession()+"&email="+email;
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -278,7 +277,7 @@ public class UserService {
          public boolean changePassword(String password){
                  
                  
-        String url = "http://localhost/DebboPiWeb-master/web/app_dev.php/forum/chpassword?id="+Statics.getIdSession()+"&password="+password;
+        String url = "http://localhost/DebboWeb/web/app_dev.php/forum/chpassword?id="+Statics.getIdSession()+"&password="+password;
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -295,7 +294,7 @@ public class UserService {
                   public boolean recoverPassword(int id ,String password){
                  
                  
-        String url = "http://localhost/DebboPiWeb-master/web/app_dev.php/forum/chpassword?id="+id+"&password="+password;
+        String url = "http://localhost/DebboWeb/web/app_dev.php/forum/chpassword?id="+id+"&password="+password;
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -313,7 +312,7 @@ public class UserService {
         public boolean changeTel(int tel){
                  
                  
-        String url = "http://localhost/DebboPiWeb-master/web/app_dev.php/forum/chtel?id="+Statics.getIdSession()+"&tel="+tel;
+        String url = "http://localhost/DebboWeb/web/app_dev.php/forum/chtel?id="+Statics.getIdSession()+"&tel="+tel;
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
