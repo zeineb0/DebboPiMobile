@@ -54,7 +54,7 @@ public class MyApplication {
         HomeTransporteurForm home = new HomeTransporteurForm();
         HomeContratFrom home2 = new HomeContratFrom();
         map map_test = new map(home);
-        map_test.show();
+        home2.show();
     }
 
     public void stop() {

@@ -12,7 +12,9 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.Contrat;
+import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Livraison;
+import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +29,7 @@ public class ContratService {
     
     
      public ArrayList<Contrat> Contrats;
+     public ArrayList<Entrepot> entrepots;
     
     public static ContratService instance=null;
     public boolean resultOK;
@@ -162,6 +165,7 @@ public class ContratService {
     public ArrayList<Contrat> getContrat()
     {
         String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/affContrat/2";
+        req.removeAllArguments();
         req.setUrl(url);
         req.setPost(false);
         
@@ -216,6 +220,46 @@ public class ContratService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
         
+    }
+    
+     public ArrayList<Entrepot> parseEntrepot(String jsonText){
+        try {
+            entrepots=new ArrayList<>();
+            JSONParser j = new JSONParser();
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            //User.setIdOfConnectedUser(0);
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
+                
+                Entrepot e = new Entrepot();
+                float id = Float.parseFloat(obj.get("idEntrepot").toString());
+//                float prix = Float.parseFloat(obj.get("prix").toString());
+                e.setId_entrepot((int)id);
+                e.setEntreprise(obj.get("entreprise").toString());
+               entrepots.add(e);
+                //System.out.println("********");
+            }
+           
+        } catch (IOException ex) {
+            
+        }
+        return entrepots;
+    }
+     
+     
+     public ArrayList<Entrepot> getAllEntrepot(){
+        String url ="http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/getE";
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                entrepots = parseEntrepot(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return entrepots;
     }
     
     

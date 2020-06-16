@@ -46,7 +46,7 @@ public class HomeContratFrom extends Form{
         });
         
         
-       // btnAddContrat.addActionListener(e);
+        btnAddContrat.addActionListener(e->new AjouterContratForm(current).show());
         btnListContrat.addActionListener(e->new ListeContrat(current).show());
         btnListContratEXP.addActionListener(e-> new ListeContratEXP(current).show());
         addAll(btnAddContrat,btnListContrat,btnListContratEXP,sendMail);
