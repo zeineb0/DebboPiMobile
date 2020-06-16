@@ -124,6 +124,7 @@ public class Register extends Form {
         userStyle.setBgColor(0xffffff);
         userStyle.setBgTransparency(255);
         userStyle.setMarginUnit(Style.UNIT_TYPE_DIPS);
+        password.setConstraint(TextField.PASSWORD);
         
         //*************************** Role
                 TextField role = new TextField("", "role");
@@ -166,9 +167,33 @@ public class Register extends Form {
         
         Button valider = new Button("S'inscrire");
         
+         Style butStyle1 = valider.getAllStyles();
+                      butStyle1.setBorder(RoundRectBorder.create().
+                strokeColor(0x00000).
+                strokeOpacity(120).
+                stroke(borderStroke));
+        
+        
+     butStyle1.setFgColor(0x474747);
+        butStyle1.setBgTransparency(0);
+        butStyle1.setMarginUnit(Style.UNIT_TYPE_DIPS);
+        butStyle1.setMargin(Component.TOP, 0);
+        
         //*********************** BTN ALRDY HAVE ACC
         
         Button deja = new Button("Already have an account LogIn here");
+        
+         Style butStyle2 = deja.getAllStyles();
+                      butStyle2.setBorder(RoundRectBorder.create().
+                strokeColor(0x00000).
+                strokeOpacity(120).
+                stroke(borderStroke));
+        
+        
+     butStyle2.setFgColor(0x474747);
+        butStyle2.setBgTransparency(0);
+        butStyle2.setMarginUnit(Style.UNIT_TYPE_DIPS);
+        butStyle2.setMargin(Component.TOP, 4);
       
       
         //************************ ADDing to Form

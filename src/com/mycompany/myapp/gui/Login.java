@@ -137,8 +137,13 @@ ImageViewer  Logo = null ;
         
          Button inscrire = new Button("s'inscrire");
         Style butStyle2 = inscrire.getAllStyles();
-
-     butStyle2.setFgColor(0x000000);
+                      butStyle2.setBorder(RoundRectBorder.create().
+                strokeColor(0x00000).
+                strokeOpacity(120).
+                stroke(borderStroke));
+        
+        
+     butStyle2.setFgColor(0x474747);
         butStyle2.setBgTransparency(0);
         butStyle2.setMarginUnit(Style.UNIT_TYPE_DIPS);
         butStyle2.setMargin(Component.TOP, 0);
@@ -148,6 +153,11 @@ ImageViewer  Logo = null ;
                 Button motOublier = new Button("Mot de passe oublié ?");
         Style butStyle1 = motOublier.getAllStyles();
 
+                butStyle1.setBorder(RoundRectBorder.create().
+                strokeColor(0x00000).
+                strokeOpacity(120).
+                stroke(borderStroke));
+       
   
         butStyle1.setFgColor(0x000000);
         butStyle1.setBgTransparency(0);

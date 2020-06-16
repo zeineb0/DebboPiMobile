@@ -71,7 +71,8 @@ public class UserService {
                 u.setCin(cinn);
                 int tell = Integer.parseInt(obj.get("tel").toString());
                 u.setTel(tell);
-                
+              //  u.setRole(obj.get("role").toString());
+              //  System.out.println("rororo : "+u.getRole());
                 
                 //Ajouter la tâche extraite de la réponse Json à la liste
                 users.add(u);

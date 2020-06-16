@@ -62,6 +62,14 @@ public class EditProfile extends Form{
         
         
         Button chusername = new Button("change username");
+                Style butStyle1 = chusername.getAllStyles();
+                 butStyle1.setBorder(RoundRectBorder.create().
+                strokeColor(0x00000).
+                strokeOpacity(120).
+               stroke(borderStroke));
+        
+        
+     butStyle1.setFgColor(0x000000);
        
        
        //******************** CHANGE Email
@@ -77,6 +85,14 @@ public class EditProfile extends Form{
                 
        Button chemail = new Button("change email");
        
+     Style butStyle2 = chemail.getAllStyles();        
+     
+                      butStyle2.setBorder(RoundRectBorder.create().
+                strokeColor(0x00000).
+                strokeOpacity(120).
+               stroke(borderStroke));
+     
+     butStyle2.setFgColor(0x000000);
        
        //********************** CHANGE PASSWORD
         TextField oldPassword = new TextField("", "enter Old Password");
@@ -88,6 +104,7 @@ public class EditProfile extends Form{
         passwordStyle.setBgColor(0xffffff);
         passwordStyle.setBgTransparency(255);
         passwordStyle.setMarginUnit(Style.UNIT_TYPE_DIPS);
+        oldPassword.setConstraint(TextField.PASSWORD);
         
         TextField newPassword = new TextField("", "enter new Password");
         Style newPasswordStyle = newPassword.getAllStyles();
@@ -98,8 +115,17 @@ public class EditProfile extends Form{
         newPasswordStyle.setBgColor(0xffffff);
         newPasswordStyle.setBgTransparency(255);
         newPasswordStyle.setMarginUnit(Style.UNIT_TYPE_DIPS);
+        newPassword.setConstraint(TextField.PASSWORD);
         
         Button chpw = new Button("change password");
+        
+             Style butStyle3 = chpw.getAllStyles();        
+     
+                              butStyle3.setBorder(RoundRectBorder.create().
+                strokeColor(0x00000).
+                strokeOpacity(120).
+               stroke(borderStroke));
+     butStyle3.setFgColor(0x000000);
         
         //*********************** CHANGE TEL
         
@@ -113,9 +139,17 @@ public class EditProfile extends Form{
         telStyle.setBgTransparency(255);
         telStyle.setMarginUnit(Style.UNIT_TYPE_DIPS);
         
-        Button chtel = new Button("change phone number");
+        Button chtel = new Button("Change phone number");
        
-       
+            Style butStyle4 = chtel.getAllStyles();        
+     
+                             butStyle4.setBorder(RoundRectBorder.create().
+                strokeColor(0x00000).
+                strokeOpacity(120).
+               stroke(borderStroke));
+            
+     butStyle4.setFgColor(0x000000);
+        
   //************************** ADDING TO FORM     
        
     Container cnt1 = new Container(new FlowLayout(Container.CENTER));

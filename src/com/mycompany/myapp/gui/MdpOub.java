@@ -10,6 +10,7 @@ import com.codename1.messaging.Message;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Component;
+import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
@@ -19,6 +20,7 @@ import com.codename1.ui.Stroke;
 import com.codename1.ui.TextArea;
 import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.RoundRectBorder;
 import com.codename1.ui.plaf.Style;
 import com.mycompany.myapp.services.UserService;
@@ -65,31 +67,43 @@ public class MdpOub extends Form {
         userStyle.setBgTransparency(255);
         userStyle.setMarginUnit(Style.UNIT_TYPE_DIPS);
         userStyle.setMargin(Component.BOTTOM, 3);
-        userStyle.setMargin(Component.TOP, 10);
+        userStyle.setMargin(Component.TOP, 7);
                 
         //************************** BTN ENV ***********************************
 
         Button env = new Button("ENVOYER");
         
-                Style butStyle1 = env.getAllStyles();
+                Style butStyle1 = env.getAllStyles();       
+     
 
-  
-        butStyle1.setFgColor(0x000000);
-        butStyle1.setBgTransparency(0);
-        butStyle1.setMarginUnit(Style.UNIT_TYPE_DIPS);
-        butStyle1.setMargin(Component.TOP, 5);
+                        Style butStyle5 = env.getAllStyles();
+                      butStyle5.setBorder(RoundRectBorder.create().
+                strokeColor(0x00000).
+                strokeOpacity(120).
+                stroke(borderStroke));
+        
+        
+     butStyle5.setFgColor(0x474747);
+        butStyle5.setBgTransparency(0);
+        butStyle5.setMarginUnit(Style.UNIT_TYPE_DIPS);
+        butStyle5.setMargin(Component.TOP, 7);
         
         //************************** BTN GOLOGIN ****************************
         
                 Button goLogin = new Button("Login from here");
         
-                Style butStyle2 = goLogin.getAllStyles();
 
-  
-        butStyle2.setFgColor(0x000000);
+                        Style butStyle2 = goLogin.getAllStyles();
+                      butStyle2.setBorder(RoundRectBorder.create().
+                strokeColor(0x00000).
+                strokeOpacity(120).
+                stroke(borderStroke));
+        
+        
+     butStyle2.setFgColor(0x474747);
         butStyle2.setBgTransparency(0);
         butStyle2.setMarginUnit(Style.UNIT_TYPE_DIPS);
-        butStyle2.setMargin(Component.TOP, 5);
+        butStyle2.setMargin(Component.TOP, 7);
         
          //***************** AcTION *************************
          
@@ -131,7 +145,7 @@ Display.getInstance().sendMessage(new String[] {email.getText()}, "pi", m);
                
        int idRecover = UserService.getInstance().getIdByEmail(email.getText());
 
-       if (UserService.getInstance().recoverPassword(idRecover, email.getText())) {
+       if (UserService.getInstance().recoverPassword(idRecover, mdp)) {
                    Dialog.show("Success", "an email has been sent to you containing your password", new Command("OK"));
        }
        else {
@@ -145,17 +159,37 @@ Display.getInstance().sendMessage(new String[] {email.getText()}, "pi", m);
             
          });
          
-
+         //*********************** GO LOGIN ACTION *********************
          
+
+                 goLogin.addActionListener((evt) -> {
+        
+            new Login().show();
+            
+            });
+
+         //******************* ADDING TO FORM ************************
+         
+        Container cnt1 = new Container(new FlowLayout(Container.CENTER));
+        Container cnt2 = new Container(new FlowLayout(Container.CENTER));
+        Container cnt3 = new Container(new FlowLayout(Container.CENTER));
+        Container cnt4 = new Container(new FlowLayout(Container.CENTER));
+        Container cnt5 = new Container(new FlowLayout(Container.CENTER));
          
                 
         
     
-    add(Logo);
-    add(hint);
-    add(email);
-    add(env);
-    add(goLogin);
+    cnt1.add(Logo);
+    cnt2.add(hint);
+    cnt3.add(email);
+    cnt4.add(env);
+    cnt5.add(goLogin);
+    
+    add(cnt1);
+    add(cnt2);
+    add(cnt3);
+    add(cnt4);
+    add(cnt5);
     
 }
     
