@@ -8,6 +8,7 @@ package com.mycompany.myapp.utils;
 import com.codename1.l10n.SimpleDateFormat;
 import com.mycompany.myapp.entities.Panier;
 
+
 /**
  *
  * @author Zeineb_yahiaoui
@@ -57,4 +58,7 @@ public class Statics {
        double d = (double) Math.round(p * 100) / 100;
        return d;
     };
+    public static final String pattern = "dd-MM-yyyy";
+    public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+    
 }
