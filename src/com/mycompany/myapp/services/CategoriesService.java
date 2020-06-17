@@ -41,7 +41,7 @@ public class CategoriesService {
         return instance;
     }
     public boolean addCategorie(Categorie c) {
-        String url = Statics.BASE_URL + "/newC?nom=" + c.getNom()
+        String url = Statics.BASEZ_URL + "/newC?nom=" + c.getNom()
                 +"&fkEntrepot="+ c.getEntrepot().getId_entrepot();
         req.setUrl(url);
         System.out.println(url);
@@ -87,7 +87,7 @@ public class CategoriesService {
         return categories;
     }
        public ArrayList<Categorie> getAllCategorie(){
-        String url = Statics.BASE_URL+"/allC";
+        String url = Statics.BASEZ_URL+"/allC";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -103,7 +103,7 @@ public class CategoriesService {
        
           public void modifierCategorie(Categorie c) {
 
-        String Url = Statics.BASE_URL + "/modifC?idCategorie=" + c.getId() + "&nom="+c.getNom()+"&fkEntrepot="+c.getEntrepot().getId_entrepot();
+        String Url = Statics.BASEZ_URL + "/modifC?idCategorie=" + c.getId() + "&nom="+c.getNom()+"&fkEntrepot="+c.getEntrepot().getId_entrepot();
         req.setUrl(Url);
              System.out.println(Url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -118,7 +118,7 @@ public class CategoriesService {
     }
 
     public void supprimerCategorie(Categorie c) {
-        String url = Statics.BASE_URL+"/suppC?idCategorie="+c.getId();
+        String url = Statics.BASEZ_URL+"/suppC?idCategorie="+c.getId();
         req.setUrl(url);
         System.out.println(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

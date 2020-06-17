@@ -54,8 +54,6 @@ public class MvtService {
         System.out.println(tempss);
         String dateString = tempss.format(m.getDateMouv());
         System.out.println(dateString);
-        String url = Statics.BASE_URL + "/newM?natureMouvement="+m.getNatureDuStock()+"&dateMouv="+dateString+"&qte="+m.getQuantite()
-        +"&fkProduit="+m.getP().getId()+"&fkEntrepot="+m.getE().getId_entrepot();
         System.out.println(url);
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -133,7 +131,7 @@ public class MvtService {
         System.out.println(tempss);
         String dateString = tempss.format(m.getDateMouv());
         System.out.println(dateString);
-        String Url = Statics.BASE_URL + "/modifM?idMouv=" + m.getId() + "&dateMouv="+dateString+"&natureMouvement="+m.getNatureDuStock()
+        String Url = Statics.BASEZ_URL + "/modifM?idMouv=" + m.getId() + "&dateMouv="+dateString+"&natureMouvement="+m.getNatureDuStock()
                 +"&qte="+m.getQuantite()+"&fkProduit="+m.getP().getId()+"&fkEntrepot="+m.getE().getId_entrepot();
             System.out.println(Url);
         req.setUrl(Url);
@@ -150,7 +148,7 @@ public class MvtService {
     }
 
     public void supprimerMvt(MouvementStock m) {
-        String url = Statics.BASE_URL+"/suppM?idMouv="+m.getId();
+        String url = Statics.BASEZ_URL+"/suppM?idMouv="+m.getId();
         req.setUrl(url);
         System.out.println(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

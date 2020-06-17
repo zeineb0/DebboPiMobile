@@ -26,6 +26,7 @@ import com.mycompany.myapp.entities.User;
 import com.mycompany.myapp.services.CategoriesService;
 import com.mycompany.myapp.services.EntrepotService;
 import com.mycompany.myapp.services.ProduitService;
+import com.mycompany.myapp.utils.Statics;
 import java.util.ArrayList;
 
 /**
@@ -124,6 +125,7 @@ public class AddProduitForm extends Form{
                         p.setMarque(tfMarque.getText());
                         p.setReference(Integer.valueOf(tfRef.getText()));
                         p.setQuantite(Integer.valueOf(tfQte.getText()));
+                        p.setIdUser(Statics.getIdSession());
                         p.setPrix(Double.valueOf(tfPrix.getText()));
                         System.out.println(photoField.getText());
 
