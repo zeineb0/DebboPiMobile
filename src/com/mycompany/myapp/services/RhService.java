@@ -82,8 +82,8 @@ public class RhService {
     
     
     
-    public conge addconge(conge c){
-        String url=Statics.RH_URL+"/new?datearrive="+Statics.simpleDateFormat.format(c.getDatearrive())+"&datesortie="+Statics.simpleDateFormat.format(c.getDatesortie())+"&type="+c.getType()+"&etat="+c.getEtat()+"&raison="+c.getRaison()+"&FKIdEmp="+c.getFK_id_emp().getId_emp();
+    public conge addconge(conge c,long d){
+        String url=Statics.RH_URL+"/new?datearrive="+Statics.simpleDateFormat.format(c.getDatearrive())+"&datesortie="+Statics.simpleDateFormat.format(c.getDatesortie())+"&type="+c.getType()+"&etat="+c.getEtat()+"&raison="+c.getRaison()+"&FKIdEmp="+c.getFK_id_emp().getId_emp()+"&d="+d;
         ConnectionRequest req=new ConnectionRequest(url);
         req.addResponseListener(new ActionListener() {
             @Override

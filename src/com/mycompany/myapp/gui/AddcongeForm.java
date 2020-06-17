@@ -24,8 +24,9 @@ import com.mycompany.myapp.entities.Employe;
 import com.mycompany.myapp.entities.conge;
 import com.mycompany.myapp.services.RhService;
 import java.io.IOException;
-
 import java.util.Date;
+
+
 
 
 /**
@@ -51,32 +52,43 @@ public class AddcongeForm extends Form{
         Container c3=new Container(BoxLayout.x());
         TextField craison =new TextField("","craison");      
         Container c4=new Container(BoxLayout.x());
-        TextField cetat =new TextField("","cetat");
+        TextField cetat =new TextField("","En Attente d'approbation");
         Container c5=new Container(BoxLayout.x());
         TextField cemp =new TextField("","cemp");
         ComboBox<String> cb=new ComboBox<>();
         cb.addItem("Demande de conge");
         cb.addItem("Demande de Sortie");
         cb.addActionListener((evt) -> {
-            if (cb.getSelectedItem().toString().equals("Demande de Sortie")){               
+            if (cb.getSelectedItem().toString().equals("Demande de Sortie")){            
                  ch="Sortie";
-            }
+                }
+
+            
             });
         Button btnValider = new Button("Ajouter un conge");
         btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
+                 Date  d1=cdatearr.getDate();
+                 Date  d2=cdatesortie.getDate();
+                 long diff = (d2.getTime()-d1.getTime());
+                 long d=diff /(1000*60*60*24);
+                 if(d<=0){
+                      Dialog.show("Erreur","fill date fields correctly",new Command("ok"));
+                 }
+                  if (cb.getSelectedItem().toString().equals("Demande de Sortie")){
+                      if (d1.getTime()!=d2.getTime()){
+                          Dialog.show("Erreur","Veuillez demander un sortie dans le mm jours",new Command("ok"));
+                      }
+                  }
                 try {
-                 Date d1=cdatearr.getDate();
-                 Date d2=cdatesortie.getDate();
-          
                 conge c = new conge(cdatearr.getDate(),cdatesortie.getDate(),ch,cetat.getText(),craison.getText(),new Employe(Integer.parseInt(cemp.getText())));
-                conge test=new RhService().addconge(c);
+                conge test=new RhService().addconge(c,d);
                 test.toString();
-                if (test.getFK_id_emp().getNbcong()<2){
+                if (test.getFK_id_emp().getNbcong()<14){
                     Dialog.show("Succes","ConnectionSucc",new Command("ok"));
                 }
-                else if (test.getFK_id_emp().getNbcong()==2){
+                else if (test.getFK_id_emp().getNbcong()>=14){
                     Dialog.show("Refusé","Désole Vous avez déja consommée votre congé annuel(14 jours)",new Command("ok"));
                     System.out.println(test.getFK_id_emp().getNom());
                 }
