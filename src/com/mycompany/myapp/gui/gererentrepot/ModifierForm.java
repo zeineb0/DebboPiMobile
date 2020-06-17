@@ -41,7 +41,7 @@ setTitle("Modifier l'entrepot");
         float pr=ent.getPrix_location();
         
 prix.setText(String.valueOf(pr));
-        Button btnValider = new Button("Add task");
+        Button btnValider = new Button("Modifier");
         
         btnValider.addActionListener(new ActionListener() {
           
@@ -49,16 +49,16 @@ prix.setText(String.valueOf(pr));
             @Override
             public void actionPerformed(ActionEvent evt) {
   if ((entrep.getText().length()==0)||(etat.getSelectedItem().length()==0))
-                    Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
+                    Dialog.show("Alerte", "Veuillez remplir tous les champs", new Command("OK"));
                 else
                 {
                     try {
                         
                        Entrepot a = new Entrepot(etat.getSelectedItem().toString(), entrep.getText(),Float.parseFloat(prix.getText()));
                         if( EntrepotServices.getInstance().modifierEntrepot(id, a))
-                            Dialog.show("Success","Connection accepted",new Command("OK"));
+                            Dialog.show("Modification","Veuillez confirmer la modification",new Command("OK"));
                         else
-                            Dialog.show("ERROR", "Server error", new Command("OK"));
+                            Dialog.show("Modification", "Vous avez annuler la modification", new Command("OK"));
                     } catch (NumberFormatException e) {
                         Dialog.show("ERROR", "Status must be a number", new Command("OK"));
                     }
@@ -68,7 +68,7 @@ prix.setText(String.valueOf(pr));
         });
         
         addAll(entrep,etat,prix,btnValider);
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->new DetailsForm(previous, id, ent).showBack());
             }         
  
     

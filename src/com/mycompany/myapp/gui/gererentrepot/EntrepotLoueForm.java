@@ -13,6 +13,7 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.plaf.Border;
 import com.codename1.ui.table.TableLayout;
 import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.services.gererentrepot.EntrepotServices;
@@ -25,24 +26,40 @@ public class EntrepotLoueForm extends Form {
       Form current;
     public EntrepotLoueForm(Form previous) {
         current = this;
-        setTitle("List tasks");
-        this.setLayout( new TableLayout(CENTER,3));
+        setTitle("Liste des entrepots loués");
+        this.setLayout( new TableLayout(CENTER,2));
        
         for(Entrepot e: EntrepotServices.getInstance().getLoueEntrepots()){
        Container cx = new Container(new TableLayout(1,1));
        cx.setWidth(CENTER);
-            Label l1= new Label(""+e.getNum_fiscale());
-            Label l2= new Label(""+e.getAdresse_entrepot());
-            Label l3= new Label(""+e.getEntreprise());
+            Label l1= new Label("Numero fiscale "+e.getNum_fiscale());
+            Label l2= new Label("adresse entrepot"+e.getAdresse_entrepot());
+            Label l3= new Label("Entreprise "+e.getEntreprise());
+            Label l4= new Label("prix "+e.getPrix_location());
+            Label l5= new Label("quantite max "+e.getQuantite_max());
+           
         cx.add(l1);
         cx.add(l2);
         cx.add(l3);
+        cx.add(l4);
+        cx.add(l5);
         this.add(cx);
+          
+          cx.getUnselectedStyle().setMargin(10, 10, 10, 10);
+           cx.getUnselectedStyle().setBorder(Border.createLineBorder(2, 0x000000)); 
+            cx.getUnselectedStyle().setPadding(10, 10, 10, 10);
+             cx.getUnselectedStyle().setBgColor(0xffffff);
+          
+          this.refreshTheme(); 
        
  
     }       
         
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> new ListEntrepot(previous).showBack());
+getToolbar().addMaterialCommandToOverflowMenu("Ajouter Entrepot",FontImage.MATERIAL_ADD,e-> new AddEntrepot(current).show());
+    getToolbar().addMaterialCommandToOverflowMenu("Entrepot A  Louer",FontImage.MATERIAL_SHOP ,e-> new EntrepotALouerForm().show());
+    getToolbar().addMaterialCommandToOverflowMenu("Liste des entrepots",FontImage.MATERIAL_SHOP ,e-> new ListEntrepot(previous).show());
+ getToolbar().addMaterialCommandToOverflowMenu("Mes Locations",FontImage.MATERIAL_SHOP ,e-> new LocationListe(previous).show());
 
     }
     

@@ -33,15 +33,22 @@ public class DetailsForm extends Form{
         
       Container cx = new Container(new TableLayout(1,1));
        cx.setWidth(CENTER);
-            Label l1= new Label(""+entrepot.getNum_fiscale());
-            Label l2= new Label(""+entrepot.getAdresse_entrepot());
-            Label l3= new Label(""+entrepot.getEntreprise());
+          Label l1= new Label("Num Fiscale: "+ent.getNum_fiscale());
+            Label l2= new Label("Adresse: "+ent.getAdresse_entrepot());
+            Label l3= new Label("Entreprise: "+ent.getEntreprise());
+            Label l4= new Label("Etat : "+ent.getEtat());
+            Label l5= new Label("Prix loc: "+ent.getPrix_location());
+            Label l6= new Label("Quantite: "+ent.getQuantite_max());
+
             Button delete = new Button("Supprimer");
             Button modifier = new Button("Modifier");
             
         cx.add(l1);
         cx.add(l2);
         cx.add(l3);
+        cx.add(l4);
+        cx.add(l5);
+        cx.add(l6);
         cx.add(delete);
         cx.add(modifier);
         this.add(cx);
@@ -70,7 +77,7 @@ try{
                 System.out.println(id);
             }
         }); 
-                    getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+                    getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> new ListEntrepot(previous).showBack());
 
         
         

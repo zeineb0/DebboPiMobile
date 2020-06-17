@@ -13,6 +13,6 @@ import java.text.SimpleDateFormat;
  */
 public class Statics {
     public static final String GestionEntrepot_URL="http://localhost/DebboPiWeb/web/app_dev.php/";
-    public static final String pattern = "dd-MM-yyyy HH:mm";
+    public static final String pattern = "dd-MM-yyyy";
     public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 }

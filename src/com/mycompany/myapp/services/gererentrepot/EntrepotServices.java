@@ -29,6 +29,7 @@ public class EntrepotServices {
     public static EntrepotServices instance=null;
     public boolean resultOK;
     private ConnectionRequest req;
+    public boolean verifFisc=false;
 
     private EntrepotServices() {
          req = new ConnectionRequest();
@@ -107,9 +108,20 @@ public class EntrepotServices {
         }
         return entrepots;
     }
+    public boolean numFiscaleExist(int x){
+    
+        ArrayList<Entrepot> fisc = getAllEntrepots();
+        
+        for (int i=0;i<fisc.size();i++){
+            if (fisc.get(i).getNum_fiscale()==x) {
+                verifFisc=true;
+            }
+        }
+    return verifFisc;
+    }
     
     public ArrayList<Entrepot> getAllEntrepots(){
-        String url = Statics.GestionEntrepot_URL+"entrepotM/";
+        String url = Statics.GestionEntrepot_URL+"entrepotM/?idUser="+5;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -202,21 +214,22 @@ public class EntrepotServices {
             for(Map<String,Object> obj : list){
                 Entrepot e = new Entrepot();
                 e.setAdresse_entrepot((obj.get("adresse").toString()));
-//                float num=Float.parseFloat(obj.get("numFiscale").toString());
-//               e.setNum_fiscale((int)num);
-//               float quant=Float.parseFloat(obj.get("quantiteMax").toString());
-//               e.setQuantite_max((int)quant);
-//               e.setEtat((obj.get("etat").toString()));
+               float num=Float.parseFloat(obj.get("idEntrepot").toString());
+               e.setId_entrepot((int)num);
+               float quant=Float.parseFloat(obj.get("quantiteMax").toString());
+               e.setQuantite_max((int)quant);
+//              e.setEtat((obj.get("etat").toString()));
                float prix=Float.parseFloat(obj.get("prixLocation").toString());
                e.setPrix_location((float)prix);
                e.setEntreprise((obj.get("entreprise").toString()));
 
                
-//                Map<String,Object> userlist = (Map<String,Object>)obj.get("id");
-//                User u = new User();
-//               u.setNom((userlist.get("nom")).toString());
-//               u.setPrenom((userlist.get("prenom")).toString());
-//                e.setFk_id_fournisseur(u); 
+                Map<String,Object> userlist = (Map<String,Object>)obj.get("id");
+                User u = new User();
+               u.setNom((userlist.get("nom")).toString());
+               u.setPrenom((userlist.get("prenom")).toString());
+               u.setEmail((userlist.get("email")).toString());
+             e.setFk_id_fournisseur(u); 
                 entrepots.add(e);
             }
             
@@ -228,7 +241,7 @@ public class EntrepotServices {
     }
     
     public ArrayList<Entrepot> getALouerEntrepots(){
-        String url = Statics.GestionEntrepot_URL+"entrepotM/alouer?idUser="+4;
+        String url = Statics.GestionEntrepot_URL+"entrepotM/alouer?idUser="+5;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -278,7 +291,7 @@ public class EntrepotServices {
     }
     
     public ArrayList<Entrepot> getLoueEntrepots(){
-        String url = Statics.GestionEntrepot_URL+"entrepotM/loue?idUser="+4;
+        String url = Statics.GestionEntrepot_URL+"entrepotM/loue?idUser="+5;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

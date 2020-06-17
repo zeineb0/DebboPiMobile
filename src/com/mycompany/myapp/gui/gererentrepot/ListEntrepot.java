@@ -5,25 +5,17 @@
  */
 package com.mycompany.myapp.gui.gererentrepot;
 
-import com.codename1.components.SpanLabel;
-import com.codename1.io.ConnectionRequest;
-import com.codename1.io.NetworkEvent;
-import com.codename1.io.NetworkManager;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
-import com.codename1.ui.Image;
 import com.codename1.ui.Label;
-import com.codename1.ui.Toolbar;
-import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
-import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.plaf.Border;
 import com.codename1.ui.table.TableLayout;
 import com.mycompany.myapp.services.gererentrepot.EntrepotServices;
 import com.mycompany.myapp.entities.Entrepot;
-import java.io.UnsupportedEncodingException;
 /**
  *
  * @author asus
@@ -47,7 +39,12 @@ public class ListEntrepot extends Form{
         cx.add(l3);
         cx.add(bt);
         this.add(cx);
-       
+          cx.getUnselectedStyle().setMargin(10, 10, 10, 10);
+           cx.getUnselectedStyle().setBorder(Border.createLineBorder(2, 0x000000)); 
+            cx.getUnselectedStyle().setPadding(10, 10, 10, 10);
+             cx.getUnselectedStyle().setBgColor(0xffffff);
+          
+          this.refreshTheme(); 
        bt.addPointerPressedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -63,12 +60,12 @@ public class ListEntrepot extends Form{
         getToolbar().addMaterialCommandToOverflowMenu("Ajouter Entrepot",FontImage.MATERIAL_ADD,e-> new AddEntrepot(current).show());
         getToolbar().addMaterialCommandToOverflowMenu("Entrepot Loué",FontImage.MATERIAL_HIGHLIGHT,e-> new EntrepotLoueForm(previous).show());
         getToolbar().addMaterialCommandToOverflowMenu("Entrepot A  Louer",FontImage.MATERIAL_SHOP ,e-> new EntrepotALouerForm().show());
+        getToolbar().addMaterialCommandToOverflowMenu("Mes Locations",FontImage.MATERIAL_SHOP ,e-> new LocationListe(previous).show());
         
            
           
                        
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
     }
     
