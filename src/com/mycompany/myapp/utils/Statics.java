@@ -59,4 +59,6 @@ public class Statics {
        return d;
     };
   
+    public static final String GestionEntrepot_URL="http://localhost/DebboPiWeb/web/app_dev.php/";
+
 }

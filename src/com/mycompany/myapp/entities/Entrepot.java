@@ -19,14 +19,22 @@ public class Entrepot {
     String etat;
     String entreprise;
 
+    float prix_location;
+    User fk_id_fournisseur;
+
     int fk_id_fournisseur;
     float prix_location;
   
     public Entrepot() {
     }
+     public Entrepot(String etat, String entreprise, float prix_location) {
+    
+        this.etat = etat;
+        this.entreprise = entreprise;
+        this.prix_location = prix_location;
+    }
 
-    public Entrepot(int id_entrepot, String adresse_entrepot, int num_fiscale, int quantite_max, String etat, String entreprise, float prix_location, int fk_id_fournisseur) {
-        this.id_entrepot = id_entrepot;
+    public Entrepot( String adresse_entrepot, int num_fiscale, int quantite_max, String etat, String entreprise, float prix_location, User fk_id_fournisseur) {
         this.adresse_entrepot = adresse_entrepot;
         this.num_fiscale = num_fiscale;
         this.quantite_max = quantite_max;
@@ -92,11 +100,11 @@ public class Entrepot {
         this.prix_location = prix_location;
     }
 
-    public int getFk_id_fournisseur() {
+    public User getFk_id_fournisseur() {
         return fk_id_fournisseur;
     }
 
-    public void setFk_id_fournisseur(int fk_id_fournisseur) {
+    public void setFk_id_fournisseur(User fk_id_fournisseur) {
         this.fk_id_fournisseur = fk_id_fournisseur;
     }
 
@@ -121,5 +129,6 @@ public class Entrepot {
             return false;
         }
         return true;
+
     }
 }
