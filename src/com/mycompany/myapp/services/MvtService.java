@@ -46,8 +46,8 @@ public class MvtService {
         return instance;
     }
     public boolean addMvt(MouvementStock m) {
-        String url = Statics.BASEZ_URL + "/newP?natureMouvement="+m.getNatureDuStock()+"&dateMouv="+m.getDateMouv()+
-        "&fkProduit="+m.getP().getId()+"&fkEntrepot="+m.getE().getId_entrepot();
+        String url = Statics.BASEZ_URL + "/newM?natureMouvement="+m.getNatureDuStock()+"&dateMouv="+m.getDateMouv()+
+        "&fkProduit="+m.getP().getId()+"&fkEntrepot="+m.getE().getId_entrepot()+"&idUser="+Statics.getIdSession();
 
         
         SimpleDateFormat tempss = new SimpleDateFormat("yyyy-MM-dd");

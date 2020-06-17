@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myapp.gui;
+package com.mycompany.myapp.gui.user;
 
 import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
@@ -14,6 +14,7 @@ import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Style;
 import com.mycompany.myapp.entities.User;
+import com.mycompany.myapp.gui.StockHomeForm;
 import com.mycompany.myapp.gui.commande.CommandeForm;
 import com.mycompany.myapp.gui.gererentrepot.EntrepotALouerForm;
 import com.mycompany.myapp.gui.gererentrepot.ListEntrepot;

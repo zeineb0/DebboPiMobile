@@ -35,7 +35,7 @@ import com.codename1.ui.table.TableLayout;
 import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Location;
 import com.mycompany.myapp.entities.User;
-import com.mycompany.myapp.services.UserService;
+import com.mycompany.myapp.services.user.UserService;
 import com.mycompany.myapp.services.gererentrepot.EntrepotServices;
 import com.mycompany.myapp.services.gererentrepot.LocationServices;
 import com.mycompany.myapp.utils.Statics;

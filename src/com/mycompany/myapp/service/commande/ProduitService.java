@@ -16,7 +16,7 @@ import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Produit;
 import com.mycompany.myapp.entities.User;
 import static com.mycompany.myapp.services.ProduitService.instance;
-import com.mycompany.myapp.services.UserService;
+import com.mycompany.myapp.services.user.UserService;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;

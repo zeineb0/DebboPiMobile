@@ -55,10 +55,10 @@ public class ProduitService {
         
         if (p.getQuantite()<=20){
                 String url = Statics.BASEZ_URL + "/newP?libelle="+p.getLibelle()+"&reference="+p.getReference()+"&promotion="+1
-                        +"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId();
+                        +"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&idUser="+Statics.getIdSession();
 
         }
-        String url = Statics.BASEZ_URL + "/newP?libelle="+p.getLibelle()+"idUser="+p.getIdUser()+"&reference="+p.getReference()+"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId();
+        String url = Statics.BASEZ_URL + "/newP?libelle="+p.getLibelle()+"&idUser="+Statics.getIdSession()+"&reference="+p.getReference()+"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId();
         System.out.println(url);
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

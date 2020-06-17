@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myapp.gui;
+package com.mycompany.myapp.gui.user;
 
 import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
@@ -23,7 +23,7 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.RoundRectBorder;
 import com.codename1.ui.plaf.Style;
 import com.mycompany.myapp.entities.User;
-import com.mycompany.myapp.services.UserService;
+import com.mycompany.myapp.services.user.UserService;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 
