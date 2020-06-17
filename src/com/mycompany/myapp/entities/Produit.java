@@ -82,9 +82,7 @@ private int id;
 
     @Override
     public String toString() {
-        return "Produit{" + "libelle=" + libelle + ", prix=" + prix + ", reference=" + reference + ", marque=" + marque + ", image=" + image + ", categorie=" + categorie +
-                ", entrepot=" + entrepot +
-                ", quantite=" + quantite + '}';
+        return libelle;
     }
 
     public void setId(int id) {

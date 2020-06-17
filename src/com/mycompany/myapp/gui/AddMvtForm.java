@@ -35,6 +35,7 @@ import java.util.ArrayList;
 public class AddMvtForm extends Form{
                     private ComboBox cmbE,cmbP,cmbES;
 
+
      public AddMvtForm(Form previous) {
       setTitle("Ajouter une nouveau mouvement");
         setLayout(BoxLayout.y());

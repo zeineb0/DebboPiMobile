@@ -21,11 +21,11 @@ public class ProduitHomeForm extends Form{
     public ProduitHomeForm(Form previous) {
         current=this;
         setTitle("Produit");
-        setLayout(BoxLayout.yCenter());
+        setLayout(BoxLayout.y());
         
         add(new Label("Choisissez une option"));
         Button btnAddTask = new Button("Ajouter un nouveau produit");
-        Button btnListTasks = new Button("Afficher la liste des produit");
+        Button btnListTasks = new Button("Afficher la liste des produits");
         
         btnAddTask.addActionListener(e-> new AddProduitForm(current).show());
         btnListTasks.addActionListener(e-> new ListProduitForm(current).show());

@@ -52,8 +52,14 @@ public class ProduitService {
         return instance;
     }
     public boolean addProduit(Produit p) {
-        String url = Statics.BASEZ_URL + "/newP?libelle="+p.getLibelle()+"&reference="+p.getReference()+"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&fkEntrepot="+p.getEntrepot().getId_entrepot();
         
+        if (p.getQuantite()<=20){
+                String url = Statics.BASE_URL + "/newP?libelle="+p.getLibelle()+"&reference="+p.getReference()+"&promotion="+1
+                        +"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId();
+
+        }
+        String url = Statics.BASE_URL + "/newP?libelle="+p.getLibelle()+"&reference="+p.getReference()+"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId();
+        System.out.println(url);
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -104,7 +110,6 @@ public class ProduitService {
                 p.setMarque(obj.get("marque").toString());
                 //c.setEntrepot((Entrepot)obj.get("fkEntrepot"));
                produits.add(p);
-                //System.out.println("********");
             }
         } catch (IOException ex) {
             
@@ -133,6 +138,7 @@ public class ProduitService {
         String Url = Statics.BASEZ_URL + "/modifP?idProduit=" + p.getId() + "&libelle="+p.getLibelle()+"&marque="+p.getMarque()+"&reference="+p.getReference()
                 +"&prix="+p.getPrix()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&fkEntrepot="+p.getEntrepot().getId_entrepot();
         req.setUrl(Url);
+             System.out.println(Url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -146,22 +152,19 @@ public class ProduitService {
 
     public void supprimerProduit(Produit p) {
 
-        ConnectionRequest con = new ConnectionRequest();
-        con.setUrl(Statics.BASEZ_URL + "/suppP?idProduit=" +p.getId());
-        con.addResponseListener(new ActionListener<NetworkEvent>() {
+        String url = Statics.BASEZ_URL+"/suppP?idProduit="+p.getId();
+        req.setUrl(url);
+        System.out.println(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                try {
-                    String message = new String(con.getResponseData(), "utf-8");
-                    System.out.println("message" + message);
-                } catch (UnsupportedEncodingException ex) {
-                    System.out.println(ex.toString());
-                }
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
             }
 
         });
 
-        NetworkManager.getInstance().addToQueueAndWait(con);
+        NetworkManager.getInstance().addToQueueAndWait(req);
 
     }
 }

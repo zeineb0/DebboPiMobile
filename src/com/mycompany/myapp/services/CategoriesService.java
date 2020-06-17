@@ -41,8 +41,10 @@ public class CategoriesService {
         return instance;
     }
     public boolean addCategorie(Categorie c) {
-        String url = Statics.BASE_URL + "/newC?nom=" + c.getNom()+"&fkEntrepot="+ c.getEntrepot().getId_entrepot();
+        String url = Statics.BASE_URL + "/newC?nom=" + c.getNom()
+                +"&fkEntrepot="+ c.getEntrepot().getId_entrepot();
         req.setUrl(url);
+        System.out.println(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -66,10 +68,19 @@ public class CategoriesService {
                 float id = Float.parseFloat(obj.get("idCategorie").toString());
                 c.setId((int)id);
                 c.setNom(obj.get("nom").toString());
+                c.setImage(obj.get("imageName").toString());
+                Map<String, Object> EntJson = (Map<String, Object>) obj.get("fkEntrepot");
+                // Label l = new Label(obj.get("libelle").toString());
+                Entrepot e = new Entrepot();
+                float ide = Float.parseFloat(EntJson.get("idEntrepot").toString());
+                e.setId_entrepot((int)ide);
+                e.setAdresse_entrepot(EntJson.get("adresse").toString());
+                c.setEntrepot(e);
                 //c.setEntrepot((Entrepot)obj.get("fkEntrepot"));
                 categories.add(c);
             }
-            
+                            System.out.println(categories);
+
         } catch (IOException ex) {
             
         }
@@ -89,4 +100,38 @@ public class CategoriesService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return categories;
     }
+       
+          public void modifierCategorie(Categorie c) {
+
+        String Url = Statics.BASE_URL + "/modifC?idCategorie=" + c.getId() + "&nom="+c.getNom()+"&fkEntrepot="+c.getEntrepot().getId_entrepot();
+        req.setUrl(Url);
+             System.out.println(Url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                 resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+            }
+        });
+ 
+        NetworkManager.getInstance().addToQueueAndWait(req);
+    }
+
+    public void supprimerCategorie(Categorie c) {
+        String url = Statics.BASE_URL+"/suppC?idCategorie="+c.getId();
+        req.setUrl(url);
+        System.out.println(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+            }
+
+        });
+
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+    }
+  
 }
