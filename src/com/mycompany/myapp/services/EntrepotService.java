@@ -69,6 +69,8 @@ public class EntrepotService {
 //                float prix = Float.parseFloat(obj.get("prix").toString());
                 e.setId_entrepot((int)id);
                 e.setAdresse_entrepot(obj.get("adresse").toString());
+                                e.setEntreprise(obj.get("entreprise").toString());
+
                entrepots.add(e);
                 //System.out.println("********");
             }

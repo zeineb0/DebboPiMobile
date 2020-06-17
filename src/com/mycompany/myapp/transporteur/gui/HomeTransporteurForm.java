@@ -19,7 +19,7 @@ public class HomeTransporteurForm extends Form{
     
     Form current;
     
-    public HomeTransporteurForm()
+    public HomeTransporteurForm(Form previous)
     {
         current=this;
         setTitle("Transporteur Accueil");

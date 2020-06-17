@@ -58,7 +58,5 @@ public class Statics {
        double d = (double) Math.round(p * 100) / 100;
        return d;
     };
-    public static final String pattern = "dd-MM-yyyy";
-    public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-    
+  
 }

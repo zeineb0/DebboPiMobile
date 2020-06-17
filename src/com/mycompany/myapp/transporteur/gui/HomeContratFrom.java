@@ -25,7 +25,7 @@ public class HomeContratFrom extends Form{
     
     
      Form current;
-     public HomeContratFrom()
+     public HomeContratFrom(Form previous)
      {
         current=this;
         setTitle("Gestion des contrat");

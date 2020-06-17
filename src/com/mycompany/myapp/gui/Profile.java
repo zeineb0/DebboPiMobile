@@ -15,6 +15,9 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Style;
 import com.mycompany.myapp.entities.User;
 import com.mycompany.myapp.gui.commande.CommandeForm;
+import com.mycompany.myapp.transporteur.gui.HomeContratFrom;
+import com.mycompany.myapp.transporteur.gui.HomeTransporteurForm;
+import com.mycompany.myapp.transporteur.gui.map;
 import java.io.IOException;
 
 /**
@@ -90,19 +93,19 @@ public class Profile extends Form {
         
        });  
                    getToolbar().addCommandToLeftSideMenu("Contrat",  null , (evt) -> {
-          
+                       new HomeContratFrom(profile).show();
        
        });  
          } 
        else
               getToolbar().addCommandToLeftSideMenu("Livraison",  null , (evt) -> {
           
-           new CommandeForm(profile).show();
+           new HomeTransporteurForm(profile).show();
         
        });  
-                   getToolbar().addCommandToLeftSideMenu("location",  null , (evt) -> {
+                   getToolbar().addCommandToLeftSideMenu("Emplacement",  null , (evt) -> {
           
-           new CommandeForm(profile).show();
+           new map(profile).show();
         
        });  
          } 

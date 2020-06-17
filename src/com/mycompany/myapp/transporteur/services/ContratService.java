@@ -164,7 +164,7 @@ public class ContratService {
     
     public ArrayList<Contrat> getContrat()
     {
-        String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/affContrat/2";
+        String url = "http://localhost/DebboWeb/web/app_dev.php/Transporteur/affContrat/"+Statics.getIdSession();
         req.removeAllArguments();
         req.setUrl(url);
         req.setPost(false);
@@ -185,7 +185,7 @@ public class ContratService {
     
     public ArrayList<Contrat> getContratEXP()
     {
-        String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/affContratEXP/2";
+        String url = "http://localhost/DebboWeb/web/app_dev.php/Transporteur/affContratEXP/"+Statics.getIdSession();
         req.setUrl(url);
         req.setPost(false);
         
@@ -206,7 +206,7 @@ public class ContratService {
     
     public boolean supprimerContrat(String id_transpoteur,String id_entrepot)
     {
-        String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/suppContrat?id_entrepot="+id_entrepot+"&id_transporteur="+id_transpoteur;
+        String url = "http://localhost/DebboWeb/web/app_dev.php/Transporteur/suppContrat?id_entrepot="+id_entrepot+"&id_transporteur="+id_transpoteur;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -248,7 +248,7 @@ public class ContratService {
      
      
      public ArrayList<Entrepot> getAllEntrepot(){
-        String url ="http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/getE";
+        String url ="http://localhost/DebboWeb/web/app_dev.php/Transporteur/getE";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

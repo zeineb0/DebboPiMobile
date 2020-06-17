@@ -16,6 +16,7 @@ import com.codename1.ui.spinner.Picker;
 import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Livraison;
 import com.mycompany.myapp.entities.Utilisateur;
+import com.mycompany.myapp.services.EntrepotService;
 import com.mycompany.myapp.transporteur.services.ContratService;
 import com.mycompany.myapp.transporteur.services.LivraisonService;
 import java.util.ArrayList;
@@ -45,8 +46,8 @@ public class AjouterContratForm extends Form{
         entrepot= new ComboBox<>();
         
         ArrayList<Entrepot> ent = new ArrayList<>();
-        ent.addAll(ContratService.getInstance().getAllEntrepot());
-         System.out.println(ContratService.getInstance().getAllEntrepot());
+        ent.addAll(EntrepotService.getInstance().getAllEntrepot());
+        // System.out.println(ContratService.getInstance().getAllEntrepot());
          entrepot.addItem("Choisir un entrepot");
         for (Entrepot object : ent) {
             entrepot.addItem(object.getEntreprise());

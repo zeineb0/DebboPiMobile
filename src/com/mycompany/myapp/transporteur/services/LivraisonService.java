@@ -108,7 +108,7 @@ public class LivraisonService {
     
     public ArrayList<Livraison> getLivraisonsLivre()
     {
-        String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/affLivL/1";
+        String url = "http://localhost/DebboWeb/web/app_dev.php/Transporteur/affLivL/"+Statics.getIdSession();
         req.setUrl(url);
         req.setPost(false);
         
@@ -130,7 +130,7 @@ public class LivraisonService {
     
     public ArrayList<Livraison> getLivraisonsNLivre()
     {
-        String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/affLivNL/1";
+        String url = "http://localhost/DebboWeb/web/app_dev.php/Transporteur/affLivNL/"+Statics.getIdSession();
         req.setUrl(url);
         req.setPost(false);
         
@@ -149,7 +149,7 @@ public class LivraisonService {
     
     public boolean supprimerLivraison(String id_liv)
     {
-        String url = "http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/suppLiv/"+id_liv;
+        String url = "http://localhost/DebboWeb/web/app_dev.php/Transporteur/suppLiv/"+id_liv;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -166,7 +166,7 @@ public class LivraisonService {
     }
     
     public boolean modifierLivraison(Livraison l) {
-            String url ="http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/modLiv?id_liv="+l.getId_livraison()+"&date="+l.getDate_livraison()+"&id_user="+1;
+            String url ="http://localhost/DebboWeb/web/app_dev.php/Transporteur/modLiv?id_liv="+l.getId_livraison()+"&date="+l.getDate_livraison()+"&id_user="+Statics.getIdSession();
             System.out.println(url);
             req.setUrl(url);
             req.addResponseListener(new ActionListener<NetworkEvent>() {
