@@ -6,10 +6,12 @@
 package com.mycompany.myapp.gui.commande;
 
 import com.codename1.io.ConnectionRequest;
+import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.plaf.Border;
 import com.mycompany.myapp.entities.Blog;
 import com.mycompany.myapp.entities.Commande;
 import com.mycompany.myapp.service.commande.CommandeService;
@@ -33,10 +35,14 @@ public class NotificationForm  extends Form{
         notifs=cs.getNotification();
         for(int i=0;i<notifs.size();i++){
         add(new Label(""+notifs.get(i).getBlog().getTitle()));
-        add(new Label(""+notifs.get(i).getBlog().getDescription()));
-        add(new Label(""+notifs.get(i).getBlog().getAuteur()));
+        Container c= new Container(BoxLayout.x());
+        c.add(new Label(""+notifs.get(i).getBlog().getAuteur()));
+        c.add(new Label(""+notifs.get(i).getBlog().getDescription()));
+        add(c);
         String date = Statics.simpleDateFormat.format(notifs.get(i).getNotification().getNotification_date());
-        add(new Label(date));
+        Label d=new Label(date);
+        d.getUnselectedStyle().setBorder(Border.createCompoundBorder(null, Border.createLineBorder(2, 0x000000),null, null));
+        add(d);
         }   
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }

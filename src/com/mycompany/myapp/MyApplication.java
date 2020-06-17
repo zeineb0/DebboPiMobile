@@ -16,6 +16,7 @@ import com.codename1.io.NetworkEvent;
 import com.mycompany.myapp.gui.ListProduitForm;
 import com.mycompany.myapp.gui.StockHomeForm;
 import com.mycompany.myapp.gui.commande.CommandeForm;
+import com.mycompany.myapp.gui.commande.DetailsCommandeForm;
 import com.mycompany.myapp.gui.commande.NotificationForm;
 import com.mycompany.myapp.gui.commande.PanierForm;
 import com.mycompany.myapp.gui.commande.ProduitForm;

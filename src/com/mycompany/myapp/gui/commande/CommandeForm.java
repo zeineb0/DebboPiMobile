@@ -73,7 +73,7 @@ public class CommandeForm  extends Form{
             } catch (IOException ex) {
 
             }
-            Image icon = (URLImage.createToStorage(enc.scaledEncoded(70, 70), "show", "" , URLImage.RESIZE_SCALE_TO_FILL));
+            Image icon = (URLImage.createToStorage(enc.scaledEncoded(70, 70), "show", "http://localhost/DebboPiWeb/web/public/images/view" , URLImage.RESIZE_SCALE_TO_FILL));
         Button btn= new Button(icon);
         btn.addActionListener(new ActionListener() {
             @Override

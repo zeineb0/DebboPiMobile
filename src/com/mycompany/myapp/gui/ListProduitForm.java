@@ -46,7 +46,7 @@ public class ListProduitForm extends Form{
                 Button btn,supp;
 
     public ListProduitForm() {
-    }
+          }
 
     public ListProduitForm(Form previous) {
         setTitle("Liste des produits");

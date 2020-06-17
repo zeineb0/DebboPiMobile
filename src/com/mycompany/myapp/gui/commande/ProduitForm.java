@@ -18,24 +18,16 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Stroke;
-import com.codename1.ui.TextField;
 import com.codename1.ui.URLImage;
-import com.codename1.ui.URLImage.ImageAdapter;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
-import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Border;
-import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.table.TableLayout;
-import com.mycompany.myapp.entities.Categorie;
-import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Produit;
 import com.mycompany.myapp.service.commande.ProduitService;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
 /**
  *
@@ -61,8 +53,8 @@ public class ProduitForm  extends Form{
             
             
              
-            try {
-                enc = EncodedImage.create("/debbo.png");
+            try {                               
+                enc = EncodedImage.create("/Debboo.png");
             } catch (IOException ex) {
 
             }
@@ -84,8 +76,7 @@ public class ProduitForm  extends Form{
             } catch (IOException ex) {
 
             }
-            Image up = (URLImage.createToStorage(encUp.scaledEncoded(70, 70), "down", "http://localhost/DebboPiWeb/web/public/images/produits/" + p.getImage() +
-                    "", URLImage.RESIZE_SCALE_TO_FILL));
+            Image up = (URLImage.createToStorage(encUp.scaledEncoded(70, 70), "up", "http://localhost/DebboPiWeb/web/public/images/produits/up", URLImage.RESIZE_SCALE_TO_FILL));
             Button btnUp= new Button(up);
             btnUp.getUnselectedStyle().setPadding(0, 0, 0, 0);
             try {
@@ -93,8 +84,7 @@ public class ProduitForm  extends Form{
             } catch (IOException ex) {
 
             }
-              Image down = (URLImage.createToStorage(encDown.scaledEncoded(70, 70), "up", "http://localhost/DebboPiWeb/web/public/images/produits/" + p.getImage() +
-                    "", URLImage.RESIZE_SCALE_TO_FILL));
+              Image down = (URLImage.createToStorage(encDown.scaledEncoded(70, 70), "down", "http://localhost/DebboPiWeb/web/public/images/produits/down", URLImage.RESIZE_SCALE_TO_FILL));
             Button btnDown= new Button(down);
             btnDown.getUnselectedStyle().setPadding(0, 0, 0, 0);
             btnUp.addActionListener( new ActionListener() {
@@ -154,15 +144,15 @@ public class ProduitForm  extends Form{
 
             }
            Image panier = (URLImage.createToStorage(enc.scaledEncoded(100, 100), "panier",
-                   "", URLImage.RESIZE_SCALE_TO_FILL));
+                    "http://localhost/DebboPiWeb/web/public/images/panier", URLImage.RESIZE_SCALE_TO_FILL));
             try {
                 encN = EncodedImage.create("/notif.png");
             } catch (IOException ex) {
 
             }
            Image notif = (URLImage.createToStorage(encN.scaledEncoded(100, 100), "notif",
-                   "", URLImage.RESIZE_SCALE_TO_FILL));
-       getToolbar().addCommandToRightBar("", panier , (evt) -> {
+                    "http://localhost/DebboPiWeb/web/public/images/notif", URLImage.RESIZE_SCALE_TO_FILL));
+       getToolbar().addCommandToRightBar(null, panier , (evt) -> {
            if(!Statics.panier.getProduitCommande().isEmpty())
         { 
            new PanierForm(current).show();}
@@ -171,12 +161,12 @@ public class ProduitForm  extends Form{
             
         }    
        });
-        getToolbar().addCommandToRightBar("",  notif , (evt) -> {
+        getToolbar().addCommandToRightBar(null,  notif , (evt) -> {
           
            new NotificationForm(current).show();
         
        });
-          getToolbar().addCommandToLeftSideMenu("commande",  null , (evt) -> {
+          getToolbar().addCommandToLeftBar("commande",  null , (evt) -> {
           
            new CommandeForm(current).show();
         

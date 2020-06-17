@@ -26,7 +26,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
+import com.codename1.facebook.Post;
+import com.codename1.share.FacebookShare;
+import com.codename1.ui.Dialog;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Parameter;
+import com.restfb.Version;
+import com.restfb.exception.FacebookException;
+import com.restfb.types.FacebookType;
 /**
  *
  * @author ghazi
@@ -34,16 +42,12 @@ import java.util.Map;
 public class DetailsCommandeForm  extends Form{
     Form current;
     private EncodedImage enc;
+    double prix;
     public DetailsCommandeForm(Form previous,int id) {
         current=this;
         
         setTitle("commande");
            
-        
-        
-        
-        
-    
         CommandeService cs= new CommandeService();
         String jsonText =cs.getCommande(id);
        try {
@@ -82,33 +86,40 @@ public class DetailsCommandeForm  extends Form{
              String ref=(obj.get("reference").toString());
              String marque=obj.get("marque").toString();
              double qtt= Double.parseDouble(obj.get("quantiteProduit").toString());   
-             double prix= Double.parseDouble(obj.get("prixProduit").toString());   
+              prix= Double.parseDouble(obj.get("prixProduit").toString());   
               c2.add(""+ref);
               c2.add(marque);
               c2.add(""+qtt);
               c2.add(""+prix);
               c.add(c2);            
                          }
+        
+          Button partagerBtn = new Button("partager");
+            partagerBtn.addActionListener((evt) -> {
+                System.err.println("-_-_-_-_-__-_-_-_- : fbpartage");
+                String accessToken = "EAADitfGMiOIBANfaoakY8QzIyJKsFjnvW5i5T98xKZBTJusyxrukTSJqCR5Fr7uqspEPZC1ZB0lEJdHs1sSUWE498qaEcY8p85CqrZCVLju90Y2FNhl4ZAjV0WmpEbHYMAiMA0iqXX4RXfKgIKQZCx2ZAaKfY1TQZBt5RZC1lY7hQlQD830bZANydq33efLYZAZBjhL2zEcb0KpQ1p3f8LVFZBkuZC";
+                FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.VERSION_7_0);
+                System.out.println(fbClient.toString());
+            try{   
+                // FacebookType response = fbClient.publish("me?fields=id,name", FacebookType.class);
+               //  System.out.println(response);
+            FacebookType response = fbClient.publish("me/feed", FacebookType.class,
+                        Parameter.with("Ghazi Hachicha a commandé des produits de "+prix+"Dt", "Commande"));
+             Dialog.show("Succes", "Votre Article à été partagé sur facebook", "Fermer", null);
+            }catch(FacebookException f){
+                Dialog.show("error", f.getMessage(), "Fermer", null);
+            }
+             //  System.out.println("fb.com/" + response.getId());
+               
+                
+            });
             
-            
+            add(partagerBtn);
+            add(new Label(""));
         } catch (IOException ex) {
             
         }
-       // Container com = new Container(new TableLayout(CENTER, 1)); 
-      //  com.add(new Label(""+commandes.getId_commande()));
-       // this.add(com);
-       
-      //  Container view = new Container(new TableLayout(CENTER, 1)); 
-       //   try {
-      //          enc = EncodedImage.create("/eye.png");
-      //      } catch (IOException ex) {
-
-      //      }
-      //      Image icon = (URLImage.createToStorage(enc.scaledEncoded(70, 70), "show", "" , URLImage.RESIZE_SCALE_TO_FILL));
-      //  Button btn= new Button(icon);
-     //   view.add(btn);
-      //  this.add(view);
-        
+    
         
             
         

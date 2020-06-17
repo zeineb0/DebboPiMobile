@@ -77,7 +77,7 @@ public class ProduitService {
                 Produit p = new Produit();
                 float id = Float.parseFloat(obj.get("idProduit").toString());
                 float prix = Float.parseFloat(obj.get("prix").toString());
-                p.setImage(obj.get("imageName").toString());
+                //p.setImage(obj.get("imageName").toString());
                 p.setId((int)id);
                 
                 Map<String, Object> CategorieJson = (Map<String, Object>) obj.get("fkCategorie");
@@ -116,6 +116,7 @@ public class ProduitService {
     
        public ArrayList<Produit> getAllProduit(){
         String url = Statics.BASE_URL+"/allP";
+           System.out.println(url);
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

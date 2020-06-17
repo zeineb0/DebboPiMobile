@@ -15,7 +15,7 @@ import com.mycompany.myapp.entities.Panier;
 public class Statics {
 
     public static final String GHAZI_URL="http://localhost/DebboPiWeb/web/app_dev.php/Mobile";
-    public static final String pattern = "MM-dd-yyyy";
+    public static final String pattern = "dd-MM-yyyy HH:mm";
     public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
     public static final String BASE_URL="http://localhost/DebboPiWeb/web/app_dev.php/Stock";
        
