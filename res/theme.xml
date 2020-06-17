@@ -1,89 +1,281 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="11" useXmlUI="false">
+    <image name="back-btn-big@2x_center.png" type="multi"  />
+    <image name="back-btn-big@2x_left.png" type="multi"  />
+    <image name="back-btn-big@2x_right.png" type="multi"  />
     <image name="back-command.png" type="multi"  />
+    <image name="back-command.png1" type="multi"  />
+    <image name="back_center_pressed.png" type="multi"  />
+    <image name="back_left_pressed.png" type="multi"  />
+    <image name="back_right_pressed.png" type="multi"  />
+    <image name="bg-gunmetal@2x_tile.png" type="multi"  />
+    <image name="bg-mesh@2x_tile.jpg"  />
     <image name="border.png"  />
+    <image name="border.png1"  />
+    <image name="Button.borderBottom_2.png" type="multi"  />
     <image name="Button.borderBottom_3.png" type="multi"  />
+    <image name="Button.borderBottom_3.png1" type="multi"  />
+    <image name="Button.borderBottomL_2.png" type="multi"  />
     <image name="Button.borderBottomL_3.png" type="multi"  />
+    <image name="Button.borderBottomL_3.png1" type="multi"  />
+    <image name="Button.borderBottomR_2.png" type="multi"  />
     <image name="Button.borderBottomR_3.png" type="multi"  />
+    <image name="Button.borderBottomR_3.png1" type="multi"  />
+    <image name="Button.borderCenter_2.png" type="multi"  />
     <image name="Button.borderCenter_3.png" type="multi"  />
+    <image name="Button.borderCenter_3.png1" type="multi"  />
+    <image name="Button.borderLeft_2.png" type="multi"  />
     <image name="Button.borderLeft_3.png" type="multi"  />
+    <image name="Button.borderLeft_3.png1" type="multi"  />
+    <image name="Button.borderRight_2.png" type="multi"  />
     <image name="Button.borderRight_3.png" type="multi"  />
+    <image name="Button.borderRight_3.png1" type="multi"  />
+    <image name="Button.borderTop_2.png" type="multi"  />
     <image name="Button.borderTop_3.png" type="multi"  />
+    <image name="Button.borderTop_3.png1" type="multi"  />
+    <image name="Button.borderTopL_2.png" type="multi"  />
     <image name="Button.borderTopL_3.png" type="multi"  />
+    <image name="Button.borderTopL_3.png1" type="multi"  />
+    <image name="Button.borderTopR_2.png" type="multi"  />
     <image name="Button.borderTopR_3.png" type="multi"  />
+    <image name="Button.borderTopR_3.png1" type="multi"  />
     <image name="Button.press#borderBottom_1.png" type="multi"  />
+    <image name="Button.press#borderBottom_1.png1" type="multi"  />
+    <image name="Button.press#borderBottom_1.png2" type="multi"  />
     <image name="Button.press#borderBottomL_1.png" type="multi"  />
+    <image name="Button.press#borderBottomL_1.png1" type="multi"  />
+    <image name="Button.press#borderBottomL_1.png2" type="multi"  />
     <image name="Button.press#borderBottomR_1.png" type="multi"  />
+    <image name="Button.press#borderBottomR_1.png1" type="multi"  />
+    <image name="Button.press#borderBottomR_1.png2" type="multi"  />
     <image name="Button.press#borderCenter_1.png" type="multi"  />
+    <image name="Button.press#borderCenter_1.png1" type="multi"  />
+    <image name="Button.press#borderCenter_1.png2" type="multi"  />
     <image name="Button.press#borderLeft_1.png" type="multi"  />
+    <image name="Button.press#borderLeft_1.png1" type="multi"  />
+    <image name="Button.press#borderLeft_1.png2" type="multi"  />
     <image name="Button.press#borderRight_1.png" type="multi"  />
+    <image name="Button.press#borderRight_1.png1" type="multi"  />
+    <image name="Button.press#borderRight_1.png2" type="multi"  />
     <image name="Button.press#borderTop_1.png" type="multi"  />
+    <image name="Button.press#borderTop_1.png1" type="multi"  />
+    <image name="Button.press#borderTop_1.png2" type="multi"  />
     <image name="Button.press#borderTopL_1.png" type="multi"  />
+    <image name="Button.press#borderTopL_1.png1" type="multi"  />
+    <image name="Button.press#borderTopL_1.png2" type="multi"  />
     <image name="Button.press#borderTopR_1.png" type="multi"  />
+    <image name="Button.press#borderTopR_1.png1" type="multi"  />
+    <image name="Button.press#borderTopR_1.png2" type="multi"  />
+    <image name="button_left_pressed.png" type="multi"  />
     <image name="cal_left_arrow.png" type="multi"  />
+    <image name="cal_left_arrow.png1" type="multi"  />
     <image name="cal_right_arrow.png" type="multi"  />
+    <image name="cal_right_arrow.png1" type="multi"  />
     <image name="Check-Box_Normal.png" type="multi"  />
+    <image name="Check-Box_Normal.png1" type="multi"  />
     <image name="Check-Box_Press.png" type="multi"  />
+    <image name="Check-Box_Press.png1" type="multi"  />
     <image name="combo.png" type="multi"  />
+    <image name="combo.png1" type="multi"  />
     <image name="ComboBox.borderBottom_1.png" type="multi"  />
+    <image name="ComboBox.borderBottom_1.png1" type="multi"  />
+    <image name="DataSheet.borderBottom_1.png" type="multi"  />
+    <image name="DataSheet.borderBottomL_1.png" type="multi"  />
+    <image name="DataSheet.borderBottomR_1.png" type="multi"  />
+    <image name="DataSheet.borderCenter_1.png" type="multi"  />
+    <image name="DataSheet.borderLeft_1.png" type="multi"  />
+    <image name="DataSheet.borderRight_1.png" type="multi"  />
+    <image name="DataSheet.borderTop_1.png" type="multi"  />
+    <image name="DataSheet.borderTopL_1.png" type="multi"  />
+    <image name="DataSheet.borderTopR_1.png" type="multi"  />
+    <image name="details-separator@2x.png" type="multi"  />
     <image name="Dialog.borderBottom_1.png" type="multi"  />
+    <image name="Dialog.borderBottom_1.png1" type="multi"  />
     <image name="Dialog.borderBottomL_1.png" type="multi"  />
+    <image name="Dialog.borderBottomL_1.png1" type="multi"  />
     <image name="Dialog.borderBottomR_1.png" type="multi"  />
+    <image name="Dialog.borderBottomR_1.png1" type="multi"  />
     <image name="Dialog.borderCenter_1.png" type="multi"  />
+    <image name="Dialog.borderCenter_1.png1" type="multi"  />
     <image name="Dialog.borderLeft_1.png" type="multi"  />
+    <image name="Dialog.borderLeft_1.png1" type="multi"  />
     <image name="Dialog.borderRight_1.png" type="multi"  />
+    <image name="Dialog.borderRight_1.png1" type="multi"  />
     <image name="Dialog.borderTop_1.png" type="multi"  />
+    <image name="Dialog.borderTop_1.png1" type="multi"  />
     <image name="Dialog.borderTopL_1.png" type="multi"  />
+    <image name="Dialog.borderTopL_1.png1" type="multi"  />
     <image name="Dialog.borderTopR_1.png" type="multi"  />
+    <image name="Dialog.borderTopR_1.png1" type="multi"  />
+    <image name="Followers.borderBottom_1.png" type="multi"  />
+    <image name="Followers.borderBottomL_1.png" type="multi"  />
+    <image name="Followers.borderBottomR_1.png" type="multi"  />
+    <image name="Followers.borderCenter_1.png" type="multi"  />
+    <image name="Followers.borderLeft_1.png" type="multi"  />
+    <image name="Followers.borderRight_1.png" type="multi"  />
+    <image name="Followers.borderTop_1.png" type="multi"  />
+    <image name="Followers.borderTopL_1.png" type="multi"  />
+    <image name="Followers.borderTopR_1.png" type="multi"  />
+    <image name="Following.borderBottom_1.png" type="multi"  />
+    <image name="Following.borderBottomL_1.png" type="multi"  />
+    <image name="Following.borderBottomR_1.png" type="multi"  />
+    <image name="Following.borderCenter_1.png" type="multi"  />
+    <image name="Following.borderLeft_1.png" type="multi"  />
+    <image name="Following.borderRight_1.png" type="multi"  />
+    <image name="Following.borderTop_1.png" type="multi"  />
+    <image name="Following.borderTopL_1.png" type="multi"  />
+    <image name="Following.borderTopR_1.png" type="multi"  />
+    <image name="GreenButton.borderBottom_1.png" type="multi"  />
+    <image name="GreenButton.borderBottomL_1.png" type="multi"  />
+    <image name="GreenButton.borderBottomR_1.png" type="multi"  />
+    <image name="GreenButton.borderCenter_1.png" type="multi"  />
+    <image name="GreenButton.borderLeft_1.png" type="multi"  />
+    <image name="GreenButton.borderRight_1.png" type="multi"  />
+    <image name="GreenButton.borderTop_1.png" type="multi"  />
+    <image name="GreenButton.borderTopL_1.png" type="multi"  />
+    <image name="GreenButton.borderTopR_1.png" type="multi"  />
+    <image name="GreenButton.press#borderBottom_1.png" type="multi"  />
+    <image name="GreenButton.press#borderBottomL_1.png" type="multi"  />
+    <image name="GreenButton.press#borderBottomR_1.png" type="multi"  />
+    <image name="GreenButton.press#borderCenter_1.png" type="multi"  />
+    <image name="GreenButton.press#borderLeft_1.png" type="multi"  />
+    <image name="GreenButton.press#borderRight_1.png" type="multi"  />
+    <image name="GreenButton.press#borderTop_1.png" type="multi"  />
+    <image name="GreenButton.press#borderTopL_1.png" type="multi"  />
+    <image name="GreenButton.press#borderTopR_1.png" type="multi"  />
     <image name="img_bgr_side_bar_title.png"  />
+    <image name="img_bgr_side_bar_title.png1"  />
     <image name="img_bgr_tile.png"  />
+    <image name="img_bgr_tile.png1"  />
+    <image name="mask.png" type="multi"  />
+    <image name="maskb.png 3" type="multi"  />
     <image name="Menu.borderBottom_1.png" type="multi"  />
+    <image name="Menu.borderBottom_1.png1" type="multi"  />
     <image name="Menu.borderBottomL_1.png" type="multi"  />
+    <image name="Menu.borderBottomL_1.png1" type="multi"  />
     <image name="Menu.borderBottomR_1.png" type="multi"  />
+    <image name="Menu.borderBottomR_1.png1" type="multi"  />
     <image name="Menu.borderCenter_1.png" type="multi"  />
+    <image name="Menu.borderCenter_1.png1" type="multi"  />
     <image name="Menu.borderLeft_1.png" type="multi"  />
+    <image name="Menu.borderLeft_1.png1" type="multi"  />
     <image name="Menu.borderRight_1.png" type="multi"  />
+    <image name="Menu.borderRight_1.png1" type="multi"  />
     <image name="Menu.borderTop_1.png" type="multi"  />
+    <image name="Menu.borderTop_1.png1" type="multi"  />
     <image name="Menu.borderTopL_1.png" type="multi"  />
+    <image name="Menu.borderTopL_1.png1" type="multi"  />
     <image name="Menu.borderTopR_1.png" type="multi"  />
+    <image name="Menu.borderTopR_1.png1" type="multi"  />
+    <image name="MultiButton.borderBottom_2.png" type="multi"  />
+    <image name="MultiButton.borderBottomL_2.png" type="multi"  />
+    <image name="MultiButton.borderBottomR_2.png" type="multi"  />
+    <image name="MultiButton.borderCenter_2.png" type="multi"  />
+    <image name="MultiButton.borderLeft_2.png" type="multi"  />
+    <image name="MultiButton.borderRight_2.png" type="multi"  />
+    <image name="MultiButton.borderTop_2.png" type="multi"  />
+    <image name="MultiButton.borderTopL_2.png" type="multi"  />
+    <image name="MultiButton.borderTopR_2.png" type="multi"  />
+    <image name="MultiLine2.borderBottom_1.png" type="multi"  />
+    <image name="MultiLine2.borderBottomL_1.png" type="multi"  />
+    <image name="MultiLine2.borderBottomR_1.png" type="multi"  />
+    <image name="MultiLine2.borderCenter_1.png" type="multi"  />
+    <image name="MultiLine2.borderLeft_1.png" type="multi"  />
+    <image name="MultiLine2.borderRight_1.png" type="multi"  />
+    <image name="MultiLine2.borderTop_1.png" type="multi"  />
+    <image name="MultiLine2.borderTopL_1.png" type="multi"  />
+    <image name="MultiLine2.borderTopR_1.png" type="multi"  />
+    <image name="nav-bar@2x_button_center.png" type="multi"  />
+    <image name="nav-bar@2x_button_left.png" type="multi"  />
+    <image name="nav-bar@2x_button_right.png" type="multi"  />
     <image name="Radio_btn_Normal.png" type="multi"  />
+    <image name="Radio_btn_Normal.png1" type="multi"  />
     <image name="Radio_btn_Press.png" type="multi"  />
+    <image name="Radio_btn_Press.png1" type="multi"  />
+    <image name="RedButton.borderBottom_1.png" type="multi"  />
+    <image name="RedButton.borderBottomL_1.png" type="multi"  />
+    <image name="RedButton.borderBottomR_1.png" type="multi"  />
+    <image name="RedButton.borderCenter_1.png" type="multi"  />
+    <image name="RedButton.borderLeft_1.png" type="multi"  />
+    <image name="RedButton.borderRight_1.png" type="multi"  />
+    <image name="RedButton.borderTop_1.png" type="multi"  />
+    <image name="RedButton.borderTopL_1.png" type="multi"  />
+    <image name="RedButton.borderTopR_1.png" type="multi"  />
+    <image name="RedButton.press#borderBottom_1.png" type="multi"  />
+    <image name="RedButton.press#borderBottomL_1.png" type="multi"  />
+    <image name="RedButton.press#borderBottomR_1.png" type="multi"  />
+    <image name="RedButton.press#borderCenter_1.png" type="multi"  />
+    <image name="RedButton.press#borderLeft_1.png" type="multi"  />
+    <image name="RedButton.press#borderRight_1.png" type="multi"  />
+    <image name="RedButton.press#borderTop_1.png" type="multi"  />
+    <image name="RedButton.press#borderTopL_1.png" type="multi"  />
+    <image name="RedButton.press#borderTopR_1.png" type="multi"  />
+    <image name="slider-bg@2x_center.png" type="multi"  />
+    <image name="slider-bg@2x_left.png" type="multi"  />
+    <image name="slider-bg@2x_right.png" type="multi"  />
+    <image name="slider-fill@2x_center.png" type="multi"  />
+    <image name="slider-fill@2x_left.png" type="multi"  />
+    <image name="slider-fill@2x_right.png" type="multi"  />
     <image name="Slider.borderTop_2.png_veryHigh.png" type="multi"  />
+    <image name="Slider.borderTop_2.png_veryHigh.png1" type="multi"  />
     <image name="Slider.borderTop_2.png_veryHigh_FULL.png" type="multi"  />
+    <image name="Slider.borderTop_2.png_veryHigh_FULL.png1" type="multi"  />
     <image name="Slider.borderTopL_2.png_veryHigh.png" type="multi"  />
+    <image name="Slider.borderTopL_2.png_veryHigh.png1" type="multi"  />
     <image name="Slider.borderTopL_2.png_veryHigh_FULL.png" type="multi"  />
+    <image name="Slider.borderTopL_2.png_veryHigh_FULL.png1" type="multi"  />
     <image name="Slider.borderTopR_2.png_veryHigh.png" type="multi"  />
+    <image name="Slider.borderTopR_2.png_veryHigh.png1" type="multi"  />
     <image name="Slider.borderTopR_2.png_veryHigh_FULL.png" type="multi"  />
+    <image name="Slider.borderTopR_2.png_veryHigh_FULL.png1" type="multi"  />
     <image name="switch_mask.png" type="multi"  />
+    <image name="switch_mask.png1" type="multi"  />
     <image name="switch_off.png" type="multi"  />
+    <image name="switch_off.png1" type="multi"  />
     <image name="switch_on.png" type="multi"  />
+    <image name="switch_on.png1" type="multi"  />
     <image name="TextField.borderBottom_1.png" type="multi"  />
+    <image name="TextField.borderBottom_1.png1" type="multi"  />
+    <image name="TextField.borderBottom_1.png2" type="multi"  />
     <image name="TextField.borderBottomL_1.png" type="multi"  />
+    <image name="TextField.borderBottomL_1.png1" type="multi"  />
+    <image name="TextField.borderBottomL_1.png2" type="multi"  />
     <image name="TextField.borderBottomR_1.png" type="multi"  />
+    <image name="TextField.borderBottomR_1.png1" type="multi"  />
+    <image name="TextField.borderBottomR_1.png2" type="multi"  />
     <image name="TextField.borderCenter_1.png" type="multi"  />
+    <image name="TextField.borderCenter_1.png1" type="multi"  />
+    <image name="TextField.borderCenter_1.png2" type="multi"  />
     <image name="TextField.borderLeft_1.png" type="multi"  />
+    <image name="TextField.borderLeft_1.png1" type="multi"  />
+    <image name="TextField.borderLeft_1.png2" type="multi"  />
     <image name="TextField.borderRight_1.png" type="multi"  />
+    <image name="TextField.borderRight_1.png1" type="multi"  />
+    <image name="TextField.borderRight_1.png2" type="multi"  />
     <image name="TextField.borderTop_1.png" type="multi"  />
+    <image name="TextField.borderTop_1.png1" type="multi"  />
+    <image name="TextField.borderTop_1.png2" type="multi"  />
     <image name="TextField.borderTopL_1.png" type="multi"  />
+    <image name="TextField.borderTopL_1.png1" type="multi"  />
+    <image name="TextField.borderTopL_1.png2" type="multi"  />
     <image name="TextField.borderTopR_1.png" type="multi"  />
-    <theme name="Theme">
-        <val key="@includeNativeBool" value="true" />
-    </theme>
+    <image name="TextField.borderTopR_1.png1" type="multi"  />
+    <image name="TextField.borderTopR_1.png2" type="multi"  />
     <theme name="Theme 1">
         <val key="@PopupDialogArrowBool" value="false" />
         <val key="@calTitleDayStyleBool" value="true" />
         <val key="@calTransitionVertBool" value="false" />
-        <val key="@calendarLeftImage" value="cal_left_arrow.png" />
-        <val key="@calendarRightImage" value="cal_right_arrow.png" />
+        <val key="@calendarLeftImage" value="cal_left_arrow.png1" />
+        <val key="@calendarRightImage" value="cal_right_arrow.png1" />
         <val key="@centeredPopupBool" value="false" />
-        <val key="@checkBoxCheckDisFocusImage" value="Check-Box_Normal.png" />
-        <val key="@checkBoxCheckedFocusImage" value="Check-Box_Press.png" />
-        <val key="@checkBoxCheckedImage" value="Check-Box_Press.png" />
+        <val key="@checkBoxCheckDisFocusImage" value="Check-Box_Normal.png1" />
+        <val key="@checkBoxCheckedFocusImage" value="Check-Box_Press.png1" />
+        <val key="@checkBoxCheckedImage" value="Check-Box_Press.png1" />
         <val key="@checkBoxOppositeSideBool" value="true" />
-        <val key="@checkBoxUncheckedFocusImage" value="Check-Box_Normal.png" />
-        <val key="@checkBoxUncheckedImage" value="Check-Box_Normal.png" />
-        <val key="@comboImage" value="combo.png" />
+        <val key="@checkBoxUncheckedFocusImage" value="Check-Box_Normal.png1" />
+        <val key="@checkBoxUncheckedImage" value="Check-Box_Normal.png1" />
+        <val key="@comboImage" value="combo.png1" />
         <val key="@commandBehavior" value="Side" />
         <val key="@dialogTransitionIn" value="fade" />
         <val key="@dialogTransitionOut" value="fade" />
@@ -99,18 +291,18 @@
         <val key="@onOffIOSModeBool" value="true" />
         <val key="@otherPopupRendererBool" value="false" />
         <val key="@pureTouchBool" value="true" />
-        <val key="@radioSelectedFocusImage" value="Radio_btn_Press.png" />
-        <val key="@radioSelectedImage" value="Radio_btn_Press.png" />
-        <val key="@radioUnselectedFocusImage" value="Radio_btn_Normal.png" />
-        <val key="@radioUnselectedImage" value="Radio_btn_Normal.png" />
-        <val key="@switchMaskImage" value="switch_mask.png" />
-        <val key="@switchOffImage" value="switch_off.png" />
-        <val key="@switchOnImage" value="switch_on.png" />
+        <val key="@radioSelectedFocusImage" value="Radio_btn_Press.png1" />
+        <val key="@radioSelectedImage" value="Radio_btn_Press.png1" />
+        <val key="@radioUnselectedFocusImage" value="Radio_btn_Normal.png1" />
+        <val key="@radioUnselectedImage" value="Radio_btn_Normal.png1" />
+        <val key="@switchMaskImage" value="switch_mask.png1" />
+        <val key="@switchOffImage" value="switch_off.png1" />
+        <val key="@switchOnImage" value="switch_on.png1" />
         <val key="@tabPlacementInt" value="0" />
         <val key="Button.align" value="4" />
         <gradient key="Button.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Button.bgType" value="0" />
-        <border key="Button.border" type="image" i1="Button.borderTop_3.png" i2="Button.borderBottom_3.png" i3="Button.borderLeft_3.png" i4="Button.borderRight_3.png" i5="Button.borderTopL_3.png" i6="Button.borderTopR_3.png" i7="Button.borderBottomL_3.png" i8="Button.borderBottomR_3.png" i9="Button.borderCenter_3.png" />
+        <border key="Button.border" type="image" i1="Button.borderTop_3.png1" i2="Button.borderBottom_3.png1" i3="Button.borderLeft_3.png1" i4="Button.borderRight_3.png1" i5="Button.borderTopL_3.png1" i6="Button.borderTopR_3.png1" i7="Button.borderBottomL_3.png1" i8="Button.borderBottomR_3.png1" i9="Button.borderCenter_3.png1" />
         <val key="Button.fgColor" value="0" />
         <font key="Button.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="Button.marUnit" value="2,2,2,2" />
@@ -120,7 +312,7 @@
         <val key="Button.press#align" value="4" />
         <gradient key="Button.press#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Button.press#bgType" value="0" />
-        <border key="Button.press#border" type="image" i1="Button.press#borderTop_1.png" i2="Button.press#borderBottom_1.png" i3="Button.press#borderLeft_1.png" i4="Button.press#borderRight_1.png" i5="Button.press#borderTopL_1.png" i6="Button.press#borderTopR_1.png" i7="Button.press#borderBottomL_1.png" i8="Button.press#borderBottomR_1.png" i9="Button.press#borderCenter_1.png" />
+        <border key="Button.press#border" type="image" i1="Button.press#borderTop_1.png2" i2="Button.press#borderBottom_1.png2" i3="Button.press#borderLeft_1.png2" i4="Button.press#borderRight_1.png2" i5="Button.press#borderTopL_1.png2" i6="Button.press#borderTopR_1.png2" i7="Button.press#borderBottomL_1.png2" i8="Button.press#borderBottomR_1.png2" i9="Button.press#borderCenter_1.png2" />
         <val key="Button.press#fgColor" value="999999" />
         <font key="Button.press#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="Button.press#marUnit" value="2,2,2,2" />
@@ -131,7 +323,7 @@
         <val key="Button.sel#align" value="4" />
         <gradient key="Button.sel#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Button.sel#bgType" value="0" />
-        <border key="Button.sel#border" type="image" i1="Button.borderTop_3.png" i2="Button.borderBottom_3.png" i3="Button.borderLeft_3.png" i4="Button.borderRight_3.png" i5="Button.borderTopL_3.png" i6="Button.borderTopR_3.png" i7="Button.borderBottomL_3.png" i8="Button.borderBottomR_3.png" i9="Button.borderCenter_3.png" />
+        <border key="Button.sel#border" type="image" i1="Button.borderTop_3.png1" i2="Button.borderBottom_3.png1" i3="Button.borderLeft_3.png1" i4="Button.borderRight_3.png1" i5="Button.borderTopL_3.png1" i6="Button.borderTopR_3.png1" i7="Button.borderBottomL_3.png1" i8="Button.borderBottomR_3.png1" i9="Button.borderCenter_3.png1" />
         <val key="Button.sel#fgColor" value="0" />
         <font key="Button.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="Button.sel#marUnit" value="2,2,2,2" />
@@ -316,7 +508,7 @@
         <val key="Container.transparency" value="0" />
         <gradient key="Dialog.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Dialog.bgType" value="0" />
-        <border key="Dialog.border" type="image" i1="Dialog.borderTop_1.png" i2="Dialog.borderBottom_1.png" i3="Dialog.borderLeft_1.png" i4="Dialog.borderRight_1.png" i5="Dialog.borderTopL_1.png" i6="Dialog.borderTopR_1.png" i7="Dialog.borderBottomL_1.png" i8="Dialog.borderBottomR_1.png" i9="Dialog.borderCenter_1.png" />
+        <border key="Dialog.border" type="image" i1="Dialog.borderTop_1.png1" i2="Dialog.borderBottom_1.png1" i3="Dialog.borderLeft_1.png1" i4="Dialog.borderRight_1.png1" i5="Dialog.borderTopL_1.png1" i6="Dialog.borderTopR_1.png1" i7="Dialog.borderBottomL_1.png1" i8="Dialog.borderBottomR_1.png1" i9="Dialog.borderCenter_1.png1" />
         <val key="Dialog.marUnit" value="2,2,2,2" />
         <val key="Dialog.margin" value="1,1,1,1" />
         <val key="Dialog.padUnit" value="2,2,2,2" />
@@ -380,7 +572,7 @@
         <font key="DialogTitle.font" type="ttf" face="0" style="0" size="0" name="native:MainBold" family="native:MainBold" sizeSettings="3" actualSize="4.0" />
         <val key="DialogTitle.transparency" value="0" />
         <val key="Form.bgColor" value="ffffff" />
-        <val key="Form.bgImage" value="img_bgr_tile.png" />
+        <val key="Form.bgImage" value="img_bgr_tile.png1" />
         <val key="Form.bgType" value="2" />
         <val key="Form.transparency" value="255" />
         <val key="ImageViewer.margin" value="0,0,0,0" />
@@ -406,7 +598,7 @@
         <val key="List.sel#padding" value="0,0,0,0" />
         <val key="List.sel#transparency" value="255" />
         <val key="List.transparency" value="255" />
-        <border key="ListRenderer.border" type="image" i1="ComboBox.borderBottom_1.png" i2="border.png" i3="ComboBox.borderBottom_1.png" i4="ComboBox.borderBottom_1.png" i5="ComboBox.borderBottom_1.png" i6="ComboBox.borderBottom_1.png" i7="border.png" i8="border.png" i9="ComboBox.borderBottom_1.png" />
+        <border key="ListRenderer.border" type="image" i1="ComboBox.borderBottom_1.png1" i2="border.png1" i3="ComboBox.borderBottom_1.png1" i4="ComboBox.borderBottom_1.png1" i5="ComboBox.borderBottom_1.png1" i6="ComboBox.borderBottom_1.png1" i7="border.png1" i8="border.png1" i9="ComboBox.borderBottom_1.png1" />
         <val key="ListRenderer.fgColor" value="0" />
         <val key="ListRenderer.margin" value="0,0,0,0" />
         <val key="ListRenderer.padUnit" value="2,2,2,2" />
@@ -422,7 +614,7 @@
         <val key="ListRendererFocus.transparency" value="0" />
         <gradient key="Menu.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Menu.bgType" value="0" />
-        <border key="Menu.border" type="image" i1="Menu.borderTop_1.png" i2="Menu.borderBottom_1.png" i3="Menu.borderLeft_1.png" i4="Menu.borderRight_1.png" i5="Menu.borderTopL_1.png" i6="Menu.borderTopR_1.png" i7="Menu.borderBottomL_1.png" i8="Menu.borderBottomR_1.png" i9="Menu.borderCenter_1.png" />
+        <border key="Menu.border" type="image" i1="Menu.borderTop_1.png1" i2="Menu.borderBottom_1.png1" i3="Menu.borderLeft_1.png1" i4="Menu.borderRight_1.png1" i5="Menu.borderTopL_1.png1" i6="Menu.borderTopR_1.png1" i7="Menu.borderBottomL_1.png1" i8="Menu.borderBottomR_1.png1" i9="Menu.borderCenter_1.png1" />
         <val key="Menu.marUnit" value="2,2,2,2" />
         <val key="Menu.margin" value="1,1,1,1" />
         <val key="Menu.padUnit" value="2,2,2,2" />
@@ -501,7 +693,7 @@
         <val key="PopupContentPane.padding" value="1,1,0,0" />
         <gradient key="PopupDialog.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="PopupDialog.bgType" value="0" />
-        <border key="PopupDialog.border" type="image" i1="Dialog.borderTop_1.png" i2="Dialog.borderBottom_1.png" i3="Dialog.borderLeft_1.png" i4="Dialog.borderRight_1.png" i5="Dialog.borderTopL_1.png" i6="Dialog.borderTopR_1.png" i7="Dialog.borderBottomL_1.png" i8="Dialog.borderBottomR_1.png" i9="Dialog.borderCenter_1.png" />
+        <border key="PopupDialog.border" type="image" i1="Dialog.borderTop_1.png1" i2="Dialog.borderBottom_1.png1" i3="Dialog.borderLeft_1.png1" i4="Dialog.borderRight_1.png1" i5="Dialog.borderTopL_1.png1" i6="Dialog.borderTopR_1.png1" i7="Dialog.borderBottomL_1.png1" i8="Dialog.borderBottomR_1.png1" i9="Dialog.borderCenter_1.png1" />
         <val key="PopupDialog.marUnit" value="2,2,2,2" />
         <val key="PopupDialog.margin" value="1,1,1,1" />
         <val key="PopupDialog.padUnit" value="2,2,2,2" />
@@ -583,27 +775,27 @@
         <val key="SideCommand.textDecoration" value="0" />
         <val key="SideCommand.transparency" value="0" />
         <val key="SideNavigationPanel.bgColor" value="2f97c7" />
-        <val key="SideNavigationPanel.bgImage" value="img_bgr_side_bar_title.png" />
+        <val key="SideNavigationPanel.bgImage" value="img_bgr_side_bar_title.png1" />
         <val key="SideNavigationPanel.bgType" value="2" />
         <val key="SideNavigationPanel.margin" value="0,0,0,0" />
         <val key="SideNavigationPanel.padding" value="0,0,0,0" />
         <val key="SideNavigationPanel.transparency" value="255" />
         <gradient key="Slider.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Slider.bgType" value="0" />
-        <border key="Slider.border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh.png" i2="Slider.borderTopR_2.png_veryHigh.png" i3="Slider.borderTop_2.png_veryHigh.png" />
+        <border key="Slider.border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh.png1" i2="Slider.borderTopR_2.png_veryHigh.png1" i3="Slider.borderTop_2.png_veryHigh.png1" />
         <val key="Slider.margin" value="0,0,0,0" />
         <val key="Slider.padUnit" value="2,2,2,2" />
         <val key="Slider.padding" value="0,0,4,4" />
         <gradient key="Slider.press#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Slider.press#bgType" value="0" />
-        <border key="Slider.press#border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh.png" i2="Slider.borderTopR_2.png_veryHigh.png" i3="Slider.borderTop_2.png_veryHigh.png" />
+        <border key="Slider.press#border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh.png1" i2="Slider.borderTopR_2.png_veryHigh.png1" i3="Slider.borderTop_2.png_veryHigh.png1" />
         <val key="Slider.press#margin" value="0,0,0,0" />
         <val key="Slider.press#padUnit" value="2,2,2,2" />
         <val key="Slider.press#padding" value="0,0,4,4" />
         <val key="Slider.press#transparency" value="0" />
         <gradient key="Slider.sel#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Slider.sel#bgType" value="0" />
-        <border key="Slider.sel#border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh.png" i2="Slider.borderTopR_2.png_veryHigh.png" i3="Slider.borderTop_2.png_veryHigh.png" />
+        <border key="Slider.sel#border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh.png1" i2="Slider.borderTopR_2.png_veryHigh.png1" i3="Slider.borderTop_2.png_veryHigh.png1" />
         <val key="Slider.sel#margin" value="0,0,0,0" />
         <val key="Slider.sel#padUnit" value="2,2,2,2" />
         <val key="Slider.sel#padding" value="0,0,4,4" />
@@ -611,20 +803,20 @@
         <val key="Slider.transparency" value="0" />
         <gradient key="SliderFull.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="SliderFull.bgType" value="0" />
-        <border key="SliderFull.border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh_FULL.png" i2="Slider.borderTopR_2.png_veryHigh_FULL.png" i3="Slider.borderTop_2.png_veryHigh_FULL.png" />
+        <border key="SliderFull.border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh_FULL.png1" i2="Slider.borderTopR_2.png_veryHigh_FULL.png1" i3="Slider.borderTop_2.png_veryHigh_FULL.png1" />
         <val key="SliderFull.margin" value="0,0,0,0" />
         <val key="SliderFull.padUnit" value="2,2,2,2" />
         <val key="SliderFull.padding" value="0,0,4,4" />
         <gradient key="SliderFull.press#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="SliderFull.press#bgType" value="0" />
-        <border key="SliderFull.press#border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh_FULL.png" i2="Slider.borderTopR_2.png_veryHigh_FULL.png" i3="Slider.borderTop_2.png_veryHigh_FULL.png" />
+        <border key="SliderFull.press#border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh_FULL.png1" i2="Slider.borderTopR_2.png_veryHigh_FULL.png1" i3="Slider.borderTop_2.png_veryHigh_FULL.png1" />
         <val key="SliderFull.press#margin" value="0,0,0,0" />
         <val key="SliderFull.press#padUnit" value="2,2,2,2" />
         <val key="SliderFull.press#padding" value="0,0,4,4" />
         <val key="SliderFull.press#transparency" value="0" />
         <gradient key="SliderFull.sel#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="SliderFull.sel#bgType" value="0" />
-        <border key="SliderFull.sel#border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh_FULL.png" i2="Slider.borderTopR_2.png_veryHigh_FULL.png" i3="Slider.borderTop_2.png_veryHigh_FULL.png" />
+        <border key="SliderFull.sel#border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh_FULL.png1" i2="Slider.borderTopR_2.png_veryHigh_FULL.png1" i3="Slider.borderTop_2.png_veryHigh_FULL.png1" />
         <val key="SliderFull.sel#margin" value="0,0,0,0" />
         <val key="SliderFull.sel#padUnit" value="2,2,2,2" />
         <val key="SliderFull.sel#padding" value="0,0,4,4" />
@@ -655,14 +847,14 @@
         <val key="Tabs.transparency" value="255" />
         <gradient key="TextArea.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="TextArea.bgType" value="0" />
-        <border key="TextArea.border" type="image" i1="TextField.borderTop_1.png" i2="TextField.borderBottom_1.png" i3="TextField.borderLeft_1.png" i4="TextField.borderRight_1.png" i5="TextField.borderTopL_1.png" i6="TextField.borderTopR_1.png" i7="TextField.borderBottomL_1.png" i8="TextField.borderBottomR_1.png" i9="TextField.borderCenter_1.png" />
+        <border key="TextArea.border" type="image" i1="TextField.borderTop_1.png2" i2="TextField.borderBottom_1.png2" i3="TextField.borderLeft_1.png2" i4="TextField.borderRight_1.png2" i5="TextField.borderTopL_1.png2" i6="TextField.borderTopR_1.png2" i7="TextField.borderBottomL_1.png2" i8="TextField.borderBottomR_1.png2" i9="TextField.borderCenter_1.png2" />
         <val key="TextArea.fgColor" value="0" />
         <font key="TextArea.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="TextArea.marUnit" value="2,2,2,2" />
         <val key="TextArea.margin" value="1,1,1,1" />
         <gradient key="TextArea.press#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="TextArea.press#bgType" value="0" />
-        <border key="TextArea.press#border" type="image" i1="TextField.borderTop_1.png" i2="TextField.borderBottom_1.png" i3="TextField.borderLeft_1.png" i4="TextField.borderRight_1.png" i5="TextField.borderTopL_1.png" i6="TextField.borderTopR_1.png" i7="TextField.borderBottomL_1.png" i8="TextField.borderBottomR_1.png" i9="TextField.borderCenter_1.png" />
+        <border key="TextArea.press#border" type="image" i1="TextField.borderTop_1.png2" i2="TextField.borderBottom_1.png2" i3="TextField.borderLeft_1.png2" i4="TextField.borderRight_1.png2" i5="TextField.borderTopL_1.png2" i6="TextField.borderTopR_1.png2" i7="TextField.borderBottomL_1.png2" i8="TextField.borderBottomR_1.png2" i9="TextField.borderCenter_1.png2" />
         <val key="TextArea.press#fgColor" value="0" />
         <font key="TextArea.press#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="TextArea.press#marUnit" value="2,2,2,2" />
@@ -670,7 +862,7 @@
         <val key="TextArea.press#transparency" value="0" />
         <gradient key="TextArea.sel#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="TextArea.sel#bgType" value="0" />
-        <border key="TextArea.sel#border" type="image" i1="TextField.borderTop_1.png" i2="TextField.borderBottom_1.png" i3="TextField.borderLeft_1.png" i4="TextField.borderRight_1.png" i5="TextField.borderTopL_1.png" i6="TextField.borderTopR_1.png" i7="TextField.borderBottomL_1.png" i8="TextField.borderBottomR_1.png" i9="TextField.borderCenter_1.png" />
+        <border key="TextArea.sel#border" type="image" i1="TextField.borderTop_1.png2" i2="TextField.borderBottom_1.png2" i3="TextField.borderLeft_1.png2" i4="TextField.borderRight_1.png2" i5="TextField.borderTopL_1.png2" i6="TextField.borderTopR_1.png2" i7="TextField.borderBottomL_1.png2" i8="TextField.borderBottomR_1.png2" i9="TextField.borderCenter_1.png2" />
         <val key="TextArea.sel#fgColor" value="0" />
         <font key="TextArea.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="TextArea.sel#marUnit" value="2,2,2,2" />
@@ -679,14 +871,14 @@
         <val key="TextArea.transparency" value="0" />
         <gradient key="TextField.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="TextField.bgType" value="0" />
-        <border key="TextField.border" type="image" i1="TextField.borderTop_1.png" i2="TextField.borderBottom_1.png" i3="TextField.borderLeft_1.png" i4="TextField.borderRight_1.png" i5="TextField.borderTopL_1.png" i6="TextField.borderTopR_1.png" i7="TextField.borderBottomL_1.png" i8="TextField.borderBottomR_1.png" i9="TextField.borderCenter_1.png" />
+        <border key="TextField.border" type="image" i1="TextField.borderTop_1.png2" i2="TextField.borderBottom_1.png2" i3="TextField.borderLeft_1.png2" i4="TextField.borderRight_1.png2" i5="TextField.borderTopL_1.png2" i6="TextField.borderTopR_1.png2" i7="TextField.borderBottomL_1.png2" i8="TextField.borderBottomR_1.png2" i9="TextField.borderCenter_1.png2" />
         <val key="TextField.fgColor" value="0" />
         <font key="TextField.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="TextField.marUnit" value="2,2,2,2" />
         <val key="TextField.margin" value="1,1,1,1" />
         <gradient key="TextField.press#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="TextField.press#bgType" value="0" />
-        <border key="TextField.press#border" type="image" i1="TextField.borderTop_1.png" i2="TextField.borderBottom_1.png" i3="TextField.borderLeft_1.png" i4="TextField.borderRight_1.png" i5="TextField.borderTopL_1.png" i6="TextField.borderTopR_1.png" i7="TextField.borderBottomL_1.png" i8="TextField.borderBottomR_1.png" i9="TextField.borderCenter_1.png" />
+        <border key="TextField.press#border" type="image" i1="TextField.borderTop_1.png2" i2="TextField.borderBottom_1.png2" i3="TextField.borderLeft_1.png2" i4="TextField.borderRight_1.png2" i5="TextField.borderTopL_1.png2" i6="TextField.borderTopR_1.png2" i7="TextField.borderBottomL_1.png2" i8="TextField.borderBottomR_1.png2" i9="TextField.borderCenter_1.png2" />
         <val key="TextField.press#fgColor" value="0" />
         <font key="TextField.press#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="TextField.press#marUnit" value="2,2,2,2" />
@@ -694,7 +886,7 @@
         <val key="TextField.press#transparency" value="0" />
         <gradient key="TextField.sel#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="TextField.sel#bgType" value="0" />
-        <border key="TextField.sel#border" type="image" i1="TextField.borderTop_1.png" i2="TextField.borderBottom_1.png" i3="TextField.borderLeft_1.png" i4="TextField.borderRight_1.png" i5="TextField.borderTopL_1.png" i6="TextField.borderTopR_1.png" i7="TextField.borderBottomL_1.png" i8="TextField.borderBottomR_1.png" i9="TextField.borderCenter_1.png" />
+        <border key="TextField.sel#border" type="image" i1="TextField.borderTop_1.png2" i2="TextField.borderBottom_1.png2" i3="TextField.borderLeft_1.png2" i4="TextField.borderRight_1.png2" i5="TextField.borderTopL_1.png2" i6="TextField.borderTopR_1.png2" i7="TextField.borderBottomL_1.png2" i8="TextField.borderBottomR_1.png2" i9="TextField.borderCenter_1.png2" />
         <val key="TextField.sel#fgColor" value="0" />
         <font key="TextField.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="TextField.sel#marUnit" value="2,2,2,2" />
@@ -755,4 +947,22 @@
         <border key="sel#border" type="empty" />
         <val key="transparency" value="0" />
     </theme>
+    <image name="TitleArea.borderBottom_2.png" type="multi"  />
+    <image name="TitleArea.borderBottomL_2.png" type="multi"  />
+    <image name="TitleArea.borderBottomR_2.png" type="multi"  />
+    <image name="TitleArea.borderCenter_2.png" type="multi"  />
+    <image name="TitleArea.borderLeft_2.png" type="multi"  />
+    <image name="TitleArea.borderRight_2.png" type="multi"  />
+    <image name="TitleArea.borderTop_2.png" type="multi"  />
+    <image name="TitleArea.borderTopL_2.png" type="multi"  />
+    <image name="TitleArea.borderTopR_2.png" type="multi"  />
+    <image name="Updates.borderBottom_1.png" type="multi"  />
+    <image name="Updates.borderBottomL_1.png" type="multi"  />
+    <image name="Updates.borderBottomR_1.png" type="multi"  />
+    <image name="Updates.borderCenter_1.png" type="multi"  />
+    <image name="Updates.borderLeft_1.png" type="multi"  />
+    <image name="Updates.borderRight_1.png" type="multi"  />
+    <image name="Updates.borderTop_1.png" type="multi"  />
+    <image name="Updates.borderTopL_1.png" type="multi"  />
+    <image name="Updates.borderTopR_1.png" type="multi"  />
 </resource>
