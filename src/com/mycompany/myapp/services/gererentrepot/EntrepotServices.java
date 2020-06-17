@@ -44,7 +44,7 @@ public class EntrepotServices {
 //ajouter Entrepot
     public boolean addEntrepot(Entrepot e) {
     String url = Statics.GestionEntrepot_URL + "entrepotM/new?adresse=" +e.getAdresse_entrepot()+"&numFiscale="+e.getNum_fiscale()+"&quantiteMax="+e.getQuantite_max()+"&etat="+e.getEtat()+"&prixLocation="+e.getPrix_location()+"&entreprise="+e.getEntreprise()+
-                    "&id="+e.getFk_id_fournisseur().getId();
+                    "&id="+Statics.getIdSession();
       req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -75,7 +75,7 @@ public class EntrepotServices {
         try {
             entrepots=new ArrayList<>();
             JSONParser j = new JSONParser();
-            Map<String,Object> entrepotsListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+                Map<String,Object> entrepotsListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
             
             List<Map<String,Object>> list = (List<Map<String,Object>>)entrepotsListJson.get("root");
             for(Map<String,Object> obj : list){
@@ -121,7 +121,7 @@ public class EntrepotServices {
     }
     
     public ArrayList<Entrepot> getAllEntrepots(){
-        String url = Statics.GestionEntrepot_URL+"entrepotM/?idUser="+5;
+        String url = Statics.GestionEntrepot_URL+"entrepotM/?idUser="+Statics.getIdSession();
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -241,7 +241,7 @@ public class EntrepotServices {
     }
     
     public ArrayList<Entrepot> getALouerEntrepots(){
-        String url = Statics.GestionEntrepot_URL+"entrepotM/alouer?idUser="+5;
+        String url = Statics.GestionEntrepot_URL+"entrepotM/alouer?idUser="+Statics.getIdSession();
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -291,7 +291,7 @@ public class EntrepotServices {
     }
     
     public ArrayList<Entrepot> getLoueEntrepots(){
-        String url = Statics.GestionEntrepot_URL+"entrepotM/loue?idUser="+5;
+        String url = Statics.GestionEntrepot_URL+"entrepotM/loue?idUser="+Statics.getIdSession();
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

@@ -17,19 +17,19 @@ import com.codename1.ui.layouts.BoxLayout;
 public class Home extends Form{
 Form current;
     public Home() {
-        current=this;
-        setTitle("Home");
-        setLayout(BoxLayout.y());
-        
-        add(new Label("Choose an option"));
-        Button btnAddTask = new Button("Add Task");
-        Button btnListTasks = new Button("List Tasks");
-        
-       btnAddTask.addActionListener(e-> new AddEntrepot(current).show());
-        btnListTasks.addActionListener(e-> new ListEntrepot(current).show());
-        addAll(btnAddTask,btnListTasks);
-        
-         
+//        current=this;
+//        setTitle("Home");
+//        setLayout(BoxLayout.y());
+//        
+//        add(new Label("Choose an option"));
+//        Button btnAddTask = new Button("Add Task");
+//        Button btnListTasks = new Button("List Tasks");
+//        
+//       btnAddTask.addActionListener(e-> new AddEntrepot(current).show());
+//        btnListTasks.addActionListener(e-> new ListEntrepot(current).show());
+//        addAll(btnAddTask,btnListTasks);
+//        
+//         
     }}
     
 

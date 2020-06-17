@@ -17,13 +17,14 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.services.gererentrepot.EntrepotServices;
+import com.mycompany.myapp.entities.User;
 
 /**
  *
  * @author asus
  */
 public class ModifierForm  extends Form{
-        public ModifierForm(Form previous, Entrepot ent) {
+        public ModifierForm(Form previous, Entrepot ent, User u) {
     
 setTitle("Modifier l'entrepot");
         setLayout(BoxLayout.y());
@@ -68,7 +69,7 @@ prix.setText(String.valueOf(pr));
         });
         
         addAll(entrep,etat,prix,btnValider);
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->new DetailsForm(previous, id, ent).showBack());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->new DetailsForm(previous, id, ent, u).showBack());
             }         
  
     

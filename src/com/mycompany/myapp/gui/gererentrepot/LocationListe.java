@@ -29,6 +29,8 @@ import com.mycompany.myapp.services.gererentrepot.EntrepotServices;
 import com.mycompany.myapp.utils.Statics;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
+import com.mycompany.myapp.entities.User;
+
 
 /**
  *
@@ -37,7 +39,7 @@ import org.joda.time.Days;
 public class LocationListe extends Form{
     
     Form current;
-    public LocationListe(Form previous) {
+    public LocationListe(Form previous, User u) {
       current = this;
         setTitle("Liste des Location");
         this.setLayout( new TableLayout(CENTER,1));
@@ -64,7 +66,7 @@ public class LocationListe extends Form{
                          try{
                  if(LocationServices.getInstance().DeleteLocation(l.getId_location()))
                  {  Dialog.show("Success","la location est supprimé avec succes",new Command("OK"));
-                                new ListEntrepot(previous).show();}
+                                new ListEntrepot(current, u).show();}
                         else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
                     } catch (NumberFormatException e) {
@@ -97,13 +99,18 @@ public class LocationListe extends Form{
      
 
         }    
-        
+         if(u.getRole().equals("Client")){
+    getToolbar().addMaterialCommandToOverflowMenu("Entrepot A Louer",FontImage.MATERIAL_SHOP ,e-> new EntrepotALouerForm(previous, u));
+
+            }
+            else{
         
         
         
     getToolbar().addMaterialCommandToOverflowMenu("Ajouter Entrepot",FontImage.MATERIAL_ADD,e-> new AddEntrepot(current).show());
-    getToolbar().addMaterialCommandToOverflowMenu("Entrepot Loué",FontImage.MATERIAL_HIGHLIGHT,e-> new EntrepotLoueForm(previous).show());
-    getToolbar().addMaterialCommandToOverflowMenu("Entrepot A  Louer",FontImage.MATERIAL_SHOP ,e-> new EntrepotALouerForm().show());
-    getToolbar().addMaterialCommandToOverflowMenu("Liste des entrepots",FontImage.MATERIAL_SHOP ,e-> new ListEntrepot(previous).show());
+    getToolbar().addMaterialCommandToOverflowMenu("Entrepot Loué",FontImage.MATERIAL_HIGHLIGHT,e-> new EntrepotLoueForm(previous, u).show());
+ getToolbar().addMaterialCommandToOverflowMenu("Entrepot A  Louer",FontImage.MATERIAL_SHOP ,e-> new EntrepotALouerForm(previous,u).show());
+    getToolbar().addMaterialCommandToOverflowMenu("Liste des entrepots",FontImage.MATERIAL_SHOP ,e-> new ListEntrepot(previous, u).show());
+    }
     }
 }

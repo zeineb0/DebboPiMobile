@@ -16,13 +16,15 @@ import com.codename1.ui.plaf.Border;
 import com.codename1.ui.table.TableLayout;
 import com.mycompany.myapp.services.gererentrepot.EntrepotServices;
 import com.mycompany.myapp.entities.Entrepot;
+import com.mycompany.myapp.entities.User;
+
 /**
  *
  * @author asus
  */
 public class ListEntrepot extends Form{
     Form current;
-    public ListEntrepot(Form previous) {
+    public ListEntrepot(Form previous, User u) {
         current = this;
         setTitle("Liste des Entrepots");
         this.setLayout( new TableLayout(CENTER,2));
@@ -49,7 +51,7 @@ public class ListEntrepot extends Form{
             @Override
             public void actionPerformed(ActionEvent evt) {
        int id = e.getId_entrepot();
-       new DetailsForm(previous, id, e).show();
+       new DetailsForm(previous, id, e, u).show();
         
                
             }
@@ -58,9 +60,9 @@ public class ListEntrepot extends Form{
 
     }  
         getToolbar().addMaterialCommandToOverflowMenu("Ajouter Entrepot",FontImage.MATERIAL_ADD,e-> new AddEntrepot(current).show());
-        getToolbar().addMaterialCommandToOverflowMenu("Entrepot Loué",FontImage.MATERIAL_HIGHLIGHT,e-> new EntrepotLoueForm(previous).show());
-        getToolbar().addMaterialCommandToOverflowMenu("Entrepot A  Louer",FontImage.MATERIAL_SHOP ,e-> new EntrepotALouerForm().show());
-        getToolbar().addMaterialCommandToOverflowMenu("Mes Locations",FontImage.MATERIAL_SHOP ,e-> new LocationListe(previous).show());
+        getToolbar().addMaterialCommandToOverflowMenu("Entrepot Loué",FontImage.MATERIAL_HIGHLIGHT,e-> new EntrepotLoueForm(previous, u).show());
+      //  getToolbar().addMaterialCommandToOverflowMenu("Entrepot A  Louer",FontImage.MATERIAL_SHOP ,e-> new EntrepotALouerForm(previous, u).show());
+        getToolbar().addMaterialCommandToOverflowMenu("Mes Locations",FontImage.MATERIAL_SHOP ,e-> new LocationListe(previous, u).show());
         
            
           

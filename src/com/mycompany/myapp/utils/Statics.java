@@ -50,7 +50,9 @@ public class Statics {
 
     public static final String GHAZI_URL="http://localhost/DebboWeb/web/app_dev.php/Mobile";
     public static final String pattern = "MM-dd-yyyy";
+    public static final String pattern1 = "dd-MM-yyyy";
     public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+    public static final SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat(pattern1);
     public static final String BASEZ_URL="http://localhost/DebboWeb/web/app_dev.php/Stock";
        
     public static  Panier panier= new Panier(8);
@@ -59,6 +61,6 @@ public class Statics {
        return d;
     };
   
-    public static final String GestionEntrepot_URL="http://localhost/DebboPiWeb/web/app_dev.php/";
+    public static final String GestionEntrepot_URL="http://localhost/DebboWeb/web/app_dev.php/";
 
 }

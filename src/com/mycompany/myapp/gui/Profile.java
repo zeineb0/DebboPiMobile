@@ -15,6 +15,9 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Style;
 import com.mycompany.myapp.entities.User;
 import com.mycompany.myapp.gui.commande.CommandeForm;
+import com.mycompany.myapp.gui.gererentrepot.EntrepotALouerForm;
+import com.mycompany.myapp.gui.gererentrepot.ListEntrepot;
+import com.mycompany.myapp.gui.gererentrepot.LocationListe;
 import com.mycompany.myapp.transporteur.gui.HomeContratFrom;
 import com.mycompany.myapp.transporteur.gui.HomeTransporteurForm;
 import com.mycompany.myapp.transporteur.gui.map;
@@ -82,7 +85,7 @@ public class Profile extends Form {
        });  
                    getToolbar().addCommandToLeftSideMenu("location",  null , (evt) -> {
           
-           new CommandeForm(profile).show();
+           new EntrepotALouerForm(profile, u).show();
         
        });  
          } 
@@ -94,6 +97,10 @@ public class Profile extends Form {
        });  
                    getToolbar().addCommandToLeftSideMenu("Contrat",  null , (evt) -> {
                        new HomeContratFrom(profile).show();
+       
+       });  
+                   getToolbar().addCommandToLeftSideMenu("Entrepot",  null , (evt) -> {
+                       new ListEntrepot(profile, u).show();
        
        });  
          } 

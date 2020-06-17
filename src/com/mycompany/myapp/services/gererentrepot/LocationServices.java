@@ -45,9 +45,10 @@ public class LocationServices {
     
     //ajouter Entrepot
     public boolean addLocation(Location l , int id) {
-    String url = Statics.GestionEntrepot_URL + "locationM/new/"+id+"?dateDebLocation="+ Statics.simpleDateFormat.format(l.getDate_deb_location())+"&dateFinLocation="+Statics.simpleDateFormat.format(l.getDate_fin_location())+"&prixLocation="+l.getPrix_location()+ "&id="+l.getFK_id_user().getId()+"&etat="+"En Attente";
+    String url = Statics.GestionEntrepot_URL + "locationM/new/"+id+"?dateDebLocation="+ Statics.simpleDateFormat1.format(l.getDate_deb_location())+"&dateFinLocation="+Statics.simpleDateFormat1.format(l.getDate_fin_location())+"&prixLocation="+l.getPrix_location()+ "&id="+Statics.getIdSession()+"&etat="+"En Attente";
             
             req.setUrl(url);
+            System.out.println(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -114,7 +115,7 @@ public class LocationServices {
    
     
     public ArrayList<Location> getAllLocations(){
-        String url = Statics.GestionEntrepot_URL+"locationM/?idUser="+5;
+        String url = Statics.GestionEntrepot_URL+"locationM/?idUser="+Statics.getIdSession();
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

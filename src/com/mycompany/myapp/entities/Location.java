@@ -32,11 +32,10 @@ public class Location {
     }
 
   
- public Location( Date date_deb_location, Date date_fin_location, double prix_location,  User FK_id_user) {
+ public Location( Date date_deb_location, Date date_fin_location, double prix_location) {
         this.date_deb_location = date_deb_location;
         this.date_fin_location = date_fin_location;
         this.prix_location = prix_location;
-        this.FK_id_user = FK_id_user;
     }
   
 

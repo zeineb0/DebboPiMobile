@@ -22,6 +22,7 @@ import com.codename1.ui.plaf.Style;
 import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.User;
 import com.mycompany.myapp.services.gererentrepot.EntrepotServices;
+import com.mycompany.myapp.utils.Statics;
 
 /**
  *
@@ -152,9 +153,9 @@ public class AddEntrepot extends Form{
                     
                     
                     try {
-                        User user=new User(5);
+                       // User user=new User(5);
                         
-                       Entrepot e = new Entrepot(adresse.getText(),Integer.parseInt(num.getText()),Integer.parseInt(quant.getText()),etat.getSelectedItem().toString(), entrep.getText(),Float.parseFloat(prix.getText()),user);
+                       Entrepot e = new Entrepot(adresse.getText(),Integer.parseInt(num.getText()),Integer.parseInt(quant.getText()),etat.getSelectedItem().toString(), entrep.getText(),Float.parseFloat(prix.getText()));
                         if( EntrepotServices.getInstance().addEntrepot(e))
                             Dialog.show("Success","Entrepot Ajouté",new Command("OK"));
                         else

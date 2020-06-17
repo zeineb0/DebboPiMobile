@@ -19,13 +19,14 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.table.TableLayout;
 import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.services.gererentrepot.EntrepotServices;
+import com.mycompany.myapp.entities.User;
 
 /**
  *
  * @author asus
  */
 public class DetailsForm extends Form{
-        public DetailsForm(Form previous, int id, Entrepot ent) {
+        public DetailsForm(Form previous, int id, Entrepot ent, User u) {
         setTitle("Entrepot detail");
             
             Entrepot entrepot = EntrepotServices.getInstance().getDetailEntrepots(id);
@@ -60,7 +61,7 @@ public class DetailsForm extends Form{
 try{
                  if( EntrepotServices.getInstance().DeleteEntrepot(id))
                  {  Dialog.show("Success","Entrepot est supprimé avec succes",new Command("OK"));
-                                new ListEntrepot(previous).show();}
+                                new ListEntrepot(previous, u).show();}
                         else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
                     } catch (NumberFormatException e) {
@@ -72,12 +73,12 @@ try{
        modifier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-       new ModifierForm(previous, ent).show();
+       new ModifierForm(previous, ent,u).show();
                 System.out.println(ent.getId_entrepot());
                 System.out.println(id);
             }
         }); 
-                    getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> new ListEntrepot(previous).showBack());
+                    getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> new ListEntrepot(previous, u).showBack());
 
         
         
