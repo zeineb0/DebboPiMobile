@@ -45,7 +45,7 @@ public class MvtService {
         return instance;
     }
     public boolean addMvt(MouvementStock m) {
-        String url = Statics.BASE_URL + "/newP?natureMouvement="+m.getNatureDuStock()+"&dateMouv="+m.getDateMouv()+
+        String url = Statics.BASEZ_URL + "/newP?natureMouvement="+m.getNatureDuStock()+"&dateMouv="+m.getDateMouv()+
         "&fkProduit="+m.getP().getId()+"&fkEntrepot="+m.getE().getId_entrepot();
         
         req.setUrl(url);
@@ -64,7 +64,7 @@ public class MvtService {
             mvts=new ArrayList<>();
             JSONParser j = new JSONParser();
             Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-            User.setIdOfConnectedUser(0);
+           // User.setIdOfConnectedUser(0);
             List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
             for(Map<String,Object> obj : list){
                 MouvementStock m = new MouvementStock();
@@ -105,7 +105,7 @@ public class MvtService {
     }
 
        public ArrayList<MouvementStock> getAllMvt(){
-        String url = Statics.BASE_URL+"/allM";
+        String url = Statics.BASEZ_URL+"/allM";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

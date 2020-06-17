@@ -14,6 +14,7 @@ import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Style;
 import com.mycompany.myapp.entities.User;
+import com.mycompany.myapp.gui.commande.CommandeForm;
 import java.io.IOException;
 
 /**
@@ -69,8 +70,41 @@ public class Profile extends Form {
          telL.getAllStyles().setFgColor(0x000000);
          
          addAll(Logo,usernameL,nomL,prenomL,emailL,cinL,telL);
-                  
-                  
-                  
+          
+         if(u.getRole().equals("Client")){
+              getToolbar().addCommandToLeftSideMenu("commande",  null , (evt) -> {
+          
+           new CommandeForm(profile).show();
+        
+       });  
+                   getToolbar().addCommandToLeftSideMenu("location",  null , (evt) -> {
+          
+           new CommandeForm(profile).show();
+        
+       });  
+         } 
+         else if(u.getRole().equals("Fournisseur")){
+              getToolbar().addCommandToLeftSideMenu("Stock",  null , (evt) -> {
+          
+           new StockHomeForm(profile).show();
+        
+       });  
+                   getToolbar().addCommandToLeftSideMenu("Contrat",  null , (evt) -> {
+          
+       
+       });  
+         } 
+       else
+              getToolbar().addCommandToLeftSideMenu("Livraison",  null , (evt) -> {
+          
+           new CommandeForm(profile).show();
+        
+       });  
+                   getToolbar().addCommandToLeftSideMenu("location",  null , (evt) -> {
+          
+           new CommandeForm(profile).show();
+        
+       });  
+         } 
     }
-}
+

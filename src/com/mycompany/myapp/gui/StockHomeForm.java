@@ -16,7 +16,7 @@ import com.codename1.ui.layouts.BoxLayout;
  */
 public class StockHomeForm extends Form{
     Form current;
-    public StockHomeForm() {
+    public StockHomeForm(Form previous) {
         current=this;
         setTitle("Gestion de stock");
         setLayout(BoxLayout.y());

@@ -52,7 +52,7 @@ public class ProduitService {
         return instance;
     }
     public boolean addProduit(Produit p) {
-        String url = Statics.BASE_URL + "/newP?libelle="+p.getLibelle()+"&reference="+p.getReference()+"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&fkEntrepot="+p.getEntrepot().getId_entrepot();
+        String url = Statics.BASEZ_URL + "/newP?libelle="+p.getLibelle()+"&reference="+p.getReference()+"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&fkEntrepot="+p.getEntrepot().getId_entrepot();
         
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -70,7 +70,7 @@ public class ProduitService {
             produits=new ArrayList<>();
             JSONParser j = new JSONParser();
             Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-            User.setIdOfConnectedUser(0);
+            //User.setIdOfConnectedUser(0);
             List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
             for(Map<String,Object> obj : list){
                 
@@ -115,7 +115,7 @@ public class ProduitService {
     }
     
        public ArrayList<Produit> getAllProduit(){
-        String url = Statics.BASE_URL+"/allP";
+        String url = Statics.BASEZ_URL+"/allP";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -130,7 +130,7 @@ public class ProduitService {
     }
          public void modifierProduit(Produit p) {
 
-        String Url = Statics.BASE_URL + "/modifP?idProduit=" + p.getId() + "&libelle="+p.getLibelle()+"&marque="+p.getMarque()+"&reference="+p.getReference()
+        String Url = Statics.BASEZ_URL + "/modifP?idProduit=" + p.getId() + "&libelle="+p.getLibelle()+"&marque="+p.getMarque()+"&reference="+p.getReference()
                 +"&prix="+p.getPrix()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&fkEntrepot="+p.getEntrepot().getId_entrepot();
         req.setUrl(Url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -147,7 +147,7 @@ public class ProduitService {
     public void supprimerProduit(Produit p) {
 
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl(Statics.BASE_URL + "/suppP?idProduit=" +p.getId());
+        con.setUrl(Statics.BASEZ_URL + "/suppP?idProduit=" +p.getId());
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {

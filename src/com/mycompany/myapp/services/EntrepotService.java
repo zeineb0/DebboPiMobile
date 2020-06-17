@@ -42,7 +42,7 @@ public class EntrepotService {
         return instance;
     }
     public ArrayList<Entrepot> getAllEntrepot(){
-        String url = Statics.BASE_URL+"/allE";
+        String url = Statics.BASEZ_URL+"/allE";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -60,7 +60,7 @@ public class EntrepotService {
             entrepots=new ArrayList<>();
             JSONParser j = new JSONParser();
             Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-            User.setIdOfConnectedUser(0);
+           // User.setIdOfConnectedUser(0);
             List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
             for(Map<String,Object> obj : list){
                 

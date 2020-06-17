@@ -16,6 +16,7 @@ import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Produit;
 import com.mycompany.myapp.entities.User;
 import static com.mycompany.myapp.services.ProduitService.instance;
+import com.mycompany.myapp.services.UserService;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,7 +50,8 @@ public class ProduitService {
             produits=new ArrayList<>();
             JSONParser j = new JSONParser();
             Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
-            User.setIdOfConnectedUser(0);
+             UserService u = null;
+            u.getLoggedInfos("ghazi001");       
             List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
             for(Map<String,Object> obj : list){
                 
