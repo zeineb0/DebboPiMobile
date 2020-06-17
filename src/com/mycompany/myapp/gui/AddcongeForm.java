@@ -25,6 +25,9 @@ import com.mycompany.myapp.entities.conge;
 import com.mycompany.myapp.services.RhService;
 import java.io.IOException;
 
+import java.util.Date;
+
+
 /**
  *
  * @author ASUS X550V
@@ -63,11 +66,10 @@ public class AddcongeForm extends Form{
         btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ( (cdatearr.getDate()).before(cdatesortie.getDate()) ){
-                    Dialog.show("Alert","Please fill date fields",new Command("OK"));
-                } 
-                else {
                 try {
+                 Date d1=cdatearr.getDate();
+                 Date d2=cdatesortie.getDate();
+          
                 conge c = new conge(cdatearr.getDate(),cdatesortie.getDate(),ch,cetat.getText(),craison.getText(),new Employe(Integer.parseInt(cemp.getText())));
                 conge test=new RhService().addconge(c);
                 test.toString();
@@ -87,7 +89,7 @@ public class AddcongeForm extends Form{
                 }
                 }
 
-            }
+      
         });
         c1.add(new Label("Date Arrive :"));
         c1.add(cdatearr);
