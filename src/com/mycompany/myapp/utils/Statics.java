@@ -5,9 +5,12 @@
  */
 package com.mycompany.myapp.utils;
 
+import com.codename1.l10n.SimpleDateFormat;
+import com.mycompany.myapp.entities.Panier;
+
 /**
  *
- * @author bhk
+ * @author Zeineb_yahiaoui
  */
 public class Statics {
     public static final String BASE_URL="http://localhost/DebboWeb/web/app_dev.php";
@@ -43,4 +46,15 @@ public class Statics {
         Statics.rstLog = rstLog;
     }
     
+
+    public static final String GHAZI_URL="http://localhost/DebboWeb/web/app_dev.php/Mobile";
+    public static final String pattern = "MM-dd-yyyy";
+    public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+    public static final String BASE_URL="http://localhost/DebboWeb/web/app_dev.php/Stock";
+       
+    public static  Panier panier= new Panier(8);
+    public static double convert(double p){
+       double d = (double) Math.round(p * 100) / 100;
+       return d;
+    };
 }

@@ -5,6 +5,7 @@
  */
 package com.mycompany.myapp.entities;
 
+
 /**
  *
  * @author ASUS
@@ -79,55 +80,6 @@ public class User {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getCin() {
-        return cin;
-    }
-
-    public void setCin(int cin) {
-        this.cin = cin;
-    }
-
-    public String getRoles() {
-        return roles;
-    }
-
-    public void setRoles(String roles) {
-        this.roles = roles;
-    }
-
-    public int getTel() {
-        return tel;
-    }
-
-    public void setTel(int tel) {
-        this.tel = tel;
-    }
-    
-      @Override
-    public String toString() {
-        return "id = " + id + ", nom = " + nom + ", prenom = " + prenom + ", email = "+email+", telephone = "+tel+", cin = "+cin+"\n";
-    }
-    
-    
-    
     
     
     

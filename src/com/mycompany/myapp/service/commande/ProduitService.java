@@ -3,45 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myapp.services;
+package com.mycompany.myapp.service.commande;
 
-import com.codename1.components.ImageViewer;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
-import com.codename1.ui.Container;
-import com.codename1.ui.Dialog;
-import com.codename1.ui.Image;
-import com.codename1.ui.Label;
-import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
-import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.entities.Categorie;
 import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Produit;
 import com.mycompany.myapp.entities.User;
-import com.mycompany.myapp.gui.ListProduitForm;
+import static com.mycompany.myapp.services.ProduitService.instance;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
  *
- * @author Zeineb_yahiaoui
+ * @author ghazi
  */
 public class ProduitService {
-     public ArrayList<Produit> produits;
+    public ArrayList<Produit> produits;
     
     public static ProduitService instance=null;
     public boolean resultOK;
     private ConnectionRequest req;
-
-    private ProduitService() {
+     private ProduitService() {
          req = new ConnectionRequest();
     }
 
@@ -51,21 +42,9 @@ public class ProduitService {
         }
         return instance;
     }
-    public boolean addProduit(Produit p) {
-        String url = Statics.BASE_URL + "/newP?libelle="+p.getLibelle()+"&reference="+p.getReference()+"&prix="+p.getPrix()+"&marque="+p.getMarque()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&fkEntrepot="+p.getEntrepot().getId_entrepot();
-        
-        req.setUrl(url);
-        req.addResponseListener(new ActionListener<NetworkEvent>() {
-            @Override
-            public void actionPerformed(NetworkEvent evt) {
-                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
-                req.removeResponseListener(this);
-            }
-        });
-        NetworkManager.getInstance().addToQueueAndWait(req);
-        return resultOK;
-    }
-     public ArrayList<Produit> parseProduit(String jsonText){
+    
+    
+      public ArrayList<Produit> parseProduit(String jsonText){
         try {
             produits=new ArrayList<>();
             JSONParser j = new JSONParser();
@@ -77,7 +56,7 @@ public class ProduitService {
                 Produit p = new Produit();
                 float id = Float.parseFloat(obj.get("idProduit").toString());
                 float prix = Float.parseFloat(obj.get("prix").toString());
-                p.setImage(obj.get("imageName").toString());
+                //p.setImage(obj.get("imageName").toString());
                 p.setId((int)id);
                 
                 Map<String, Object> CategorieJson = (Map<String, Object>) obj.get("fkCategorie");
@@ -115,7 +94,8 @@ public class ProduitService {
     }
     
        public ArrayList<Produit> getAllProduit(){
-        String url = Statics.BASE_URL+"/allP";
+        String url = Statics.GHAZI_URL+"/allP";
+           System.out.println(url);
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -127,41 +107,5 @@ public class ProduitService {
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return produits;
-    }
-         public void modifierProduit(Produit p) {
-
-        String Url = Statics.BASE_URL + "/modifP?idProduit=" + p.getId() + "&libelle="+p.getLibelle()+"&marque="+p.getMarque()+"&reference="+p.getReference()
-                +"&prix="+p.getPrix()+"&quantite="+p.getQuantite()+"&fkCategorie="+p.getCategorie().getId()+"&fkEntrepot="+p.getEntrepot().getId_entrepot();
-        req.setUrl(Url);
-        req.addResponseListener(new ActionListener<NetworkEvent>() {
-            @Override
-            public void actionPerformed(NetworkEvent evt) {
-                 resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
-                req.removeResponseListener(this);
-            }
-        });
- 
-        NetworkManager.getInstance().addToQueueAndWait(req);
-    }
-
-    public void supprimerProduit(Produit p) {
-
-        ConnectionRequest con = new ConnectionRequest();
-        con.setUrl(Statics.BASE_URL + "/suppP?idProduit=" +p.getId());
-        con.addResponseListener(new ActionListener<NetworkEvent>() {
-            @Override
-            public void actionPerformed(NetworkEvent evt) {
-                try {
-                    String message = new String(con.getResponseData(), "utf-8");
-                    System.out.println("message" + message);
-                } catch (UnsupportedEncodingException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-
-        });
-
-        NetworkManager.getInstance().addToQueueAndWait(con);
-
     }
 }
