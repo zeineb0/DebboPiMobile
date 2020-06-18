@@ -15,14 +15,7 @@ public class Livraison {
     
     private int id_livraison,FK_id_user,FK_id_commande;
     private Date date_livraison;
-    private String adresse_livraison,etat_livraison,tel;
-    private String img;
-    
-    
-    
-    public Livraison(){
-        
-    };
+    private String adresse_livraison,etat_livraison,acceptation;
 
     public Livraison(int id_livraison, int FK_id_user, int FK_id_commande, Date date_livraison, String adresse_livraison, String etat_livraison, String acceptation) {
         this.id_livraison = id_livraison;
@@ -31,7 +24,7 @@ public class Livraison {
         this.date_livraison = date_livraison;
         this.adresse_livraison = adresse_livraison;
         this.etat_livraison = etat_livraison;
-        this.tel = acceptation;
+        this.acceptation = acceptation;
     }
 
     public Livraison(int id_livraison, int FK_id_user, int FK_id_commande, Date date_livraison, String adresse_livraison, String etat_livraison) {
@@ -91,27 +84,17 @@ public class Livraison {
         this.etat_livraison = etat_livraison;
     }
 
-    public String getTel() {
-        return tel;
+    public String getAcceptation() {
+        return acceptation;
     }
 
-    public void setTel (String tel) {
-        this.tel = tel;
+    public void setAcceptation(String acceptation) {
+        this.acceptation = acceptation;
     }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-    
-    
 
     @Override
     public String toString() {
-        return "Livraison{" + "id_livraison=" + id_livraison + ", FK_id_user=" + FK_id_user + ", FK_id_commande=" + FK_id_commande + ", date_livraison=" + date_livraison + ", adresse_livraison=" + adresse_livraison + ", etat_livraison=" + etat_livraison + ", acceptation=" + tel + '}';
+        return "Livraison{" + "id_livraison=" + id_livraison + ", FK_id_user=" + FK_id_user + ", FK_id_commande=" + FK_id_commande + ", date_livraison=" + date_livraison + ", adresse_livraison=" + adresse_livraison + ", etat_livraison=" + etat_livraison + ", acceptation=" + acceptation + '}';
     }
     
     

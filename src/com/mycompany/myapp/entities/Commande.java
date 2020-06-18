@@ -5,7 +5,6 @@
  */
 package com.mycompany.myapp.entities;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,18 +17,8 @@ public class Commande {
     private double total;
     private Date date_commande;
     private Date date_exp;
-    private ArrayList <ProduitCommande> list;
 
     public Commande() {
-    }
-
-    public Commande(int id_commande, int id_client, double total, Date date_commande, Date date_exp, ArrayList<ProduitCommande> list) {
-        this.id_commande = id_commande;
-        this.id_client = id_client;
-        this.total = total;
-        this.date_commande = date_commande;
-        this.date_exp = date_exp;
-        this.list = list;
     }
 
     public int getId_commande() {

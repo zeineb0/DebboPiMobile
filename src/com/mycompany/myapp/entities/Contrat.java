@@ -13,32 +13,16 @@ import java.util.Date;
  */
 public class Contrat {
     
-    private int salaire,FK_id_entrepot,FK_id_transporteur;
+    private int salaire,FK_id_user,FK_id_entrepot;
     private Date date_fin,date_deb;
-    private String nom_transporteur,prenom_transporteur,entreprise;
-    private String img;
 
-    public Contrat() {
-    }
-
-    
-    
-    
     public Contrat(int salaire, int FK_id_user, int FK_id_entrepot, Date date_fin, Date date_deb) {
         this.salaire = salaire;
+        this.FK_id_user = FK_id_user;
         this.FK_id_entrepot = FK_id_entrepot;
         this.date_fin = date_fin;
         this.date_deb = date_deb;
     }
-
-    public int getFK_id_transporteur() {
-        return FK_id_transporteur;
-    }
-
-    public void setFK_id_transporteur(int FK_id_transporteur) {
-        this.FK_id_transporteur = FK_id_transporteur;
-    }
-
 
     public int getSalaire() {
         return salaire;
@@ -46,6 +30,14 @@ public class Contrat {
 
     public void setSalaire(int salaire) {
         this.salaire = salaire;
+    }
+
+    public int getFK_id_user() {
+        return FK_id_user;
+    }
+
+    public void setFK_id_user(int FK_id_user) {
+        this.FK_id_user = FK_id_user;
     }
 
     public int getFK_id_entrepot() {
@@ -72,45 +64,11 @@ public class Contrat {
         this.date_deb = date_deb;
     }
 
-    public String getNom_transporteur() {
-        return nom_transporteur;
-    }
-
-    public void setNom_transporteur(String nom_transporteur) {
-        this.nom_transporteur = nom_transporteur;
-    }
-
-    public String getPrenom_transporteur() {
-        return prenom_transporteur;
-    }
-
-    public void setPrenom_transporteur(String prenom_transporteur) {
-        this.prenom_transporteur = prenom_transporteur;
-    }
-
-    public String getEntreprise() {
-        return entreprise;
-    }
-
-    public void setEntreprise(String entreprise) {
-        this.entreprise = entreprise;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
     @Override
     public String toString() {
-        return "Contrat{" + "salaire=" + salaire + ", FK_id_entrepot=" + FK_id_entrepot + ", FK_id_transporteur=" + FK_id_transporteur + ", date_fin=" + date_fin + ", date_deb=" + date_deb + ", nom_transporteur=" + nom_transporteur + ", prenom_transporteur=" + prenom_transporteur + ", entreprise=" + entreprise + ", img=" + img + '}';
+        return "Contrat{" + "salaire=" + salaire + ", FK_id_user=" + FK_id_user + ", FK_id_entrepot=" + FK_id_entrepot + ", date_fin=" + date_fin + ", date_deb=" + date_deb + '}';
     }
-
     
-
-
+    
     
 }

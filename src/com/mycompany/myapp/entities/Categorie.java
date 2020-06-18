@@ -16,25 +16,14 @@ public class Categorie {
     
     private int id;
     private String nom;
-    private Entrepot entrepot;
-    private User idUser;
-    private String image;
+    //une categorie peut avoir plusieurs produits
     private List<Produit> listProduit =new ArrayList<>();
-    
+
     public Categorie(int id, String nom) {
         this.id = id;
         this.nom = nom;
     }
 
-    public Entrepot getEntrepot() {
-        return entrepot;
-    }
-
-    public void setEntrepot(Entrepot entrepot) {
-        this.entrepot = entrepot;
-    }
-    
-    
     public Categorie(String nom) {
         this.nom=nom;
     }
@@ -67,22 +56,6 @@ public class Categorie {
     @Override
     public String toString() {
         return  nom ;
-    }
-
-    public User getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(User idUser) {
-        this.idUser = idUser;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
     
     
