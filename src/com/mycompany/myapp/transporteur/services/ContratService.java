@@ -14,6 +14,7 @@ import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.Contrat;
 import com.mycompany.myapp.entities.Entrepot;
 import com.mycompany.myapp.entities.Livraison;
+import com.mycompany.myapp.entities.Utilisateur;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class ContratService {
     
      public ArrayList<Contrat> Contrats;
      public ArrayList<Entrepot> entrepots;
+     public ArrayList<Utilisateur> users;
     
     public static ContratService instance=null;
     public boolean resultOK;
@@ -138,6 +140,9 @@ public class ContratService {
                 float id_entrepot = Float.parseFloat(obj.get("idEntrepot").toString());
                 c.setFK_id_entrepot((int)id_entrepot);
                 
+                float id_transporteur = Float.parseFloat(obj.get("id").toString());
+                c.setFK_id_transporteur((int)id_transporteur);
+                
                 c.setEntreprise(obj.get("entreprise").toString());
                 
                 c.setNom_transporteur(obj.get("nom").toString());
@@ -222,7 +227,7 @@ public class ContratService {
         
     }
     
-     public ArrayList<Entrepot> parseEntrepot(String jsonText){
+    public ArrayList<Entrepot> parseEntrepot(String jsonText){
         try {
             entrepots=new ArrayList<>();
             JSONParser j = new JSONParser();
@@ -261,6 +266,86 @@ public class ContratService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return entrepots;
     }
+     
+     
+      public ArrayList<Utilisateur> parseUser(String jsonText){
+        try {
+            users=new ArrayList<>();
+            JSONParser j = new JSONParser();
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            //User.setIdOfConnectedUser(0);
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
+                
+                Utilisateur e = new Utilisateur();
+                float id = Float.parseFloat(obj.get("id").toString());
+//                float prix = Float.parseFloat(obj.get("prix").toString());
+                e.setId_user((int)id);
+                e.setPrenom(obj.get("prenom").toString());
+                e.setEmail(obj.get("email").toString());
+               users.add(e);
+                //System.out.println("********");
+            }
+           
+        } catch (IOException ex) {
+            
+        }
+        return users;
+    }
+      
+      
+      public ArrayList<Utilisateur> getAllTransporteur(){
+        String url ="http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/getT";
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                users = parseUser(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return users;
+    }
+      
+       public boolean addContrat(Contrat c)
+    {
+        /*
+        String date = Statics.simpleDateFormat.format(c.getDate_deb());
+        String date = Statics.simpleDateFormat.format(c.getDate_fin());*/
+        String url="http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/addC?dateDeb="+c.getDate_deb()+"&dateFin="+c.getDate_fin()+"&salaire="+c.getSalaire()+"&FKE="+c.getFK_id_entrepot()+"&FKT="+c.getFK_id_transporteur();
+        req.setUrl(url);
+        System.out.println(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK=req.getResponseCode() == 200 ;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+        
+    }
+       
+       public boolean modifierContrat(Contrat c) {
+            String url ="http://localhost/DebboPiWeb/web/app_dev.php/Transporteur/modC?dateFin="+c.getDate_fin()+"&id_trans="+c.getFK_id_transporteur()+"&id_entrepot="+c.getFK_id_entrepot();
+            System.out.println(url);
+            req.setUrl(url);
+            req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+    }
+      
+      
+      
     
     
     

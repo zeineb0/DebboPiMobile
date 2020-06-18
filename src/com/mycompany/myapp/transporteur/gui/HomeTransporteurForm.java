@@ -9,6 +9,7 @@ import com.codename1.ui.Button;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
+import java.io.IOException;
 
 /**
  *
@@ -30,9 +31,12 @@ public class HomeTransporteurForm extends Form{
         Button btnListLiv = new Button("La Liste des livraisons livrées");
         Button btnListLivNL = new Button("La Liste des livraisons non livrées");
         
+        
       //  btnAddTask.addActionListener(e->new AddTaskForm(current).show());
         btnListLiv.addActionListener(e->new ListeLivraisonForm(current).show());
         btnListLivNL.addActionListener(e-> new ListeLivraisonNLForm(current).show());
+       
+       
         addAll(btnListLiv,btnListLivNL);
         
         

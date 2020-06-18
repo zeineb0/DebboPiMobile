@@ -16,11 +16,15 @@ import com.codename1.ui.Label;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.spinner.Picker;
 import com.mycompany.myapp.entities.Contrat;
+import com.mycompany.myapp.entities.Livraison;
 import com.mycompany.myapp.transporteur.services.ContratService;
+import com.mycompany.myapp.transporteur.services.LivraisonService;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -101,24 +105,59 @@ public class ListeContratEXP extends Form{
             cmds[0] = new Command("Modifier"){
                 @Override
                 public void actionPerformed(ActionEvent evt) 
-                {  /*
-                   boolean test = LivraisonService.getInstance().supprimerLivraison(id_liv);
-                    System.out.println(test);
-                    if (test)
-                    {
-                        ArrayList<Livraison> livraisons = new ArrayList<>();
+                {  
+                    Contrat Contrat_temp=new Contrat();
+                    
+                    Container modifier = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+                     Picker nv_date = new Picker();
+                     modifier.add(nv_date);
+                     
+                     Command [] modCMDS=new Command[2];
+                     
+                     modCMDS[0]=new Command("Modifier")
+                     {
+                         @Override
+                         public void actionPerformed(ActionEvent evt)
+                         {
+                            Contrat_temp.setFK_id_entrepot(contrat.getFK_id_entrepot());
+                            Contrat_temp.setFK_id_transporteur(contrat.getFK_id_transporteur());
+                            Contrat_temp.setDate_fin((Date) nv_date.getValue());
+                             boolean test= ContratService.getInstance().modifierContrat(Contrat_temp);
+                        if(test)
+                        {
+                            
+                            System.out.println(" c bon mchet ");
+                       
+                        
+                        }
+                        else
+                        {
+                        System.out.println("probleme f seervice");
+                        }
+                         }
+                     };
+                     
+                    modCMDS[1] = new Command("Fermer"){
+                    @Override
+                    public void actionPerformed(ActionEvent evt) {
+                       
+                        }
+                    };
+                    
+                    
+                    Dialog.show("Modifier Contrat", modifier , modCMDS);
+                    
+                    ArrayList<Contrat> contrats = new ArrayList<>();
         
-                        livraisons =LivraisonService.getInstance().getLivraisonsLivre();
+                        contrats =ContratService.getInstance().getContratEXP();
                         current.removeAll();
-                        for(Livraison l : livraisons )
+                        for(Contrat l : contrats )
                         {
                             addItem(l);
                         }
                         current.showBack();
-                      
-                    }
-                    else
-                        System.out.println("****");*/
+                    
+                    
                 }
             };
             cmds[1] = new Command("Fermer"){

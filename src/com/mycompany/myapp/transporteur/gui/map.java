@@ -35,7 +35,7 @@ public class map extends Form{
     public map(Form previous) 
     {
         this.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
-        Button b = new Button("Where am I?");
+        Button b = new Button("Voir dans la map");
         this.addComponent(b);
         main=previous;
         

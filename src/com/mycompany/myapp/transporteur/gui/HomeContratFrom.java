@@ -37,19 +37,13 @@ public class HomeContratFrom extends Form{
         Button btnListContratEXP = new Button("La Liste des Contrats bientôt expirer");
         Button sendMail= new Button("send mail");
         
-        sendMail.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                Message msg = new Message("hello Test mail");
-                Message.sendMessage(new String[]{"medfarouk.benakacha@gmail.com"}, "Mail", msg);
-            }
-        });
+        
         
         
         btnAddContrat.addActionListener(e->new AjouterContratForm(current).show());
         btnListContrat.addActionListener(e->new ListeContrat(current).show());
         btnListContratEXP.addActionListener(e-> new ListeContratEXP(current).show());
-        addAll(btnAddContrat,btnListContrat,btnListContratEXP,sendMail);
+        addAll(btnAddContrat,btnListContrat,btnListContratEXP);
      }
     
     
