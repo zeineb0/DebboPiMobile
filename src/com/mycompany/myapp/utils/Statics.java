@@ -18,9 +18,11 @@ import com.mycompany.myapp.entities.Panier;
  */
 public class Statics {
 
-    public static final String RH_URL="http://localhost/DebboPiWeb/web/app_dev.php/rh";
+    public static final String RH_URL="http://localhost/DebboWeb/web/app_dev.php/rh";
     public static final String pattern = "dd-MM-yyyy HH:mm";
     public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+    public static final String pattern1 = "dd-MM-yyyy HH:mm";
+    public static final SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat(pattern1);
     public static final String BASE_URL="http://localhost/DebboWeb/web/app_dev.php";
     public static String rstLog ="";
     public static int idSession;

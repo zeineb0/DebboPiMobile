@@ -19,6 +19,7 @@ import com.mycompany.myapp.gui.commande.CommandeForm;
 import com.mycompany.myapp.gui.gererentrepot.EntrepotALouerForm;
 import com.mycompany.myapp.gui.gererentrepot.ListEntrepot;
 import com.mycompany.myapp.gui.gererentrepot.LocationListe;
+import com.mycompany.myapp.gui.rh.ListcongeForm;
 import com.mycompany.myapp.transporteur.gui.HomeContratFrom;
 import com.mycompany.myapp.transporteur.gui.HomeTransporteurForm;
 import com.mycompany.myapp.transporteur.gui.map;
@@ -102,6 +103,10 @@ public class Profile extends Form {
        });  
                    getToolbar().addCommandToLeftSideMenu("Entrepot",  null , (evt) -> {
                        new ListEntrepot(profile, u).show();
+       
+       });  
+                   getToolbar().addCommandToLeftSideMenu("Ressource Humaine",  null , (evt) -> {
+                       new ListcongeForm(profile).show();
        
        });  
          } 

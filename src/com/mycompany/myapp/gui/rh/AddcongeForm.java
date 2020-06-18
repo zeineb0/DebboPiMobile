@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myapp.gui;
+package com.mycompany.myapp.gui.rh;
 
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
@@ -22,7 +22,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
 import com.mycompany.myapp.entities.Employe;
 import com.mycompany.myapp.entities.conge;
-import com.mycompany.myapp.services.RhService;
+import com.mycompany.myapp.services.rh.RhService;
 import java.io.IOException;
 import java.util.Date;
 

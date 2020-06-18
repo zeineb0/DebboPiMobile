@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myapp.gui;
+package com.mycompany.myapp.gui.rh;
 
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
-import com.mycompany.myapp.services.RhService;
+import com.mycompany.myapp.services.rh.RhService;
 
 /**
  *
