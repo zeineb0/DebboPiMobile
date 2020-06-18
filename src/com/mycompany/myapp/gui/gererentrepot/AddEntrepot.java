@@ -88,9 +88,9 @@ public class AddEntrepot extends Form{
         userStyle3.setMargin(Component.TOP, 2);
         //*********************** combo box *********************************
         ComboBox<String> etat=new ComboBox<>();
-        etat.addItem(">Loué");
-        etat.addItem(">A Louer");
-        etat.addItem(">Libre");
+        etat.addItem("Loué");
+        etat.addItem("A Louer");
+        etat.addItem("Libre");
         Style userStyle4 = etat.getAllStyles();
         userStyle4.setBorder(RoundRectBorder.create().
                 strokeColor(0).
@@ -142,10 +142,10 @@ public class AddEntrepot extends Form{
                 if(EntrepotServices.getInstance().numFiscaleExist(Integer.valueOf(num.getText()))){
                         Dialog.show("Alert", "Ce numéro fiscale existe deja", new Command("OK"));
                     }
-                else if ((num.getText().length()==0)||(quant.getText().length()<3)||(entrep.getText().length()==0)||(adresse.getText().length()==0)||(etat.getSelectedItem().length()==0))
-                    Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
+                else if((num.getText().length()==0)||(quant.getText().length()<3)||(entrep.getText().length()==0)||(adresse.getText().length()==0)||(etat.getSelectedItem().length()==0))
+                {  Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
   
-                    
+                }
                  else   {
                         
                     
