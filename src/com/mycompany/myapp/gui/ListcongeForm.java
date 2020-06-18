@@ -7,7 +7,9 @@ package com.mycompany.myapp.gui;
 
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
+import com.codename1.ui.Command;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
@@ -47,13 +49,22 @@ Form current;
            }
        });
             Button delete =new Button("Supprimer");
-            delete.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent evt) {
-               RhService.getInstance().DeleteConge(c.getId());
-           }
-       });
-                    
+  delete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+               Dialog.show("Alert", "Voulez vous le supprimer",new Command("Annulée"), new Command("Supprimer"));
+try{
+                 if( RhService.getInstance().DeleteConge(c.getId()))
+                 {  Dialog.show("Success","Entrepot est supprimé avec succes",new Command("OK"));
+                                new ListcongeForm(current).show();}
+                        else
+                            Dialog.show("ERROR", "Server error", new Command("OK"));
+                    } catch (NumberFormatException e) {
+                        Dialog.show("ERROR", "Conge est supprimé avec succes", new Command("OK"));
+                    }
+            }
+        });
+   
            
         cx.add(l1);
         cx.add(l2);
@@ -74,6 +85,7 @@ Form current;
  
     }       
         
-    
+                                getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new HomeForm().showBack());
+
 }
 }

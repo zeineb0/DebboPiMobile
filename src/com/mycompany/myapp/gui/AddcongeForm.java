@@ -12,6 +12,7 @@ import com.codename1.ui.Command;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextArea;
@@ -73,7 +74,11 @@ public class AddcongeForm extends Form{
                  Date  d2=cdatesortie.getDate();
                  long diff = (d2.getTime()-d1.getTime());
                  long d=diff /(1000*60*60*24);
-                 if(d<=0){
+                try {
+                conge c = new conge(cdatearr.getDate(),cdatesortie.getDate(),ch,cetat.getText(),craison.getText(),new Employe(Integer.parseInt(cemp.getText())));
+                conge test=new RhService().addconge(c,d);
+                test.toString();
+                                 if(d<=0){
                       Dialog.show("Erreur","fill date fields correctly",new Command("ok"));
                  }
                   if (cb.getSelectedItem().toString().equals("Demande de Sortie")){
@@ -81,11 +86,7 @@ public class AddcongeForm extends Form{
                           Dialog.show("Erreur","Veuillez demander un sortie dans le mm jours",new Command("ok"));
                       }
                   }
-                try {
-                conge c = new conge(cdatearr.getDate(),cdatesortie.getDate(),ch,cetat.getText(),craison.getText(),new Employe(Integer.parseInt(cemp.getText())));
-                conge test=new RhService().addconge(c,d);
-                test.toString();
-                if (test.getFK_id_emp().getNbcong()<14){
+                if (test.getFK_id_emp().getNbcong()<14) {
                     Dialog.show("Succes","ConnectionSucc",new Command("ok"));
                 }
                 else if (test.getFK_id_emp().getNbcong()>=14){
@@ -114,6 +115,8 @@ public class AddcongeForm extends Form{
         c5.add(new Label("identifiant employe:"));
         c5.add(cemp);
         addAll(c1,c2,cb,c4,c5,c3,btnValider);
+                                        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+
     }
     
     
