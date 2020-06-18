@@ -103,7 +103,20 @@ public class RhService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
     }
-    
+           public Boolean DeleteConge(int id){
+        String url = Statics.RH_URL+"/delete?id=" +id;
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK=req.getResponseCode()==200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+    }
     
     public conge addconge(conge c,long d){
         String url=Statics.RH_URL+"/new?datearrive="+Statics.simpleDateFormat.format(c.getDatearrive())+"&datesortie="+Statics.simpleDateFormat.format(c.getDatesortie())+"&type="+c.getType()+"&etat="+c.getEtat()+"&raison="+c.getRaison()+"&FKIdEmp="+c.getFK_id_emp().getId_emp()+"&d="+d;

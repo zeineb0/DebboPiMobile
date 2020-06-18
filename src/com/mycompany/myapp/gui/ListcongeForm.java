@@ -46,6 +46,14 @@ Form current;
                new ModifiercongeForm(previous,c).show();
            }
        });
+            Button delete =new Button("Supprimer");
+            delete.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent evt) {
+               RhService.getInstance().DeleteConge(c.getId());
+           }
+       });
+                    
            
         cx.add(l1);
         cx.add(l2);
@@ -53,6 +61,7 @@ Form current;
         cx.add(l4);
         cx.add(l5);
         cx.add(bt);
+        cx.add(delete);
         this.add(cx);
           
           cx.getUnselectedStyle().setMargin(10, 10, 10, 10);
