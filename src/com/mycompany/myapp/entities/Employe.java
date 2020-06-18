@@ -36,6 +36,9 @@ public class Employe {
         this.id_emp = id_emp;
     }
 
+    public Employe() {
+    }
+
     
     
     public void setNbcong(int nbcong) {

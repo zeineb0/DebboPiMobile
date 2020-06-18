@@ -51,10 +51,20 @@ public class RhService {
              {
                  conge c =new conge();
                  c.setId((int)Float.parseFloat(obj.get("id").toString()));
-//                 c.setDatearrive(obj.get("date").toString());
-//                 c.setEtat(obj.get("etat").toString());
-//                 c.setType(obj.get("type").toString());
-                 
+                 Map<String, Object> dates = (Map<String, Object>) obj.get("datesortie");
+                 float datess = Float.parseFloat(dates.get("timestamp").toString());
+                Date l = new Date((long) datess * 1000);
+                c.setDatesortie(l);
+                  Map<String, Object> datea = (Map<String, Object>) obj.get("datearrive");
+                 float dateaa = Float.parseFloat(datea.get("timestamp").toString());
+                Date l1 = new Date((long) dateaa * 1000);
+                c.setDatearrive(l1);
+                 c.setType(obj.get("type").toString());
+                 c.setRaison(obj.get("raison").toString());
+                 c.setEtat(obj.get("etat").toString());
+                 Employe e =new Employe();
+                 e.setId_emp((int)Float.parseFloat(obj.get("fKIdEmp").toString()));        
+                 c.setFK_id_emp(e);               
                 congs.add(c);
              }
         } catch (IOException ex) {
@@ -79,7 +89,20 @@ public class RhService {
         return congs;
     }
     
-    
+        public boolean modifierconge(conge c,int id){
+        String url=Statics.RH_URL+"/modifierconge?id="+id+"&datearrive="+Statics.simpleDateFormat.format(c.getDatearrive())+"&datesortie="+Statics.simpleDateFormat.format(c.getDatesortie())+"&type="+c.getType()+"&raison="+c.getRaison();
+       
+        ConnectionRequest req=new ConnectionRequest(url);
+        req.addResponseListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                resultOK = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+    }
     
     
     public conge addconge(conge c,long d){
