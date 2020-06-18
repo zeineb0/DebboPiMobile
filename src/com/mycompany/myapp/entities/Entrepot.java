@@ -10,27 +10,36 @@ package com.mycompany.myapp.entities;
  * @author asus
  */
 public class Entrepot {
+
        int id_entrepot;
+
     String adresse_entrepot;
     int num_fiscale;
     int quantite_max;
     String etat;
     String entreprise;
-    float prix_location;
-    int fk_id_fournisseur;
 
+    float prix_location;
+    User fk_id_fournisseur;
+
+    //int fk_id_fournisseur;
+  
     public Entrepot() {
     }
+     public Entrepot(String etat, String entreprise, float prix_location) {
+    
+        this.etat = etat;
+        this.entreprise = entreprise;
+        this.prix_location = prix_location;
+    }
 
-    public Entrepot(int id_entrepot, String adresse_entrepot, int num_fiscale, int quantite_max, String etat, String entreprise, float prix_location, int fk_id_fournisseur) {
-        this.id_entrepot = id_entrepot;
+    public Entrepot( String adresse_entrepot, int num_fiscale, int quantite_max, String etat, String entreprise, float prix_location) {
         this.adresse_entrepot = adresse_entrepot;
         this.num_fiscale = num_fiscale;
         this.quantite_max = quantite_max;
         this.etat = etat;
         this.entreprise = entreprise;
         this.prix_location = prix_location;
-        this.fk_id_fournisseur = fk_id_fournisseur;
     }
 
     public int getId_entrepot() {
@@ -89,17 +98,35 @@ public class Entrepot {
         this.prix_location = prix_location;
     }
 
-    public int getFk_id_fournisseur() {
+    public User getFk_id_fournisseur() {
         return fk_id_fournisseur;
     }
 
-    public void setFk_id_fournisseur(int fk_id_fournisseur) {
+    public void setFk_id_fournisseur(User fk_id_fournisseur) {
         this.fk_id_fournisseur = fk_id_fournisseur;
     }
 
     @Override
     public String toString() {
-        return "Entrepot{" + "id_entrepot=" + id_entrepot + ", adresse_entrepot=" + adresse_entrepot + ", num_fiscale=" + num_fiscale + ", quantite_max=" + quantite_max + ", etat=" + etat + ", entreprise=" + entreprise + ", prix_location=" + prix_location + ", fk_id_fournisseur=" + fk_id_fournisseur + '}';
+        return  adresse_entrepot;
     }
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Entrepot other = (Entrepot) obj;
+        if (this.num_fiscale != other.num_fiscale) {
+            return false;
+        }
+        return true;
+
+    }
 }

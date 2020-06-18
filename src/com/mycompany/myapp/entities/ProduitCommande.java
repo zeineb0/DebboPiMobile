@@ -13,12 +13,20 @@ public class ProduitCommande {
     private Commande id_commande;
     private Produit id_produit;
     private double prix_produit;
-    private double quantite_produit;
+    private int quantite_produit;
 
     public ProduitCommande() {
     }
 
-    public ProduitCommande(Commande id_commande, Produit id_produit, double prix_produit, double quantite_produit) {
+    public ProduitCommande(Produit id_produit, double prix_produit, int quantite_produit) {
+        this.id_produit = id_produit;
+        this.prix_produit = prix_produit;
+        this.quantite_produit = quantite_produit;
+    }
+    
+    
+    
+    public ProduitCommande(Commande id_commande, Produit id_produit, double prix_produit, int quantite_produit) {
         this.id_commande = id_commande;
         this.id_produit = id_produit;
         this.prix_produit = prix_produit;
@@ -53,7 +61,7 @@ public class ProduitCommande {
         return quantite_produit;
     }
 
-    public void setQuantite_produit(double quantite_produit) {
+    public void setQuantite_produit(int quantite_produit) {
         this.quantite_produit = quantite_produit;
     }
 
