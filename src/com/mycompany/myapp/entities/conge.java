@@ -29,6 +29,13 @@ public class conge {
         this.raison = raison;
         this.FK_id_emp = FK_id_emp;
     }
+
+    public conge(Date datesortie, Date datearrive, String type, String raison) {
+        this.datesortie = datesortie;
+        this.datearrive = datearrive;
+        this.type = type;
+        this.raison = raison;
+    }
     
 
     public String getRaison() {

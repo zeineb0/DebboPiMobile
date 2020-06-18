@@ -64,8 +64,7 @@ public class RhService {
                  c.setEtat(obj.get("etat").toString());
                  Employe e =new Employe();
                  e.setId_emp((int)Float.parseFloat(obj.get("fKIdEmp").toString()));        
-                 c.setFK_id_emp(e);
-                 
+                 c.setFK_id_emp(e);               
                 congs.add(c);
              }
         } catch (IOException ex) {
@@ -90,7 +89,20 @@ public class RhService {
         return congs;
     }
     
-    
+        public boolean modifierconge(conge c,int id){
+        String url=Statics.RH_URL+"/modifierconge?id="+id+"&datearrive="+Statics.simpleDateFormat.format(c.getDatearrive())+"&datesortie="+Statics.simpleDateFormat.format(c.getDatesortie())+"&type="+c.getType()+"&raison="+c.getRaison();
+       
+        ConnectionRequest req=new ConnectionRequest(url);
+        req.addResponseListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                resultOK = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+    }
     
     
     public conge addconge(conge c,long d){

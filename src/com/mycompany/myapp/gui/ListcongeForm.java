@@ -6,10 +6,13 @@
 package com.mycompany.myapp.gui;
 
 import com.codename1.components.SpanLabel;
+import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.plaf.Border;
 import com.codename1.ui.table.TableLayout;
 import com.mycompany.myapp.entities.conge;
@@ -36,12 +39,20 @@ Form current;
             Label l3= new Label("type "+c.getId());
             Label l4= new Label("raison "+c.getRaison());
             Label l5= new Label("etat "+c.getEtat());
+            Button bt =new Button("Modifier");
+            bt.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent evt) {
+               new ModifiercongeForm(previous,c).show();
+           }
+       });
            
         cx.add(l1);
         cx.add(l2);
         cx.add(l3);
         cx.add(l4);
         cx.add(l5);
+        cx.add(bt);
         this.add(cx);
           
           cx.getUnselectedStyle().setMargin(10, 10, 10, 10);
