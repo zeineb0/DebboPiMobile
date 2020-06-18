@@ -14,7 +14,8 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
 import com.mycompany.myapp.entities.conge;
-import com.mycompany.myapp.services.RhService;
+import com.mycompany.myapp.gui.rh.ListcongeForm;
+import com.mycompany.myapp.services.rh.RhService;
 import java.util.Date;
 import java.io.IOException;
 

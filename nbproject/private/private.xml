@@ -4,12 +4,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/services/ProduitService.java</file>
+            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/gui/rh/ListcongeForm.java</file>
+            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/gui/AddMvtForm.java</file>
+            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/gui/user/Profile.java</file>
+            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/gui/rh/AddcongeForm.java</file>
+            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/services/MvtService.java</file>
             <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/utils/Statics.java</file>
-            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/entities/User.java</file>
-            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/entities/Produit.java</file>
-            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/MyApplication.java</file>
-
+            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/services/rh/RhService.java</file>
+            <file>file:/C:/netbeansProject/DebboPiMobile/src/com/mycompany/myapp/services/gererentrepot/LocationServices.java</file>
         </group>
     </open-files>
 </project-private>
