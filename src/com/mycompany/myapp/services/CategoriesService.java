@@ -70,7 +70,6 @@ public class CategoriesService {
                 c.setNom(obj.get("nom").toString());
                 c.setImage(obj.get("imageName").toString());
                 Map<String, Object> EntJson = (Map<String, Object>) obj.get("fkEntrepot");
-                // Label l = new Label(obj.get("libelle").toString());
                 Entrepot e = new Entrepot();
                 float ide = Float.parseFloat(EntJson.get("idEntrepot").toString());
                 e.setId_entrepot((int)ide);

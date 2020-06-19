@@ -40,7 +40,6 @@ public class AddCategorieForm extends Form{
       ArrayList<Entrepot> ent = new ArrayList<>();
         ent.addAll(EntrepotService.getInstance().getAllEntrepot());
          System.out.println(EntrepotService.getInstance().getAllEntrepot());
-         cmbE.addItem("Choisir un entrepot");
         for (Entrepot object : ent) {
             cmbE.addItem(object.toString());
         }
@@ -57,7 +56,7 @@ public class AddCategorieForm extends Form{
         TextField photoField = new TextField("", "Importer une photo", 10, TextArea.ANY);
         photoField.setEditable(false);
         selectPhoto.addActionListener((evt) -> {
-            if (Dialog.show("Photo!", "une annonce avec des  photos est 10 fois plus visible", null, "Gallerie") == false) {
+            if (Dialog.show("Photo!", "une catégorie avec des  photos est 10 fois plus visible", "Annuler", "Gallerie") == false) {
                 Display.getInstance().openGallery((e) -> {
                     if (e != null && e.getSource() != null) {
                         String file = (String) e.getSource();
@@ -77,8 +76,7 @@ public class AddCategorieForm extends Form{
             public void actionPerformed(ActionEvent evt) {
                 if ((tfName.getText().length()==0)  || photoField.getText().length()==0)
                     Dialog.show("Alerte", "Veuillez remplir tous les champs", new Command("OK"));
-                else if (cmbE.getSelectedItem().toString().equals("Choisir un entrepot"))
-                                        Dialog.show("Alerte", "Veuillez remplir tous les champs", new Command("OK"));
+    
                    
                 else
                 {

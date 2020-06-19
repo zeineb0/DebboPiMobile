@@ -89,7 +89,6 @@ public class AddMvtForm extends Form{
                             Dialog.show("Success","MVT ajouté",new Command("OK"));
                      else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
-                                                              new ListMvtForm(previous);
     
                     }
                     if (cmbES.getSelectedItem().toString().equals("Sortie")){
@@ -115,16 +114,13 @@ public class AddMvtForm extends Form{
                         //System.out.println(ProduitService.getInstance().addProduit(p));
                          if( MvtService.getInstance().addMvt(m))
                             Dialog.show("Success","Mouvement ajouté",new Command("OK"));                    
-                                                                                         new ListMvtForm(previous);
 
                         }
                      else
                             Dialog.show("ERREUR", "Quantitée intexistante", new Command("Veuillez réessayer"));
-                                                                 new ListMvtForm(previous);
 
                     }
 
-                                                                                       new ListMvtForm(previous);
 
                 }
                                                                  new ListMvtForm(previous);
@@ -133,7 +129,6 @@ public class AddMvtForm extends Form{
             }
 
         });
-                                                                                     new ListMvtForm(previous);
 
         addAll(N,cmbES,nom1,d,nom3,tfQte,nom2,cmbP,nom4,cmbE,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());

@@ -87,7 +87,7 @@ public class AddProduitForm extends Form{
         TextField photoField = new TextField("", "Importer une photo", 10, TextArea.ANY);
         photoField.setEditable(false);
         selectPhoto.addActionListener((evt) -> {
-            if (Dialog.show("Photo!", "une annonce avec des  photos est 10 fois plus visible", null, "Gallerie") == false) {
+            if (Dialog.show("Photo!", "un produit avec photo 10 fois plus visible", "Annuler", "Gallerie") == false) {
                 Display.getInstance().openGallery((e) -> {
                     if (e != null && e.getSource() != null) {
                         String file = (String) e.getSource();
