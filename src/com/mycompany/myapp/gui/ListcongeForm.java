@@ -6,10 +6,12 @@
 package com.mycompany.myapp.gui;
 
 import com.codename1.components.SpanLabel;
+import com.codename1.notifications.LocalNotification;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
@@ -38,7 +40,7 @@ Form current;
        cx.setWidth(CENTER);
             Label l1= new Label("Date sortie "+Statics.simpleDateFormat.format(c.getDatesortie()));
             Label l2= new Label("Date arrive"+Statics.simpleDateFormat.format(c.getDatearrive()));
-            Label l3= new Label("type "+c.getId());
+            Label l3= new Label("type "+c.getType());
             Label l4= new Label("raison "+c.getRaison());
             Label l5= new Label("etat "+c.getEtat());
             Button bt =new Button("Modifier");
@@ -82,7 +84,11 @@ try{
           
           this.refreshTheme(); 
        
- 
+        LocalNotification n = new LocalNotification();
+        n.setId("demo-notification");
+        n.setAlertBody("It's time to take a break and look at me");
+        n.setAlertTitle("Break Time!");
+        Display.getInstance().scheduleLocalNotification(n,System.currentTimeMillis() + 10 * 1000,LocalNotification.REPEAT_MINUTE);
     }       
         
                                 getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new HomeForm().showBack());

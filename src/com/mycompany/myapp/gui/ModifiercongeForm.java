@@ -56,7 +56,7 @@ public class ModifiercongeForm extends Form {
             }
         });
         addAll(cb,raison,cdatearr,cdatesortie,btnvalider);
-                                getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+                                getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new ListcongeForm(previous).showBack());
 
     }
 }
