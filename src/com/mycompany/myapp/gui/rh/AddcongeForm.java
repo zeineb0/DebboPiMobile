@@ -12,6 +12,7 @@ import com.codename1.ui.Command;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextArea;
@@ -114,7 +115,10 @@ public class AddcongeForm extends Form{
         c5.add(new Label("identifiant employe:"));
         c5.add(cemp);
         addAll(c1,c2,cb,c4,c5,c3,btnValider);
+               getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+      
+
     }
     
-    
+
 }

@@ -65,7 +65,8 @@ Form current;
        
  
     }       
-        
-    
+
+        getToolbar().addMaterialCommandToOverflowMenu("Ajouter Conge",FontImage.MATERIAL_ADD,e-> new AddcongeForm(current).show());
+getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 }
 }

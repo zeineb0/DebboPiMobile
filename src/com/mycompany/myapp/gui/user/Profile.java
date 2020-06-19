@@ -110,7 +110,7 @@ public class Profile extends Form {
        
        });  
          } 
-       else
+         else
               getToolbar().addCommandToLeftSideMenu("Livraison",  null , (evt) -> {
           
            new HomeTransporteurForm(profile).show();
